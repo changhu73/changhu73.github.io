@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Guangwei Zhang"
 title_separator          : "-"
 name                     : &name "Guangwei Zhang"
 description              : &description "personal description"
@@ -22,13 +22,13 @@ repository               : "changhu73.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Guangwei Zhang"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "Research Assistant at HKQAI, looking for a PhD position."
+  location         : "Hong Kong"
+  employer         : "Hong Kong Quantum AI Lab"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "changhu1633@outlook.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
