@@ -9,7 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+---
+
+### Education
 ======
 <!-- * (incoming) Ph.D in Data Science, Stevens Institute of Technology, Feb. 2026 -  -->
 * Visiting Research Student, The Hong Kong University of Science and Technology (Guangzhou), June 2025 - Nov. 2025
@@ -18,7 +20,7 @@ Education
 
 
 
-Work/Intern Experience
+### Work/Intern Experience
 ======
 * Nov. 2023 - May 2025: Research Assistant
   *  The University of Hong Kong  <!-- Hong Kong Quantum AI Lab -->
@@ -33,18 +35,18 @@ Work/Intern Experience
   * Supervisor: Zexiang Li
 
 
-Skills
+<!-- ### Skills
 ======
 * 
 
-Publications
+### Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Teaching
+### Teaching
 ======
   
-Service and leadership
+### Service and leadership -->
 ======
