@@ -21,7 +21,7 @@ repository               : "changhu73.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "photo.png"
+  avatar           : "photo.jpg"
   name             : "Guangwei Zhang"
   pronouns         : # example: "she/her"  
   bio              : "Research Assistant at HKU."
