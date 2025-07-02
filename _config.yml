@@ -21,14 +21,14 @@ repository               : "changhu73.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "photo.png"
   name             : "Guangwei Zhang"
   pronouns         : # example: "she/her"  
-  bio              : "Research Assistant at HKQAI."
+  bio              : "Research Assistant at HKU."
   location         : "Hong Kong"
-  employer         : "Hong Kong Quantum AI Lab"
+  employer         : "The University of Hong Kong"
   uri              : # URL
-  email            : "changhu1633@outlook.com" 
+  email            : "gzhang63-c@my.cityu.edu.hk" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
