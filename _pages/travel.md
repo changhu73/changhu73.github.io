@@ -117,7 +117,7 @@ author_profile: true
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
-          <img src="https://placehold.co/400x300/e74c3c/ffffff?text=东京" alt="Tokyo">
+          <img src="taiwan1.jpg" alt="">
           <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
         </div>
 >
@@ -129,7 +129,6 @@ author_profile: true
   
   <!-- To add a new trip, copy an entire .trip-section block and paste it here. -->
 
-</div>
 
 <!-- This script enables the drag-to-scroll functionality for all sliders. -->
 <script>
