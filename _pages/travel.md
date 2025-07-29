@@ -121,7 +121,7 @@ author_profile: true
   <div class="trip-section">
     <h2>Taiwan <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
-      <h3 class="slider-title">Historical Sites</h3>
+      <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
@@ -135,7 +135,7 @@ author_profile: true
       </div>
     </div>
     <div class="slider-container">
-      <h3 class="slider-title">Martyrs' Shrines</h3>
+      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</h3>
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
