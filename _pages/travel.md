@@ -39,6 +39,13 @@ author_profile: true
       margin-left: 10px;
   }
 
+  .slider-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 10px 0;
+    color: #555;
+  }
+
   .slider-container {
     position: relative;
     overflow: hidden;
@@ -54,6 +61,19 @@ author_profile: true
   }
 
   .slider-track {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slider-track-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #444;
+    text-align: center;
+  }
+
+  .slider-images {
     display: flex;
     gap: 15px;
     user-select: none;
@@ -90,7 +110,23 @@ author_profile: true
     font-size: 0.9rem;
     color: #555;
   }
-  
+
+  .photo-card .zoom-btn {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .photo-card .zoom-btn:hover {
+    background-color: #0056b3;
+  }
+
   .slider-container::after {
       content: 'Drag to see more photos →';
       position: absolute;
@@ -171,26 +207,34 @@ author_profile: true
   <!-- Trip 1: Taiwan -->
   <div class="trip-section">
     <h2>Taiwan <span class="trip-date">2025.1</span></h2>
+    <h3 class="slider-title">Highlights from Taiwan Trip</h3>
     <div class="slider-container">
       <div class="slider-track">
-        <!-- All photos for this trip are now in one slider -->
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
-          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+        <h4 class="slider-track-title">Taiwan's Cultural Gems</h4>
+        <div class="slider-images">
+          <!-- All photos for this trip are now in one slider -->
+          <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
+            <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+            <a class="zoom-btn" href="#">放大查看</a>
+          </div>
+          <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
+            <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
+            <a class="zoom-btn" href="#">放大查看</a>
+          </div>
+          <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
+            <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+            <a class="zoom-btn" href="#">放大查看</a>
+          </div>
+          <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
+            <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+            <a class="zoom-btn" href="#">放大查看</a>
+          </div>
+          <!-- To add more photos to this trip, copy a photo-card block and paste it here. -->
         </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
-          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
-        </div>
-        <!-- To add more photos to this trip, copy a photo-card block and paste it here. -->
       </div>
     </div>
   </div>
