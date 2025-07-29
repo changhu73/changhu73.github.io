@@ -20,16 +20,20 @@ redirect_from:
 
 
 ### Work/Intern Experience
-* Nov. 2023 - May 2025: Research Assistant, The University of Hong Kong  <!-- Hong Kong Quantum AI Lab -->
+* Research Intern, Stevens Institute of Technology, Aug. 2024 - 
+  *  Research Interests: LLM Trustworthy, Business Analysis
+  *  Supervisor: Dr. Denghui Zhang
+
+* Research Assistant, The University of Hong Kong, Nov. 2023 - May 2025  <!-- Hong Kong Quantum AI Lab -->
   *  Led front-end and back-end development for commercial software applications(Electrochemical calculation).
   *  Utilized large language models and contributed to the construction of databases, focusing on optimizing data architecture and ensuring effective model integration.
   *  Drafted and submitted company patents, overseeing the entire process from writing to filing.
   *  Served as the lead organizer and director for major corporate conferences and events(Hong Kong New Energy Ecology Forum), managing all aspects of production and execution.
-  *  Supervisor: Guanhua Chen
+  *  Supervisor: Prof. Guanhua Chen
 
-* Aug. 2023 - Nov. 2023: Research Assistant, The Hong Kong University of Science and Technology <!-- Hong Kong Center for Construction Robotics -->
+* Research Assistant, The Hong Kong University of Science and Technology, Aug. 2023 - Nov. 2023 <!-- Hong Kong Center for Construction Robotics -->
   * Responsible for the electrical control programs development for reinforcement binding construction robots.
-  * Supervisor: Zexiang Li
+  * Supervisor: Prof. Zexiang Li
 
 
 
