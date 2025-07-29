@@ -149,7 +149,7 @@ author_profile: true
 <div class="travel-log-container">
   <!-- Trip sections remain the same -->
   <div class="trip-section">
-    <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
+    <h2>Guizhou(貴州) <span class="trip-date">2025.4</span></h2>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
