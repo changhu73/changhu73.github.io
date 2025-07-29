@@ -8,4 +8,4 @@ redirect_from:
 ---
 
 
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
+<a href="https://clustrmaps.com/site/1c7ct"  title="ClustrMaps"><img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" /></a>
