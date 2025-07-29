@@ -46,17 +46,17 @@ author_profile: true
 
   .slider-container {
     position: relative;
-    overflow-x: auto;  /* 启用水平滚动 */
+    overflow-x: auto;  /* Enable horizontal scrolling */
     padding: 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
-    scrollbar-width: none;  /* 隐藏Firefox滚动条 */
-    -ms-overflow-style: none;  /* 隐藏IE滚动条 */
+    scrollbar-width: none;  /* Hide Firefox scrollbar */
+    -ms-overflow-style: none;  /* Hide IE scrollbar */
   }
   
-  /* 隐藏Chrome滚动条 */
+  /* Hide Chrome scrollbar */
   .slider-container::-webkit-scrollbar {
     display: none;
   }
@@ -105,6 +105,7 @@ author_profile: true
     font-size: 16px;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 2;
   }
   
   .photo-card:hover .zoom-icon {
@@ -175,7 +176,7 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
-    <div class="scroll-hint">滑动或使用鼠标滚轮浏览更多图片</div>
+    <div class="scroll-hint">Scroll or use mouse wheel to browse more photos</div>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
@@ -221,7 +222,7 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
-    <div class="scroll-hint">滑动或使用鼠标滚轮浏览更多图片</div>
+    <div class="scroll-hint">Scroll or use mouse wheel to browse more photos</div>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
@@ -257,7 +258,7 @@ author_profile: true
 
 </div>
 
-<!-- 图片放大的模态框 -->
+<!-- Image Modal -->
 <div id="imageModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage">
@@ -265,36 +266,42 @@ author_profile: true
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // 处理滚轮和鼠标滑动事件
+    // Handle wheel and mouse drag events
     const sliders = document.querySelectorAll('.slider-container');
     
     sliders.forEach(function(slider) {
-      // 鼠标滚轮事件
+      // Mouse wheel event - 修复滚轮滑动问题
       slider.addEventListener('wheel', function(e) {
         e.preventDefault();
-        this.scrollLeft += e.deltaY;
+        this.scrollLeft += (e.deltaY > 0) ? 100 : -100; // 使用固定滚动距离，更加可控
       }, { passive: false });
       
-      // 鼠标拖动事件
+      // Mouse drag event
       let isDragging = false;
       let startPosition;
       let scrollLeftStart;
+      let hasMoved = false; // 新增：判断是否发生了移动
       
       slider.addEventListener('mousedown', function(e) {
         isDragging = true;
         startPosition = e.pageX;
         scrollLeftStart = this.scrollLeft;
         this.style.cursor = 'grabbing';
+        hasMoved = false; // 重置移动标志
       });
       
       slider.addEventListener('mousemove', function(e) {
         if (!isDragging) return;
-        e.preventDefault();
         const distance = e.pageX - startPosition;
+        
+        // 只有当移动距离超过5px时才算是拖动，防止点击时的微小移动
+        if (Math.abs(distance) > 5) {
+          hasMoved = true;
         this.scrollLeft = scrollLeftStart - distance;
+        }
       });
       
-      slider.addEventListener('mouseup', function() {
+      slider.addEventListener('mouseup', function(e) {
         isDragging = false;
         this.style.cursor = 'grab';
       });
@@ -305,20 +312,49 @@ author_profile: true
       });
     });
     
-    // 图片点击放大功能
+    // Image click to enlarge functionality - 修复图片放大功能
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementsByClassName('close')[0];
-    const images = document.querySelectorAll('.photo-card img');
     
-    images.forEach(function(img) {
-      img.addEventListener('click', function() {
-        modal.style.display = 'block';
-        modalImg.src = this.src;
-      });
+    // 修改为使用photo-card的点击事件，而不是直接在img上添加事件
+    const photoCards = document.querySelectorAll('.photo-card');
+    
+    photoCards.forEach(function(card) {
+      let startX, isClick = true;
+      
+      // 鼠标按下时记录位置
+      card.addEventListener('mousedown', function(e) {
+        startX = e.clientX;
+        isClick = true;
     });
     
-    // 关闭模态框
+      // 鼠标移动时判断是否为拖拽
+      card.addEventListener('mousemove', function(e) {
+        if (startX && Math.abs(e.clientX - startX) > 5) {
+          isClick = false;
+      }
+    });
+    
+      // 鼠标抬起时，如果是点击而非拖拽，则显示模态框
+      card.addEventListener('mouseup', function(e) {
+        if (isClick) {
+          const img = this.querySelector('img');
+          if (img) {
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+      }
+        }
+        startX = null;
+    });
+      
+      // 如果鼠标离开元素，重置状态
+      card.addEventListener('mouseleave', function() {
+        startX = null;
+  });
+    });
+    
+    // Close modal
     closeBtn.addEventListener('click', function() {
       modal.style.display = 'none';
     });
@@ -329,7 +365,7 @@ author_profile: true
       }
     });
     
-    // 按ESC键关闭模态框
+    // Close modal with ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         modal.style.display = 'none';
