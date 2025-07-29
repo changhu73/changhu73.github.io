@@ -74,13 +74,18 @@ author_profile: true
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
     position: relative;
     cursor: pointer;
+    z-index: 1;
+    /* Added transition for transform and box-shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .photo-card:hover {
-    transform: translateY(-3px);
+    /* Scale up the card and lift it with a more prominent shadow */
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 10; /* Ensure the hovered card is on top of others */
   }
 
   .photo-card img {
@@ -111,7 +116,6 @@ author_profile: true
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    /* The modal itself will be the fullscreen element */
   }
 
   .modal-content {
@@ -189,8 +193,11 @@ author_profile: true
 </div>
 
 <script>
+  // This script section remains unchanged as it handles functionality
+  // (drag-to-scroll and double-click-to-fullscreen) that is
+  // independent of the new hover effect.
   document.addEventListener('DOMContentLoaded', function() {
-    // --- Slider Drag and Wheel Scroll Logic (Unchanged) ---
+    // --- Slider Drag and Wheel Scroll Logic ---
     const sliders = document.querySelectorAll('.slider-container');
     sliders.forEach(function(slider) {
       slider.addEventListener('wheel', (e) => { if (slider.scrollWidth > slider.clientWidth) slider.scrollLeft += e.deltaY; }, { passive: true });
@@ -221,7 +228,7 @@ author_profile: true
 
     const openFullScreen = (imgSrc) => {
       modalImg.src = imgSrc;
-      modal.style.display = 'flex'; // Use flex to help center the image
+      modal.style.display = 'flex';
       
       const elem = modal;
       if (elem.requestFullscreen) {
@@ -256,7 +263,6 @@ author_profile: true
 
     closeBtn.addEventListener('click', closeFullScreen);
 
-    // When user exits fullscreen with Esc key, hide the modal.
     const onFullScreenChange = () => {
       const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
       if (!isFullscreen) {
