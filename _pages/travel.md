@@ -117,8 +117,12 @@ author_profile: true
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
-          <img src="/images/taiwan1.jpg" alt="">
+          <img src="/images/travel/taiwan/aiwan1.jpg" alt="">
           <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+        </div>
+            <div class="photo-card">
+          <img src="/images//travel/taiwan/taiwan2.jpg" alt="">
+          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
 >
         </div>
