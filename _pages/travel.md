@@ -177,6 +177,9 @@ author_profile: true
           <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
+        <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan3.jpg" alt="Museum">
+        </div>
       </div>
     </div>
     <div class="slider-container">
