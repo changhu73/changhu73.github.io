@@ -277,10 +277,10 @@ defaults:
       comment: true
   # _talks
   - scope:
-      path: ""
-      type: talks
+      path: "/cv/"
+      type: cv
     values:
-      layout: talk
+      layout: cv
       author_profile: true
       share: true
 
