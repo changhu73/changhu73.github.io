@@ -110,7 +110,7 @@ author_profile: true
 <!-- This is the main HTML content for your travel page. -->
 <div class="travel-log-container">
 
-  <!-- Trip 1: Japan -->
+
   <div class="trip-section">
     <h2>Taiwan <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
@@ -121,10 +121,21 @@ author_profile: true
           <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
         </div>
             <div class="photo-card">
-          <img src="/images//travel/taiwan/taiwan2.jpg" alt="">
+          <img src="/images/travel/taiwan/taiwan2.jpg" alt="">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
 >
+        </div>
+            <div class="slider-container">
+      <div class="slider-track">
+        <!-- Add photos for this trip here -->
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan1.jpg" alt="">
+          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+        </div>
+            <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan2.jpg" alt="">
+          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
         <!-- To add more photos to this trip, copy a photo-card block and paste it here. -->
       </div>
