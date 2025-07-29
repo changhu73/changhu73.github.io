@@ -119,7 +119,7 @@ author_profile: true
 <div class="travel-log-container">
 
   <div class="trip-section">
-    <h2>Taiwan <span class="trip-date">2025.1</span></h2>
+    <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
@@ -162,6 +162,29 @@ author_profile: true
         </div>
       </div>
     </div> -->
+
+  </div>
+
+
+
+
+
+   <div class="trip-section">
+    <h2>Guizhou(贵州) <span class="trip-date">2025.1</span></h2>
+    <!-- <div class="slider-container">
+      <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
+      <div class="slider-track">
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
+          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
+          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
+        </div>
+      </div>
+    </div> -->
+    
 
   </div>
 
