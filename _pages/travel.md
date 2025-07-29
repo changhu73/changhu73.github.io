@@ -130,12 +130,12 @@ author_profile: true
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan1.jpg" alt="">
-          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+          <img src="/images/travel/taiwan/taiwan11.jpg" alt="">
+          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
         </div>
             <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="">
-          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
+          <img src="/images/travel/taiwan/taiwan12.jpg" alt="">
+          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠) </p></div>
         </div>
         <!-- To add more photos to this trip, copy a photo-card block and paste it here. -->
       </div>
