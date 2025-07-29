@@ -27,14 +27,9 @@ redirect_from:
   *  Supervisor: Dr. Denghui Zhang
 
 * The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025  <!-- Hong Kong Quantum AI Lab -->
-  *  Led front-end and back-end development for commercial software applications(Electrochemical calculation).
-  *  Utilized large language models and contributed to the construction of databases, focusing on optimizing data architecture and ensuring effective model integration.
-  *  Drafted and submitted company patents, overseeing the entire process from writing to filing.
-  *  Served as the lead organizer and director for major corporate conferences and events(Hong Kong New Energy Ecology Forum), managing all aspects of production and execution.
   *  Supervisor: Prof. Guanhua Chen
 
 * The Hong Kong University of Science and Technology, Research Assistant, Aug. 2023 - Nov. 2023 <!-- Hong Kong Center for Construction Robotics -->
-  * Responsible for the electrical control programs development for reinforcement binding construction robots.
   * Supervisor: Prof. Zexiang Li
 
 
