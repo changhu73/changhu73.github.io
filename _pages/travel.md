@@ -55,6 +55,7 @@ author_profile: true
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     cursor: grab;
+    margin-bottom: 20px; /* 添加底部间距 */
   }
 
   .slider-container.active {
@@ -65,10 +66,11 @@ author_profile: true
     display: flex;
     gap: 15px;
     user-select: none;
+    padding-bottom: 20px; /* 为提示文字留出空间 */
   }
 
   .photo-card {
-    flex: 0 0 280px;
+    flex: 0 0 320px; /* 增加卡片宽度，从280px改为320px */
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -82,7 +84,7 @@ author_profile: true
 
   .photo-card img {
     width: 100%;
-    height: 180px;
+    height: 220px; /* 增加图片高度，从180px改为220px */
     object-fit: cover;
     display: block;
   }
@@ -98,25 +100,55 @@ author_profile: true
     color: #555;
   }
   
-  .slider-container::after {
-      content: 'Drag to see more photos →';
+  .drag-hint {
       position: absolute;
       bottom: 8px;
       right: 15px;
-      color: #bbb;
-      font-size: 0.75rem;
+    color: #888;
+    font-size: 0.8rem;
       font-style: italic;
-      opacity: 0;
-      transition: opacity 0.3s;
-  }
-  
-  .slider-container:hover::after {
-      opacity: 1;
   }
 </style>
 
 <!-- This is the main HTML content for your travel page. -->
 <div class="travel-log-container">
+
+   <div class="trip-section">
+    <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
+    <div class="slider-container">
+      <h3 class="slider-title">黔西三江古道</h3>
+      <div class="slider-track">
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou1.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou2.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou3.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou4.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou5.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou6.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou7.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou8.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou9.jpg" alt="">
+        </div>
+      </div>
+      <div class="drag-hint">Drag to see more photos →</div>
+    </div>
+        </div>
 
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
@@ -132,8 +164,9 @@ author_profile: true
           <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
+        </div>
+      <div class="drag-hint">Drag to see more photos →</div>
       </div>
-    </div>
     <div class="slider-container">
       <h3 class="slider-title">National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</h3>
       <div class="slider-track">
@@ -149,9 +182,10 @@ author_profile: true
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan13.jpg" alt="National Revolutionary Martyrs' Shrine">
           <!-- <div class="caption"><p></p></div> -->
-        </div>
       </div>
-    </div>
+      </div>
+      <div class="drag-hint">Drag to see more photos →</div>
+  </div>
     <!-- New Slider Container -->
     <!-- <div class="slider-container">
       <h3 class="slider-title">Natural Landscapes</h3>
@@ -159,59 +193,14 @@ author_profile: true
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan3.jpg" alt="Taroko Gorge">
           <div class="caption"><p>Taroko Gorge (太魯閣峽谷)</p></div>
-        </div>
+  </div>
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan4.jpg" alt="Sun Moon Lake">
           <div class="caption"><p>Sun Moon Lake (日月潭)</p></div>
-        </div>
+</div>
       </div>
+      <div class="drag-hint">Drag to see more photos →</div>
     </div> -->
-
-  </div>
-
-
-
-   <div class="trip-section">
-    <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
-    <div class="slider-container">
-      <h3 class="slider-title">黔西三江古道</h3>
-      <div class="slider-track">
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou1.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou2.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou3.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou4.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou5.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou6.jpg" alt="">
-          <div class="caption"><p></p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou7.jpg" alt="">
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou8.jpg" alt="">
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/guizhou/guizhou9.jpg" alt="">
-        </div>
-      </div>
-    </div>
-    
 
   </div>
 
