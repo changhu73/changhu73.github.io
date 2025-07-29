@@ -126,7 +126,7 @@ author_profile: true
         <!-- Add photos for this trip here -->
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
-          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+          <!-- <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div> -->
         </div>
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
@@ -140,15 +140,15 @@ author_profile: true
         <!-- Add photos for this trip here -->
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+          <!-- <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div> -->
         </div>
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+          <!-- <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div> -->
         </div>
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan13.jpg" alt="National Revolutionary Martyrs' Shrine">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+          <!-- <div class="caption"><p></p></div> -->
         </div>
       </div>
     </div>
@@ -171,23 +171,46 @@ author_profile: true
 
 
 
-
-
    <div class="trip-section">
-    <h2>Guizhou(贵州) <span class="trip-date">2025.1</span></h2>
-    <!-- <div class="slider-container">
-      <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
+    <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
+    <div class="slider-container">
+      <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
         <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
-          <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
+          <img src="/images/travel/guizhou/guizhou1.jpg" alt="">
+          <div class="caption"><p></p></div>
         </div>
         <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
-          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
+          <img src="/images/travel/guizhou/guizhou2.jpg" alt="">
+          <div class="caption"><p></p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou3.jpg" alt="">
+          <div class="caption"><p></p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou4.jpg" alt="">
+          <div class="caption"><p></p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou5.jpg" alt="">
+          <div class="caption"><p></p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou6.jpg" alt="">
+          <div class="caption"><p></p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou7.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou8.jpg" alt="">
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/guizhou/guizhou9.jpg" alt="">
         </div>
       </div>
-    </div> -->
+    </div>
     
 
   </div>
