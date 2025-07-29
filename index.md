@@ -4,13 +4,17 @@ author_profile: true
 ---
 
 
-<div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
+<!-- <div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
   
   
-  <p style="font-size: 1.2em; color: #555; margin-top: 0;">Welcome to my page! I completed my undergraduate studies in Information Security at the University of Science and Technology of China (USTC) and will soon be completing my master's degree in Computer Science at the City University of Hong Kong (CityU). I am passionate about applying data science techniques to the business world and am actively seeking opportunities in this exciting, cross-disciplinary field.</p>
+  <p style="font-size: 1.2em; color: #555; margin-top: 0;">
+  Welcome to my page! 
+  I completed my undergraduate studies in Information Security at the University of Science and Technology of China (USTC) and will soon be completing my master's degree in Computer Science at the City University of Hong Kong (CityU). 
+  I am passionate about applying data science techniques to the business world and am actively seeking opportunities in this exciting, cross-disciplinary field.
+  </p>
 
 
-</div>
+</div> -->
 
 
 
