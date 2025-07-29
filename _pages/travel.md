@@ -76,6 +76,7 @@ author_profile: true
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    cursor: pointer; /* 添加指针样式表明可点击 */
   }
   
   .photo-card:hover {
@@ -107,6 +108,47 @@ author_profile: true
     color: #888;
     font-size: 0.8rem;
       font-style: italic;
+  }
+
+  /* 图片放大模态框样式 */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
   }
 </style>
 
@@ -208,6 +250,12 @@ author_profile: true
 
 </div>
 
+<!-- 图片放大的模态框 -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
 <!-- This script enables the drag-to-scroll functionality for all sliders. -->
 <script>
   // Ensure the script runs after the page is fully loaded.
@@ -243,6 +291,47 @@ author_profile: true
         const walk = (x - startX) * 2; // Adjust scroll speed here
         slider.scrollLeft = scrollLeft - walk;
       });
+
+      // 添加鼠标滚轮事件
+      slider.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+    });
+  });
+
+    // 图片点击放大功能
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const photoCards = document.querySelectorAll('.photo-card');
+
+    photoCards.forEach(card => {
+      const img = card.querySelector('img');
+      if (img) {
+        img.onclick = function() {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        }
+      }
+    });
+
+    // 点击关闭按钮关闭模态框
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // 点击模态框外部区域也可以关闭
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // 按ESC键也可以关闭模态框
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
     });
   });
 </script>
