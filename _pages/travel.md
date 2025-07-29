@@ -92,7 +92,7 @@ author_profile: true
 
   .photo-card img {
     width: 100%;
-    height: 280px;
+    height: 300px;
     object-fit: cover;
     display: block;
     pointer-events: none;
