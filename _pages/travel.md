@@ -58,6 +58,16 @@ author_profile: true
   .slider-container.active {
     cursor: grabbing;
   }
+  
+  .slider-container:after {
+    content: "← 滑动或滚轮浏览 →";
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.7rem;
+    color: #999;
+    font-style: italic;
+  }
 
   .slider-track {
     display: flex;
@@ -74,10 +84,29 @@ author_profile: true
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     cursor: pointer;
+    position: relative;
   }
 
   .photo-card:hover {
     transform: translateY(-3px);
+  }
+  
+  .photo-card:after {
+    content: "🔍";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .photo-card:hover:after {
+    opacity: 1;
   }
 
   .photo-card img {
@@ -248,12 +277,14 @@ author_profile: true
         slider.scrollLeft = scrollLeft - walk;
       });
 
+      // 增强的鼠标滚轮事件
       slider.addEventListener('wheel', (e) => {
         e.preventDefault();
         slider.scrollLeft += e.deltaY;
       });
     });
 
+    // 增强的图片点击放大功能
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementsByClassName('close')[0];
