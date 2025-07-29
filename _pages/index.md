@@ -3,21 +3,8 @@ layout: single
 author_profile: true
 ---
 
-{% for item in site.data.navigation.main %}
-  {% assign p = site.pages | where: "url", item.url | first %}
-  {% if p %}
-    <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 3em;">
-      
-      <h2 style="border-bottom: 2px solid #000; padding-bottom: 0.5em;">
-        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-      </h2>
+{% include base_path %}
 
-      <div class="page-content">
-        {{ p.content }}
-      </div>
-
-    </section>
-  {% endif %}
-{% endfor %}
+---
 
 <a href="https://clustrmaps.com/site/1c7ct"  title="ClustrMaps"><img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" /></a>
