@@ -223,21 +223,21 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
-  talks:
+  cv:
     output: true
-    permalink: /:collection/:path/
+    permalink: /cv/
 
 
 # These settings control how pages and collections are included in the site
 defaults:
   # # _posts
-  - scope:
-      path: "/cv/"
-      type: cv
-    values:
-      layout: cv
-      author_profile: true
-      share: true
+  # - scope:
+  #     path: "/cv/"
+  #     type: cv
+  #   values:
+  #     layout: cv
+  #     author_profile: true
+  #     share: true
   # - scope:
   #     path: ""
   #     type: posts
