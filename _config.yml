@@ -16,6 +16,33 @@ url                      : https://changhu73.github.io # the base hostname & pro
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "changhu73.github.io"
 
+# Homepage Sections - Define the sections that will appear on the homepage
+# Each section includes a title, description, and related collection or page
+homepage_sections:
+  - title: "About Me"
+    description: "Brief introduction about myself"
+    page: "about"
+    
+  - title: "Publications"
+    description: "My academic publications"
+    collection: "publications"
+    limit: 3
+    url: "/publications/"
+    
+  - title: "Teaching"
+    description: "Courses and teaching experience"
+    collection: "teaching"
+    limit: 3
+    url: "/teaching/"
+    
+  - title: "CV"
+    description: "My curriculum vitae"
+    page: "cv"
+    
+  - title: "Travel"
+    description: "My travel experiences"
+    page: "travel"
+
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
