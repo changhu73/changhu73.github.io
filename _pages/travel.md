@@ -255,7 +255,7 @@ author_profile: true
       </div>
     </div>
     <div class="slider-container">
-      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</h3>
+      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (國民革命忠烈祠)</h3>
       <div class="slider-track">
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
