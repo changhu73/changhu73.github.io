@@ -7,6 +7,8 @@ author_profile: true
 
 ---
 
+<div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
+
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p %}
@@ -23,6 +25,5 @@ author_profile: true
     </section>
   {% endif %}
 {% endfor %}
-
 
 <a href="https://clustrmaps.com/site/1c7ct"  title="ClustrMaps"><img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" /></a>
