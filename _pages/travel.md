@@ -211,7 +211,7 @@ author_profile: true
       let startPosition, scrollLeftStart;
       
       slider.addEventListener('mousedown', function(e) {
-        if (e.button !== 0) return; // Only for left button
+        if (e.button !== 0) return;
         isDragging = true;
         startPosition = e.pageX - this.offsetLeft;
         scrollLeftStart = this.scrollLeft;
@@ -235,38 +235,19 @@ author_profile: true
       slider.addEventListener('mouseleave', stopDragging);
     });
     
-    // --- Image Click-to-Enlarge Logic ---
+    // --- Image Double-Click-to-Enlarge Logic ---
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.querySelector('#imageModal .close');
     const photoCards = document.querySelectorAll('.photo-card');
     
     photoCards.forEach(function(card) {
-      let isDraggingOnCard = false;
-      let cardMouseDownX;
-
-      card.addEventListener('mousedown', function(e) {
-          if (e.button !== 0) return; // Only for left button
-          cardMouseDownX = e.clientX;
-          isDraggingOnCard = false;
-      });
-
-      card.addEventListener('mousemove', function(e) {
-          // If mouse moves more than a few pixels, we consider it a drag
-          if (Math.abs(e.clientX - cardMouseDownX) > 5) {
-              isDraggingOnCard = true;
-          }
-      });
-
-      card.addEventListener('mouseup', function(e) {
-          // Only open modal if it was a left-click and not a drag
-          if (!isDraggingOnCard && e.button === 0) {
-              const img = this.querySelector('img');
-              if (img) {
-                  modal.style.display = 'block';
-                  modalImg.src = img.src;
-              }
-          }
+      card.addEventListener('dblclick', function() {
+        const img = this.querySelector('img');
+        if (img) {
+          modal.style.display = 'block';
+          modalImg.src = img.src;
+        }
       });
     });
     
