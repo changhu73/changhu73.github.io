@@ -47,13 +47,16 @@ author_profile: true
   .slider-container {
     position: relative;
     overflow-x: auto;
-    padding: 10px;
+    /* Increased vertical padding to give cards room to "pop out" */
+    padding: 20px 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
     scrollbar-color: #888 #f1f1f1;
     cursor: grab;
+    /* Clip content to padding box to prevent scrollbar from overlapping content */
+    overflow-clip-margin: content-box;
   }
   
   .slider-container::-webkit-scrollbar { height: 8px; }
@@ -77,13 +80,12 @@ author_profile: true
     position: relative;
     cursor: pointer;
     z-index: 1;
-    /* Added transition for transform and box-shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .photo-card:hover {
-    /* Scale up the card and lift it with a more prominent shadow */
-    transform: scale(1.7);
+    /* Scale up and lift the card to make it pop out */
+    transform: scale(1.05) translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 10; /* Ensure the hovered card is on top of others */
   }
@@ -193,9 +195,7 @@ author_profile: true
 </div>
 
 <script>
-  // This script section remains unchanged as it handles functionality
-  // (drag-to-scroll and double-click-to-fullscreen) that is
-  // independent of the new hover effect.
+  // The script remains unchanged as all modifications were handled with CSS.
   document.addEventListener('DOMContentLoaded', function() {
     // --- Slider Drag and Wheel Scroll Logic ---
     const sliders = document.querySelectorAll('.slider-container');
