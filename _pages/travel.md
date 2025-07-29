@@ -88,7 +88,7 @@ author_profile: true
     height: 280px;
     object-fit: cover;
     display: block;
-    pointer-events: none; /* Prevent image's default drag behavior */
+    pointer-events: none;
   }
   
   .photo-card .caption {
@@ -102,7 +102,6 @@ author_profile: true
     color: #555;
   }
   
-  /* Modal styles */
   .modal {
     display: none;
     position: fixed;
@@ -112,25 +111,19 @@ author_profile: true
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    overflow: auto;
-    animation: fadeIn 0.3s;
+    /* The modal itself will be the fullscreen element */
   }
-  
-  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
   .modal-content {
     margin: auto;
     display: block;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: zoomIn 0.3s;
   }
-
-  @keyframes zoomIn { from {transform: translate(-50%, -50%) scale(0.8);} to {transform: translate(-50%, -50%) scale(1);} }
 
   .close {
     position: absolute;
@@ -141,13 +134,14 @@ author_profile: true
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    z-index: 1001;
   }
 
   .close:hover, .close:focus { color: #bbb; text-decoration: none; }
 </style>
 
 <div class="travel-log-container">
-
+  <!-- Trip sections remain the same -->
   <div class="trip-section">
     <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
     <div class="slider-container">
@@ -165,7 +159,6 @@ author_profile: true
       </div>
     </div>
   </div>
-
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
@@ -187,7 +180,6 @@ author_profile: true
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- Image Modal -->
@@ -198,69 +190,82 @@ author_profile: true
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // --- Slider Drag and Wheel Scroll Logic ---
+    // --- Slider Drag and Wheel Scroll Logic (Unchanged) ---
     const sliders = document.querySelectorAll('.slider-container');
     sliders.forEach(function(slider) {
-      slider.addEventListener('wheel', function(e) {
-        if (this.scrollWidth > this.clientWidth) {
-          this.scrollLeft += e.deltaY;
-        }
-      }, { passive: true });
-      
-      let isDragging = false;
-      let startPosition, scrollLeftStart;
-      
-      slider.addEventListener('mousedown', function(e) {
+      slider.addEventListener('wheel', (e) => { if (slider.scrollWidth > slider.clientWidth) slider.scrollLeft += e.deltaY; }, { passive: true });
+      let isDragging = false, startPos, scrollLeft;
+      slider.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         isDragging = true;
-        startPosition = e.pageX - this.offsetLeft;
-        scrollLeftStart = this.scrollLeft;
-        this.style.cursor = 'grabbing';
+        startPos = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.cursor = 'grabbing';
       });
-      
-      const stopDragging = () => {
-        isDragging = false;
-        if (slider) slider.style.cursor = 'grab';
-      };
-
-      slider.addEventListener('mousemove', function(e) {
+      slider.addEventListener('mouseleave', () => { isDragging = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mouseup', () => { isDragging = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
-        const x = e.pageX - this.offsetLeft;
-        const walk = (x - startPosition) * 2;
-        this.scrollLeft = scrollLeftStart - walk;
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startPos) * 2;
+        slider.scrollLeft = scrollLeft - walk;
       });
-      
-      slider.addEventListener('mouseup', stopDragging);
-      slider.addEventListener('mouseleave', stopDragging);
     });
     
-    // --- Image Double-Click-to-Enlarge Logic ---
+    // --- Image Double-Click to Fullscreen Logic ---
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.querySelector('#imageModal .close');
     const photoCards = document.querySelectorAll('.photo-card');
-    
-    photoCards.forEach(function(card) {
-      card.addEventListener('dblclick', function() {
-        const img = this.querySelector('img');
-        if (img) {
-          modal.style.display = 'block';
-          modalImg.src = img.src;
-        }
-      });
-    });
-    
-    const closeModal = () => {
-      modal.style.display = 'none';
+
+    const openFullScreen = (imgSrc) => {
+      modalImg.src = imgSrc;
+      modal.style.display = 'flex'; // Use flex to help center the image
+      
+      const elem = modal;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
     };
 
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
+    const closeFullScreen = () => {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+          document.msExitFullscreen();
+        }
+      } else {
+        modal.style.display = 'none';
+      }
+    };
+
+    photoCards.forEach(card => {
+      card.addEventListener('dblclick', function() {
+        const img = this.querySelector('img');
+        if (img) openFullScreen(img.src);
+      });
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
+
+    closeBtn.addEventListener('click', closeFullScreen);
+
+    // When user exits fullscreen with Esc key, hide the modal.
+    const onFullScreenChange = () => {
+      const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      if (!isFullscreen) {
+        modal.style.display = 'none';
+      }
+    };
+
+    document.addEventListener('fullscreenchange', onFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', onFullScreenChange);
+    document.addEventListener('msfullscreenchange', onFullScreenChange);
   });
 </script>
