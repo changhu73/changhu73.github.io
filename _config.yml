@@ -214,9 +214,9 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  home:
-    output: true
-    permalink: /home/
+  # home:
+  #   output: true
+  #   permalink: /home/
   teaching:
     output: true
     permalink: /:collection/:path/
@@ -234,13 +234,13 @@ collections:
 # These settings control how pages and collections are included in the site
 defaults:
   # _posts
-  - scope:
-      path: ""
-      type: home
-    values:
-      layout: home
-      author_profile: true
-      share: true
+  # - scope:
+  #     path: ""
+  #     type: home
+  #   values:
+  #     layout: home
+  #     author_profile: true
+  #     share: true
   - scope:
       path: ""
       type: cv
