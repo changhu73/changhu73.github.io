@@ -179,6 +179,7 @@ author_profile: true
         </div>
         <div class="photo-card">
             <img src="/images/travel/taiwan/taiwan3.jpg" alt="Museum">
+            <div class="caption"><p>Gilt Bronze Pagoda, Ming dynasty with inscription Chongzhen 4th year (明 崇禎四年銘 青銅鎏金佛塔)</p></div>
         </div>
       </div>
     </div>
