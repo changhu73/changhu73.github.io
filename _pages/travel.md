@@ -83,7 +83,7 @@ author_profile: true
 
   .photo-card:hover {
     /* Scale up the card and lift it with a more prominent shadow */
-    transform: scale(1.05);
+    transform: scale(1.7);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 10; /* Ensure the hovered card is on top of others */
   }
