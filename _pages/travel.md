@@ -46,50 +46,35 @@ author_profile: true
 
   .slider-container {
     position: relative;
-    overflow-x: auto;  /* Enable horizontal scrolling */
+    overflow-x: auto;
     padding: 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
-    scrollbar-color: #888 #f1f1f1; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1;
     cursor: grab;
   }
   
-  /* Custom scrollbar for WebKit browsers */
-  .slider-container::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .slider-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-
-  .slider-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-
-  .slider-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  .slider-container::-webkit-scrollbar { height: 8px; }
+  .slider-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+  .slider-container::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+  .slider-container::-webkit-scrollbar-thumb:hover { background: #555; }
 
   .slider-track {
     display: flex;
     gap: 15px;
     user-select: none;
-    padding-bottom: 10px; /* Add padding to avoid scrollbar overlap */
+    padding-bottom: 10px;
   }
 
   .photo-card {
-    flex: 0 0 400px; /* Increased width from 320px */
+    flex: 0 0 400px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    cursor: pointer;
     position: relative;
   }
 
@@ -99,34 +84,11 @@ author_profile: true
 
   .photo-card img {
     width: 100%;
-    height: 280px; /* Increased height from 220px */
+    height: 280px;
     object-fit: cover;
     display: block;
-    pointer-events: none; /* Prevent image's default drag behavior */
   }
   
-  .zoom-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 2;
-  }
-  
-  .photo-card:hover .zoom-icon {
-    opacity: 1;
-  }
-
   .photo-card .caption {
     padding: 12px;
     text-align: center;
@@ -137,43 +99,34 @@ author_profile: true
     font-size: 0.9rem;
     color: #555;
   }
-  
-  .modal {
+
+  /* New CSS-based Lightbox styles */
+  .lightbox {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    overflow: auto;
     animation: fadeIn 0.3s;
   }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+
+  .lightbox:target {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .modal-content {
-    margin: auto;
-    display: block;
+  .lightbox img {
     max-width: 90%;
     max-height: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 5px;
     animation: zoomIn 0.3s;
   }
-
-  @keyframes zoomIn {
-    from {transform: translate(-50%, -50%) scale(0.8);}
-    to {transform: translate(-50%, -50%) scale(1);}
-  }
-
-  .close {
+  
+  .lightbox .close-btn {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -182,13 +135,21 @@ author_profile: true
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #bbb;
     text-decoration: none;
   }
+
+  .lightbox .close-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind the image and button */
+  }
+
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  @keyframes zoomIn { from {transform: scale(0.8);} to {transform: scale(1);} }
+
 </style>
 
 <div class="travel-log-container">
@@ -198,42 +159,15 @@ author_profile: true
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou1.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou2.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou3.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou4.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou5.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou6.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou7.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou8.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou9.jpg" alt="Scenery of Sanjiang Ancient Road">
-        </div>
+        <div class="photo-card"><a href="#gz1"><img src="/images/travel/guizhou/guizhou1.jpg" alt="Scenery 1"></a></div>
+        <div class="photo-card"><a href="#gz2"><img src="/images/travel/guizhou/guizhou2.jpg" alt="Scenery 2"></a></div>
+        <div class="photo-card"><a href="#gz3"><img src="/images/travel/guizhou/guizhou3.jpg" alt="Scenery 3"></a></div>
+        <div class="photo-card"><a href="#gz4"><img src="/images/travel/guizhou/guizhou4.jpg" alt="Scenery 4"></a></div>
+        <div class="photo-card"><a href="#gz5"><img src="/images/travel/guizhou/guizhou5.jpg" alt="Scenery 5"></a></div>
+        <div class="photo-card"><a href="#gz6"><img src="/images/travel/guizhou/guizhou6.jpg" alt="Scenery 6"></a></div>
+        <div class="photo-card"><a href="#gz7"><img src="/images/travel/guizhou/guizhou7.jpg" alt="Scenery 7"></a></div>
+        <div class="photo-card"><a href="#gz8"><img src="/images/travel/guizhou/guizhou8.jpg" alt="Scenery 8"></a></div>
+        <div class="photo-card"><a href="#gz9"><img src="/images/travel/guizhou/guizhou9.jpg" alt="Scenery 9"></a></div>
       </div>
     </div>
   </div>
@@ -243,13 +177,9 @@ author_profile: true
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
+        <div class="photo-card"><a href="#tw1"><img src="/images/travel/taiwan/taiwan1.jpg" alt="Museum"></a></div>
         <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
+          <a href="#tw2"><img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage"></a>
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
       </div>
@@ -257,40 +187,43 @@ author_profile: true
     <div class="slider-container">
       <h3 class="slider-title">National Revolutionary Martyrs' Shrine (國民革命忠烈祠)</h3>
       <div class="slider-track">
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
-        </div>
-        <div class="photo-card">
-          <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/taiwan/taiwan13.jpg" alt="National Revolutionary Martyrs' Shrine">
-        </div>
+        <div class="photo-card"><a href="#tw11"><img src="/images/travel/taiwan/taiwan11.jpg" alt="Shrine 1"></a></div>
+        <div class="photo-card"><a href="#tw12"><img src="/images/travel/taiwan/taiwan12.jpg" alt="Shrine 2"></a></div>
+        <div class="photo-card"><a href="#tw13"><img src="/images/travel/taiwan/taiwan13.jpg" alt="Shrine 3"></a></div>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- Image Modal -->
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImage">
-</div>
+<!-- Image Lightboxes -->
+<div id="gz1" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou1.jpg"></div>
+<div id="gz2" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou2.jpg"></div>
+<div id="gz3" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou3.jpg"></div>
+<div id="gz4" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou4.jpg"></div>
+<div id="gz5" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou5.jpg"></div>
+<div id="gz6" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou6.jpg"></div>
+<div id="gz7" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou7.jpg"></div>
+<div id="gz8" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou8.jpg"></div>
+<div id="gz9" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/guizhou/guizhou9.jpg"></div>
+
+<div id="tw1" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/taiwan/taiwan1.jpg"></div>
+<div id="tw2" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/taiwan/taiwan2.jpg"></div>
+
+<div id="tw11" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/taiwan/taiwan11.jpg"></div>
+<div id="tw12" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/taiwan/taiwan12.jpg"></div>
+<div id="tw13" class="lightbox"><a href="#" class="close-bg"></a><a href="#" class="close-btn">&times;</a><img src="/images/travel/taiwan/taiwan13.jpg"></div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Handle wheel and mouse drag events for sliders
+    // The image zoom functionality is now handled by CSS.
+    // This script only handles the slider drag and wheel scroll.
     const sliders = document.querySelectorAll('.slider-container');
     
     sliders.forEach(function(slider) {
       // Mouse wheel event for horizontal scrolling
       slider.addEventListener('wheel', function(e) {
         if (this.scrollWidth > this.clientWidth) {
-            // No preventDefault to allow vertical page scroll if needed
             this.scrollLeft += e.deltaY;
         }
       }, { passive: true });
@@ -301,7 +234,6 @@ author_profile: true
       let scrollLeftStart;
       
       slider.addEventListener('mousedown', function(e) {
-        // Only start drag for left mouse button
         if (e.button !== 0) return;
         isDragging = true;
         startPosition = e.pageX - this.offsetLeft;
@@ -311,15 +243,15 @@ author_profile: true
       
       slider.addEventListener('mousemove', function(e) {
         if (!isDragging) return;
-        e.preventDefault(); // Prevent text selection
+        e.preventDefault();
         const x = e.pageX - this.offsetLeft;
-        const walk = (x - startPosition) * 2; // scroll-fast factor
+        const walk = (x - startPosition) * 2;
         this.scrollLeft = scrollLeftStart - walk;
       });
       
       const stopDragging = () => {
         isDragging = false;
-        if (slider) { // Check if slider exists before changing style
+        if (slider) {
           slider.style.cursor = 'grab';
         }
       };
@@ -327,61 +259,14 @@ author_profile: true
       slider.addEventListener('mouseup', stopDragging);
       slider.addEventListener('mouseleave', stopDragging);
     });
-    
-    // Image click-to-enlarge functionality
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const closeBtn = document.querySelector('#imageModal .close');
-    
-    const photoCards = document.querySelectorAll('.photo-card');
-    
-    photoCards.forEach(function(card) {
-      let isDraggingOnCard = false;
-      let startX;
 
-      card.addEventListener('mousedown', function(e) {
-          // Only react to left-clicks
-          if (e.button !== 0) return;
-          startX = e.clientX;
-          isDraggingOnCard = false;
-      });
-
-      card.addEventListener('mousemove', function(e) {
-          // If the mouse moves more than a few pixels, it's a drag
-          if (Math.abs(e.clientX - startX) > 5) {
-              isDraggingOnCard = true;
-          }
-      });
-
-      card.addEventListener('mouseup', function(e) {
-          // Only open modal if it was a click (not a drag)
-          if (!isDraggingOnCard && e.button === 0) {
-              const img = this.querySelector('img');
-              if (img) {
-                  modal.style.display = 'block';
-                  modalImg.src = img.src;
-              }
-          }
-      });
-    });
-    
-    // Function to close the modal
-    const closeModal = () => {
-      modal.style.display = 'none';
-    };
-
-    // Close modal events
-    closeBtn.addEventListener('click', closeModal);
-    
-    window.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-    
+    // Close lightbox with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        closeModal();
+        // Find any open lightbox and close it by navigating to '#'
+        if (window.location.hash) {
+          window.location.hash = '#';
+        }
       }
     });
   });
