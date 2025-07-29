@@ -20,6 +20,8 @@ redirect_from:
 
 
 ### Work/Intern Experience
+
+
 * Stevens Institute of Technology, Research Intern, Aug. 2024 - 
   *  Research Interests: LLM Trustworthy, Business Analysis
   *  Supervisor: Dr. Denghui Zhang
