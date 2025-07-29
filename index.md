@@ -28,4 +28,9 @@ author_profile: true
 
 
 
-<a href="https://clustrmaps.com/site/1c7ct"  title="ClustrMaps"><img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" /></a>
+<div style="display: flex; justify-content: center; margin: 2em 0;">
+  <a href="https://clustrmaps.com/site/1c7ct" title="ClustrMaps">
+    <img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" 
+         style="width: 400px; height: auto; border: 1px solid #ddd;" />
+  </a>
+</div>
