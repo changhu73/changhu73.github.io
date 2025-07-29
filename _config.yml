@@ -24,7 +24,7 @@ author:
   avatar           : "photo.jpg"
   name             : "Guangwei Zhang"
   pronouns         : # example: "she/her"  
-  bio              : "Research Assistant at HKU."
+  bio              : "M.S. Student at City University of Hong Kong"
   location         : "Hong Kong"
   employer         : "City University of Hong Kong"
   uri              : # URL
@@ -232,7 +232,7 @@ collections:
 defaults:
   # # _posts
   - scope:
-      path: "/cv/"
+      path: "/_pages/cv.md"
       type: cv
     values:
       layout: cv
