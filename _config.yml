@@ -232,7 +232,7 @@ collections:
 defaults:
   # # _posts
   - scope:
-      path: "/_pages/cv.md"
+      path: "/cv/"
       type: cv
     values:
       layout: cv
