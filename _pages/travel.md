@@ -46,34 +46,26 @@ author_profile: true
 
   .slider-container {
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;  /* 启用水平滚动 */
     padding: 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    cursor: grab;
     margin-bottom: 20px;
-  }
-
-  .slider-container.active {
-    cursor: grabbing;
+    scrollbar-width: none;  /* 隐藏Firefox滚动条 */
+    -ms-overflow-style: none;  /* 隐藏IE滚动条 */
   }
   
-  .slider-container:after {
-    content: "← 滑动或滚轮浏览 →";
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    font-size: 0.7rem;
-    color: #999;
-    font-style: italic;
+  /* 隐藏Chrome滚动条 */
+  .slider-container::-webkit-scrollbar {
+    display: none;
   }
 
   .slider-track {
     display: flex;
     gap: 15px;
     user-select: none;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
   }
 
   .photo-card {
@@ -90,30 +82,33 @@ author_profile: true
   .photo-card:hover {
     transform: translateY(-3px);
   }
-  
-  .photo-card:after {
-    content: "🔍";
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 50%;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .photo-card:hover:after {
-    opacity: 1;
-  }
 
   .photo-card img {
     width: 100%;
     height: 220px;
     object-fit: cover;
     display: block;
+  }
+  
+  .zoom-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .photo-card:hover .zoom-icon {
+    opacity: 1;
   }
 
   .photo-card .caption {
@@ -125,6 +120,14 @@ author_profile: true
     margin: 0;
     font-size: 0.9rem;
     color: #555;
+  }
+  
+  .scroll-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 5px;
+    font-style: italic;
   }
 
   .modal {
@@ -172,34 +175,44 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
+    <div class="scroll-hint">滑动或使用鼠标滚轮浏览更多图片</div>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou1.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou2.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou3.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou4.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou5.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou6.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou7.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou8.jpg" alt="">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/guizhou/guizhou9.jpg" alt="">
         </div>
       </div>
@@ -208,13 +221,16 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
+    <div class="scroll-hint">滑动或使用鼠标滚轮浏览更多图片</div>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
@@ -224,12 +240,15 @@ author_profile: true
       <h3 class="slider-title">National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</h3>
       <div class="slider-track">
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
         </div>
         <div class="photo-card">
+          <div class="zoom-icon">🔍</div>
           <img src="/images/travel/taiwan/taiwan13.jpg" alt="National Revolutionary Martyrs' Shrine">
         </div>
       </div>
@@ -238,81 +257,82 @@ author_profile: true
 
 </div>
 
+<!-- 图片放大的模态框 -->
 <div id="imageModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage">
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', function() {
+    // 处理滚轮和鼠标滑动事件
     const sliders = document.querySelectorAll('.slider-container');
-
-    sliders.forEach(slider => {
-      let isDown = false;
-      let startX;
-      let scrollLeft;
-
-      slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      });
-
-      slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.classList.remove('active');
-      });
-
-      slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.classList.remove('active');
-      });
-
-      slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
+    
+    sliders.forEach(function(slider) {
+      // 鼠标滚轮事件
+      slider.addEventListener('wheel', function(e) {
         e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
+        this.scrollLeft += e.deltaY;
+      }, { passive: false });
+      
+      // 鼠标拖动事件
+      let isDragging = false;
+      let startPosition;
+      let scrollLeftStart;
+      
+      slider.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startPosition = e.pageX;
+        scrollLeftStart = this.scrollLeft;
+        this.style.cursor = 'grabbing';
       });
-
-      // 增强的鼠标滚轮事件
-      slider.addEventListener('wheel', (e) => {
+      
+      slider.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
         e.preventDefault();
-        slider.scrollLeft += e.deltaY;
+        const distance = e.pageX - startPosition;
+        this.scrollLeft = scrollLeftStart - distance;
+      });
+      
+      slider.addEventListener('mouseup', function() {
+        isDragging = false;
+        this.style.cursor = 'grab';
+      });
+      
+      slider.addEventListener('mouseleave', function() {
+        isDragging = false;
+        this.style.cursor = 'grab';
       });
     });
-
-    // 增强的图片点击放大功能
+    
+    // 图片点击放大功能
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementsByClassName('close')[0];
-    const photoCards = document.querySelectorAll('.photo-card');
-
-    photoCards.forEach(card => {
-      const img = card.querySelector('img');
-      if (img) {
-        img.onclick = function() {
-          modal.style.display = "block";
-          modalImg.src = this.src;
-        }
+    const images = document.querySelectorAll('.photo-card img');
+    
+    images.forEach(function(img) {
+      img.addEventListener('click', function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+      });
+    });
+    
+    // 关闭模态框
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
       }
     });
-
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape" && modal.style.display === "block") {
-        modal.style.display = "none";
+    
+    // 按ESC键关闭模态框
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        modal.style.display = 'none';
       }
     });
   });
