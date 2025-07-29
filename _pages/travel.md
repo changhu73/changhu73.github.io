@@ -146,6 +146,10 @@ author_profile: true
           <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
           <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
         </div>
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan13.jpg" alt="National Revolutionary Martyrs' Shrine">
+          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
+        </div>
       </div>
     </div>
     <!-- New Slider Container -->
