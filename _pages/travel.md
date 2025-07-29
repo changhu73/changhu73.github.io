@@ -83,7 +83,7 @@ author_profile: true
   }
 
   .photo-card {
-    flex: 0 0 320px;
+    flex: 0 0 400px; /* Increased width from 320px */
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -99,7 +99,7 @@ author_profile: true
 
   .photo-card img {
     width: 100%;
-    height: 220px;
+    height: 280px; /* Increased height from 220px */
     object-fit: cover;
     display: block;
     pointer-events: none; /* Prevent image's default drag behavior */
@@ -255,7 +255,7 @@ author_profile: true
       </div>
     </div>
     <div class="slider-container">
-      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (國民革命忠烈祠)</h3>
+      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</h3>
       <div class="slider-track">
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
