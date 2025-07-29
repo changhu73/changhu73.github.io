@@ -52,20 +52,33 @@ author_profile: true
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
-    scrollbar-width: none;  /* Hide Firefox scrollbar */
-    -ms-overflow-style: none;  /* Hide IE scrollbar */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
   }
   
-  /* Hide Chrome scrollbar */
+  /* Custom scrollbar for WebKit browsers */
   .slider-container::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+  }
+
+  .slider-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .slider-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  .slider-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 
   .slider-track {
     display: flex;
     gap: 15px;
     user-select: none;
-    padding-bottom: 5px;
+    padding-bottom: 10px; /* Add padding to avoid scrollbar overlap */
   }
 
   .photo-card {
@@ -123,14 +136,6 @@ author_profile: true
     color: #555;
   }
   
-  .scroll-hint {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #999;
-    margin-top: 5px;
-    font-style: italic;
-  }
-
   .modal {
     display: none;
     position: fixed;
@@ -176,7 +181,6 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Guizhou(贵州) <span class="trip-date">2025.4</span></h2>
-    <div class="scroll-hint">Scroll or use mouse wheel to browse more photos</div>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
@@ -222,7 +226,6 @@ author_profile: true
 
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
-    <div class="scroll-hint">Scroll or use mouse wheel to browse more photos</div>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
@@ -270,35 +273,32 @@ author_profile: true
     const sliders = document.querySelectorAll('.slider-container');
     
     sliders.forEach(function(slider) {
-      // Mouse wheel event - 修复滚轮滑动问题
+      // Mouse wheel event
       slider.addEventListener('wheel', function(e) {
-        e.preventDefault();
-        this.scrollLeft += (e.deltaY > 0) ? 100 : -100; // 使用固定滚动距离，更加可控
-      }, { passive: false });
+        // No preventDefault to allow vertical page scroll when slider is at ends
+        if (this.scrollWidth > this.clientWidth) {
+            this.scrollLeft += e.deltaY;
+        }
+      }, { passive: true }); // Use passive for better scroll performance
       
       // Mouse drag event
       let isDragging = false;
       let startPosition;
       let scrollLeftStart;
-      let hasMoved = false; // 新增：判断是否发生了移动
       
       slider.addEventListener('mousedown', function(e) {
         isDragging = true;
-        startPosition = e.pageX;
+        startPosition = e.pageX - this.offsetLeft;
         scrollLeftStart = this.scrollLeft;
         this.style.cursor = 'grabbing';
-        hasMoved = false; // 重置移动标志
       });
       
       slider.addEventListener('mousemove', function(e) {
         if (!isDragging) return;
-        const distance = e.pageX - startPosition;
-        
-        // 只有当移动距离超过5px时才算是拖动，防止点击时的微小移动
-        if (Math.abs(distance) > 5) {
-          hasMoved = true;
-        this.scrollLeft = scrollLeftStart - distance;
-        }
+        e.preventDefault(); // Prevent text selection while dragging
+        const x = e.pageX - this.offsetLeft;
+        const walk = (x - startPosition) * 2; // scroll-fast
+        this.scrollLeft = scrollLeftStart - walk;
       });
       
       slider.addEventListener('mouseup', function(e) {
@@ -312,46 +312,37 @@ author_profile: true
       });
     });
     
-    // Image click to enlarge functionality - 修复图片放大功能
+    // Image click to enlarge functionality
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementsByClassName('close')[0];
     
-    // 修改为使用photo-card的点击事件，而不是直接在img上添加事件
     const photoCards = document.querySelectorAll('.photo-card');
     
     photoCards.forEach(function(card) {
-      let startX, isClick = true;
-      
-      // 鼠标按下时记录位置
+      let isDraggingOnCard = false;
+      let startX;
+
       card.addEventListener('mousedown', function(e) {
-        startX = e.clientX;
-        isClick = true;
-    });
-    
-      // 鼠标移动时判断是否为拖拽
+          startX = e.clientX;
+          isDraggingOnCard = false;
+      });
+
       card.addEventListener('mousemove', function(e) {
-        if (startX && Math.abs(e.clientX - startX) > 5) {
-          isClick = false;
-      }
-    });
-    
-      // 鼠标抬起时，如果是点击而非拖拽，则显示模态框
+          if (Math.abs(e.clientX - startX) > 5) { // Threshold to detect drag
+              isDraggingOnCard = true;
+          }
+      });
+
       card.addEventListener('mouseup', function(e) {
-        if (isClick) {
-          const img = this.querySelector('img');
-          if (img) {
-            modal.style.display = 'block';
-            modalImg.src = img.src;
-      }
-        }
-        startX = null;
-    });
-      
-      // 如果鼠标离开元素，重置状态
-      card.addEventListener('mouseleave', function() {
-        startX = null;
-  });
+          if (!isDraggingOnCard) {
+              const img = this.querySelector('img');
+              if (img) {
+                  modal.style.display = 'block';
+                  modalImg.src = img.src;
+              }
+          }
+      });
     });
     
     // Close modal
