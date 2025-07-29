@@ -39,6 +39,14 @@ author_profile: true
       margin-left: 10px;
   }
 
+  .slider-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 10px 0;
+    color: #555;
+    text-align: center;
+  }
+
   .slider-container {
     position: relative;
     overflow: hidden;
@@ -110,40 +118,56 @@ author_profile: true
 <!-- This is the main HTML content for your travel page. -->
 <div class="travel-log-container">
 
-
   <div class="trip-section">
     <h2>Taiwan <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
+      <h3 class="slider-title">Historical Sites</h3>
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan1.jpg" alt="">
+          <img src="/images/travel/taiwan/taiwan1.jpg" alt="National Palace Museum">
           <div class="caption"><p>National Palace Museum (國立故宮博物院)</p></div>
         </div>
-            <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="">
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
         </div>
->
-        </div>
-            <div class="slider-container">
+      </div>
+    </div>
+    <div class="slider-container">
+      <h3 class="slider-title">Martyrs' Shrines</h3>
       <div class="slider-track">
         <!-- Add photos for this trip here -->
         <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan11.jpg" alt="">
+          <img src="/images/travel/taiwan/taiwan11.jpg" alt="National Revolutionary Martyrs' Shrine">
           <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
         </div>
-            <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan12.jpg" alt="">
-          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠) </p></div>
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan12.jpg" alt="National Revolutionary Martyrs' Shrine">
+          <div class="caption"><p>National Revolutionary Martyrs' Shrine (国民革命忠烈祠)</p></div>
         </div>
-        <!-- To add more photos to this trip, copy a photo-card block and paste it here. -->
       </div>
     </div>
+    <!-- New Slider Container -->
+    <!-- <div class="slider-container">
+      <h3 class="slider-title">Natural Landscapes</h3>
+      <div class="slider-track">
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan3.jpg" alt="Taroko Gorge">
+          <div class="caption"><p>Taroko Gorge (太魯閣峽谷)</p></div>
+        </div>
+        <div class="photo-card">
+          <img src="/images/travel/taiwan/taiwan4.jpg" alt="Sun Moon Lake">
+          <div class="caption"><p>Sun Moon Lake (日月潭)</p></div>
+        </div>
+      </div>
+    </div> -->
+
   </div>
-  
+
   <!-- To add a new trip, copy an entire .trip-section block and paste it here. -->
 
+</div>
 
 <!-- This script enables the drag-to-scroll functionality for all sliders. -->
 <script>
