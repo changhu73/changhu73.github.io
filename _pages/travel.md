@@ -37,25 +37,37 @@ author_profile: true
   }
 
   .slider-title {
+    /* --- KEY CHANGE: Make title absolute to its container --- */
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    
     font-size: 1.2rem;
     font-weight: 500;
-    margin: 10px 0;
     color: #555;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Add background for readability */
+    padding: 5px 15px;
+    border-radius: 12px;
+    
+    /* --- KEY CHANGE: Ensure title is above track but below hovered cards --- */
+    z-index: 5;
+    
+    /* --- KEY CHANGE: Allow clicks/drags to pass through the title --- */
+    pointer-events: none;
   }
 
   .slider-container {
-    position: relative;
+    position: relative; /* This is the anchor for the absolute positioned title */
     overflow-x: auto;
-    /* Increased vertical padding to give cards room to "pop out" */
-    padding: 20px 10px;
+    /* Increased top padding to make space for the absolute title */
+    padding: 60px 10px 20px 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
     scrollbar-color: #888 #f1f1f1;
     cursor: grab;
-    /* Clip content to padding box to prevent scrollbar from overlapping content */
     overflow-clip-margin: content-box;
   }
   
@@ -84,15 +96,14 @@ author_profile: true
   }
 
   .photo-card:hover {
-    /* Scale up and lift the card to make it pop out */
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 10; /* Ensure the hovered card is on top of others */
+    z-index: 10; /* z-index is higher than title's, so it pops over the title */
   }
 
   .photo-card img {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
     display: block;
     pointer-events: none;
