@@ -37,37 +37,25 @@ author_profile: true
   }
 
   .slider-title {
-    /* --- KEY CHANGE: Make title absolute to its container --- */
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    
     font-size: 1.2rem;
     font-weight: 500;
+    margin: 10px 0;
     color: #555;
-    background: rgba(255, 255, 255, 0.8); /* Add background for readability */
-    padding: 5px 15px;
-    border-radius: 12px;
-    
-    /* --- KEY CHANGE: Ensure title is above track but below hovered cards --- */
-    z-index: 5;
-    
-    /* --- KEY CHANGE: Allow clicks/drags to pass through the title --- */
-    pointer-events: none;
+    text-align: center;
   }
 
   .slider-container {
-    position: relative; /* This is the anchor for the absolute positioned title */
+    position: relative;
     overflow-x: auto;
-    /* Increased top padding to make space for the absolute title */
-    padding: 60px 10px 20px 10px;
+    /* Increased vertical padding to give cards room to "pop out" */
+    padding: 20px 10px;
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
     scrollbar-color: #888 #f1f1f1;
     cursor: grab;
+    /* Clip content to padding box to prevent scrollbar from overlapping content */
     overflow-clip-margin: content-box;
   }
   
@@ -96,14 +84,15 @@ author_profile: true
   }
 
   .photo-card:hover {
+    /* Scale up and lift the card to make it pop out */
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 10; /* z-index is higher than title's, so it pops over the title */
+    z-index: 10; /* Ensure the hovered card is on top of others */
   }
 
   .photo-card img {
     width: 100%;
-    height: 280px;
+    height: 300px;
     object-fit: cover;
     display: block;
     pointer-events: none;
@@ -181,7 +170,9 @@ author_profile: true
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan1.jpg" alt="Museum"></div>
+        <div class="photo-card">
+            <img src="/images/travel/taiwan/taiwan1.jpg" alt="Museum">
+        </div>
         <div class="photo-card">
           <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
           <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
