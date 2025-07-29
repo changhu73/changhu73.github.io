@@ -53,6 +53,7 @@ author_profile: true
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     margin-bottom: 20px;
     scrollbar-color: #888 #f1f1f1; /* For Firefox */
+    cursor: grab;
   }
   
   /* Custom scrollbar for WebKit browsers */
@@ -101,6 +102,7 @@ author_profile: true
     height: 220px;
     object-fit: cover;
     display: block;
+    pointer-events: none; /* Prevent image's default drag behavior */
   }
   
   .zoom-icon {
@@ -146,6 +148,12 @@ author_profile: true
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: auto;
+    animation: fadeIn 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
   }
 
   .modal-content {
@@ -157,6 +165,12 @@ author_profile: true
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: zoomIn 0.3s;
+  }
+
+  @keyframes zoomIn {
+    from {transform: translate(-50%, -50%) scale(0.8);}
+    to {transform: translate(-50%, -50%) scale(1);}
   }
 
   .close {
@@ -186,39 +200,39 @@ author_profile: true
       <div class="slider-track">
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou1.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou1.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou2.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou2.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou3.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou3.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou4.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou4.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou5.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou5.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou6.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou6.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou7.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou7.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou8.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou8.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
         <div class="photo-card">
           <div class="zoom-icon">🔍</div>
-          <img src="/images/travel/guizhou/guizhou9.jpg" alt="">
+          <img src="/images/travel/guizhou/guizhou9.jpg" alt="Scenery of Sanjiang Ancient Road">
         </div>
       </div>
     </div>
@@ -269,24 +283,26 @@ author_profile: true
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Handle wheel and mouse drag events
+    // Handle wheel and mouse drag events for sliders
     const sliders = document.querySelectorAll('.slider-container');
     
     sliders.forEach(function(slider) {
-      // Mouse wheel event
+      // Mouse wheel event for horizontal scrolling
       slider.addEventListener('wheel', function(e) {
-        // No preventDefault to allow vertical page scroll when slider is at ends
         if (this.scrollWidth > this.clientWidth) {
+            // No preventDefault to allow vertical page scroll if needed
             this.scrollLeft += e.deltaY;
         }
-      }, { passive: true }); // Use passive for better scroll performance
+      }, { passive: true });
       
-      // Mouse drag event
+      // Mouse drag event for horizontal scrolling
       let isDragging = false;
       let startPosition;
       let scrollLeftStart;
       
       slider.addEventListener('mousedown', function(e) {
+        // Only start drag for left mouse button
+        if (e.button !== 0) return;
         isDragging = true;
         startPosition = e.pageX - this.offsetLeft;
         scrollLeftStart = this.scrollLeft;
@@ -295,27 +311,27 @@ author_profile: true
       
       slider.addEventListener('mousemove', function(e) {
         if (!isDragging) return;
-        e.preventDefault(); // Prevent text selection while dragging
+        e.preventDefault(); // Prevent text selection
         const x = e.pageX - this.offsetLeft;
-        const walk = (x - startPosition) * 2; // scroll-fast
+        const walk = (x - startPosition) * 2; // scroll-fast factor
         this.scrollLeft = scrollLeftStart - walk;
       });
       
-      slider.addEventListener('mouseup', function(e) {
+      const stopDragging = () => {
         isDragging = false;
-        this.style.cursor = 'grab';
-      });
-      
-      slider.addEventListener('mouseleave', function() {
-        isDragging = false;
-        this.style.cursor = 'grab';
-      });
+        if (slider) { // Check if slider exists before changing style
+          slider.style.cursor = 'grab';
+        }
+      };
+
+      slider.addEventListener('mouseup', stopDragging);
+      slider.addEventListener('mouseleave', stopDragging);
     });
     
-    // Image click to enlarge functionality
+    // Image click-to-enlarge functionality
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
-    const closeBtn = document.getElementsByClassName('close')[0];
+    const closeBtn = document.querySelector('#imageModal .close');
     
     const photoCards = document.querySelectorAll('.photo-card');
     
@@ -324,18 +340,22 @@ author_profile: true
       let startX;
 
       card.addEventListener('mousedown', function(e) {
+          // Only react to left-clicks
+          if (e.button !== 0) return;
           startX = e.clientX;
           isDraggingOnCard = false;
       });
 
       card.addEventListener('mousemove', function(e) {
-          if (Math.abs(e.clientX - startX) > 5) { // Threshold to detect drag
+          // If the mouse moves more than a few pixels, it's a drag
+          if (Math.abs(e.clientX - startX) > 5) {
               isDraggingOnCard = true;
           }
       });
 
       card.addEventListener('mouseup', function(e) {
-          if (!isDraggingOnCard) {
+          // Only open modal if it was a click (not a drag)
+          if (!isDraggingOnCard && e.button === 0) {
               const img = this.querySelector('img');
               if (img) {
                   modal.style.display = 'block';
@@ -345,21 +365,23 @@ author_profile: true
       });
     });
     
-    // Close modal
-    closeBtn.addEventListener('click', function() {
+    // Function to close the modal
+    const closeModal = () => {
       modal.style.display = 'none';
-    });
+    };
+
+    // Close modal events
+    closeBtn.addEventListener('click', closeModal);
     
     window.addEventListener('click', function(e) {
       if (e.target === modal) {
-        modal.style.display = 'none';
+        closeModal();
       }
     });
     
-    // Close modal with ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        modal.style.display = 'none';
+        closeModal();
       }
     });
   });
