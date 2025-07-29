@@ -4,7 +4,7 @@ author_profile: true
 ---
 
 <div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
-  <h1 style="font-size: 2.5em; margin-bottom: 0.2em;">张广为 (Guangwei Zhang)</h1>
+  <!-- <h1 style="font-size: 2.5em; margin-bottom: 0.2em;">张广为 (Guangwei Zhang)</h1> -->
   
   <p style="font-size: 1.2em; color: #555; margin-top: 0;">
     Welcome to my page! I completed my undergraduate studies in Information Security at the University of Science and Technology of China (USTC) and will soon be completing my master's degree in Computer Science at the City University of Hong Kong (CityU). I am passionate about applying data science techniques to the business world and am actively seeking opportunities in this exciting, cross-disciplinary field.
