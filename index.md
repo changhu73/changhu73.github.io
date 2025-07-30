@@ -25,9 +25,9 @@ author_profile: true
   {% if p %}
     <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 3em;">
       
-      <h2 style="border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-top: 2em;">
+      <h1 style="border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-top: 2em;">
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-      </h2>
+      </h1>
 
       <div class="page-content">
         {{ p.content | remove: '<h2>' | remove: '</h2>' }}
