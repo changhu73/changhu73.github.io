@@ -3,6 +3,8 @@ layout: archive
 title: "Teaching"
 permalink: /teaching/
 author_profile: true
+redirect_from:
+  - /resume
 ---
 <!-- 
 {% include base_path %}
@@ -11,5 +13,7 @@ author_profile: true
   {% include archive-single.html %}
 {% endfor %} -->
 
-* Design and Practice of Information Security(I), Teaching Assistant, University of Science and Technology of China, Feb. 2022 - July 2022
+### Teaching Assistant
+
+* Design and Practice of Information Security(I), University of Science and Technology of China, Feb. 2021 - July 2021
   *  Supervisor: Mr. Wentao Wu
