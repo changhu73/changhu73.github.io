@@ -219,13 +219,13 @@ collections:
   #   permalink: /home/
   teaching:
     output: true
-    permalink: /:collection/:path/
+    permalink: /teaching/
   publications:
     output: true
-    permalink: /:collection/:path/
-  portfolio:
+    permalink: /publications/
+  travel:
     output: true
-    permalink: /:collection/:path/
+    permalink: /travel/
   cv:
     output: true
     permalink: /cv/
@@ -248,23 +248,6 @@ defaults:
       layout: cv
       author_profile: true
       share: true
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-  # _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      author_profile: true
   # _teaching
   - scope:
       path: ""
@@ -283,15 +266,16 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # travel
   - scope:
       path: ""
-      type: portfolio
+      type: travel
     values:
       layout: single
       author_profile: true
       share: true
-      comment: true
+      comments: true
+
 
 
 

@@ -18,10 +18,6 @@ author_profile: true
 
 
 
-
-
-
-
 <div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
 
 {% for item in site.data.navigation.main %}

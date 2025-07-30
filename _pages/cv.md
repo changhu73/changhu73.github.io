@@ -33,7 +33,7 @@ redirect_from:
 
 * The Hong Kong University of Science and Technology, Research Assistant, Aug. 2023 - Nov. 2023 <!-- Hong Kong Center for Construction Robotics -->
   *  Research Interests: Software Development  
-  * Supervisor: Prof. Zexiang Li
+  *  Supervisor: Prof. Zexiang Li
 
 
 
