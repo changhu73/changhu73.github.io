@@ -21,6 +21,9 @@ redirect_from:
 
 ### Work/Intern Experience
 
+<!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun,2025 - 
+  *  Research Interests: 3D Printable Brain Atlas
+  *  Supervisor: Prof. Yimin Wang -->
 
 * Stevens Institute of Technology, Research Intern, Aug. 2024 - 
   *  Research Interests: LLM Trustworthy, Business Analysis

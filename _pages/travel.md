@@ -162,6 +162,19 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou9.jpg" alt="Scenery 9"></div>
       </div>
     </div>
+    <div class="slider-container">
+      <h3 class="slider-title">烏蒙大草原</h3>
+      <div class="slider-track">
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou11.jpg" alt="Scenery 1"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou12.jpg" alt="Scenery 2"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou13.jpg" alt="Scenery 3"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou14.jpg" alt="Scenery 4"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou15.jpg" alt="Scenery 5"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou16.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou17.jpg" alt="Scenery 7"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou18.jpg" alt="Scenery 8"></div>
+      </div>
+    </div>
   </div>
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
