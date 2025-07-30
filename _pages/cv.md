@@ -7,8 +7,6 @@ redirect_from:
   - /resume
 ---
 
----
-
 ### Education
 * (incoming) Ph.D in Data Science, Stevens Institute of Technology, Feb. 2026 - 
 * Visiting Research Student, The Hong Kong University of Science and Technology(Guangzhou), Jun. 2025 - Nov. 2025
