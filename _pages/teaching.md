@@ -5,6 +5,7 @@ permalink: /teaching/
 author_profile: true
 redirect_from:
   - /resume
+
 ---
 <!-- 
 {% include base_path %}
@@ -12,6 +13,7 @@ redirect_from:
 {% for post in site.teaching reversed %}
   {% include archive-single.html %}
 {% endfor %} -->
+---
 
 ### Teaching Assistant
 
