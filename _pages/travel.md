@@ -173,6 +173,16 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou16.jpg" alt="Scenery 6"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou17.jpg" alt="Scenery 7"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou18.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou10.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou19.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou20.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou21.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou22.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou23.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou24.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou25.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou26.jpg" alt="Scenery 8"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guizhou27.jpg" alt="Scenery 8"></div>
       </div>
     </div>
   </div>
