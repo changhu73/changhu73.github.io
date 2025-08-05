@@ -185,7 +185,30 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou27.jpg" alt="Scenery 8"></div>
       </div>
     </div>
+    <div class="slider-container">
+      <h3 class="slider-title">貴陽</h3>
+      <div class="slider-track">
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang1.jpg" alt="Scenery 1"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang2.jpg" alt="Scenery 2"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang3.jpg" alt="Scenery 3"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang4.jpg" alt="Scenery 4"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang5.jpg" alt="Scenery 5"><div class="caption"><p>甲秀樓</p></div></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang6.jpg" alt="Scenery 6"></div>
+      </div>
+    </div>
   </div>
+    <!-- <div class="slider-container">
+      <h3 class="slider-title">美食</h3>
+      <div class="slider-track">
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang1.jpg" alt="Scenery 1"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang2.jpg" alt="Scenery 2"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang3.jpg" alt="Scenery 3"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang4.jpg" alt="Scenery 4"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang5.jpg" alt="Scenery 5"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/guiyang6.jpg" alt="Scenery 6"></div>
+      </div>
+    </div>
+  </div> -->
   <div class="trip-section">
     <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
     <div class="slider-container">
