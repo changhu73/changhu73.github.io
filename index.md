@@ -45,20 +45,7 @@ author_profile: true
       </div>
     </div>
   </div>
-  
-  <div style="background: #e8f4f8; padding: 1em; border-radius: 6px;">
-    <h3 style="color: #2c3e50; margin-top: 0;">Education</h3>
-    <ul style="padding-left: 1.5em; font-size: 1.1em;">
-      <li style="margin-bottom: 0.5em;">
-        <strong>M.Sc. Computer Science</strong><br>
-        City University of Hong Kong (CityU) · Completion imminent
-      </li>
-      <li>
-        <strong>B.Sc. Information Security</strong><br>
-        University of Science and Technology of China (USTC)
-      </li>
-    </ul>
-  </div>
+
 </div>
 
 
