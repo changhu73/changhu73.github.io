@@ -129,18 +129,17 @@ author_profile: true
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
   </style>
-</head>
 <body>
 
   <div class="pdd-banner">
     <h3>请砍一刀助力我的PhD offer!</h3>
     <div class="progress-container">
-      <div class="progress-bar">
-        <span class="progress-text"></span>
+      <!-- Set a default width and text as a fallback -->
+      <div class="progress-bar" style="width: 99.114514%;">
+        <span class="progress-text">已砍99.114514%</span>
       </div>
     </div>
-    <!-- Updated the onclick event -->
-    <button class="pdd-button" onclick="handleChop()">帮我砍一刀</button>
+    <button class="pdd-button" onclick="alert('感谢您！我的PhD offer又近了一小步！')">帮我砍一刀</button>
   </div>
 
   <div class="welcome-section" style="margin-bottom: 2em; padding: 1.5em; border-radius: 8px; background-color: #f8f9fa; border-left: 4px solid #4e73df;">
@@ -188,29 +187,21 @@ author_profile: true
   </div>
 
   <script>
-    const progressBar = document.querySelector('.progress-bar');
-    const progressText = document.querySelector('.progress-text');
-
-    // Function to generate and apply a new random percentage
-    function updateProgress() {
+    // This script runs after the page content is loaded.
+    // It replaces the default percentage with a random one.
+    document.addEventListener('DOMContentLoaded', function() {
+      // Generate a random number between 99.00000 and 99.99999
       const progressValue = (99 + Math.random() * 0.99999).toFixed(5);
       const percentage = progressValue + '%';
   
+      const progressBar = document.querySelector('.progress-bar');
+      const progressText = document.querySelector('.progress-text');
+  
+      // Update the progress bar's width and text content
       if (progressBar && progressText) {
         progressBar.style.width = percentage;
         progressText.textContent = `已砍${percentage}`;
       }
-    }
-
-    // Function to handle the button click
-    function handleChop() {
-      alert('感谢您！我的PhD offer又近了一小步！');
-      updateProgress(); // Update the progress after the alert
-    }
-
-    // Set the initial progress when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      updateProgress();
     });
   </script>
 
