@@ -80,8 +80,6 @@ author_profile: true
       max-width: 80%;
     }
     .progress-bar {
-      /* Initial width, will be updated by JS */
-      width: 99%; 
       height: 20px;
       background: linear-gradient(90deg, #fff, #fefefe);
       border-radius: 16px;
@@ -131,14 +129,14 @@ author_profile: true
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
   </style>
-</head>
 <body>
 
   <div class="pdd-banner">
     <h3>请砍一刀助力我的PhD offer!</h3>
     <div class="progress-container">
-      <div class="progress-bar">
-        <span class="progress-text">加载中...</span>
+      <!-- Set a default width and text as a fallback -->
+      <div class="progress-bar" style="width: 99.88888%;">
+        <span class="progress-text">已砍99.88888%</span>
       </div>
     </div>
     <button class="pdd-button" onclick="alert('感谢您！离成功又近了一小步！')">帮我砍一刀</button>
@@ -189,7 +187,8 @@ author_profile: true
   </div>
 
   <script>
-    // This script runs after the page content is loaded
+    // This script runs after the page content is loaded.
+    // It replaces the default percentage with a random one.
     document.addEventListener('DOMContentLoaded', function() {
       // Generate a random number between 99.00000 and 99.99999
       const progressValue = (99 + Math.random() * 0.99999).toFixed(5);
@@ -198,12 +197,9 @@ author_profile: true
       const progressBar = document.querySelector('.progress-bar');
       const progressText = document.querySelector('.progress-text');
   
-      // Update the progress bar's width
-      if (progressBar) {
+      // Update the progress bar's width and text content
+      if (progressBar && progressText) {
         progressBar.style.width = percentage;
-      }
-      // Update the text to show the new random percentage
-      if (progressText) {
         progressText.textContent = `已砍${percentage}`;
       }
     });
