@@ -129,7 +129,6 @@ author_profile: true
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
   </style>
-</head>
 <body>
 
   <div class="pdd-banner">
