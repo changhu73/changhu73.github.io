@@ -23,7 +23,7 @@ redirect_from:
 
 * Stevens Institute of Technology, Research Intern, Aug. 2024 - 
   *  Research Interests: LLM Trustworthy, Business Analysis
-  *  Supervisor: Dr. Denghui Zhang
+  *  Supervisor: Prof. Denghui Zhang
 
 * The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025  <!-- Hong Kong Quantum AI Lab -->
   *  Research Interests: Software Development
@@ -34,4 +34,23 @@ redirect_from:
   *  Supervisor: Prof. Zexiang Li
 
 
+### Campus Experience
 
+* Training Program of Innovation and Entrepreneurship for Undergraduate (Junior), USTC, School of Cyber Science and Technology, May 2022 - Apr. 2023
+  *  Research Interests: Machine Learning, EEG
+  *  Supervisor: Prof. Bin Liu 
+
+* RoboGame, USTC, Third prize, May 2022 - Nov. 2022
+  *  Electric control
+
+* Training Program of Innovation and Entrepreneurship for Undergraduate (Sophomore), USTC, School of Engineering Sciences, May 2021 - Apr. 2022
+  *  Research Interests: Machine Learning
+  *  Supervisor: Prof. Liqun He
+
+* International Genetically Engineered Machine competition(iGEM), Gold Medal, Feb. 2021 - Nov. 2021
+  *  Front-end Webpage/Human Practices
+  *  Supervisor: Prof. Jiong Hong
+
+* Contemporary Undergraduate Mathematical Contest in Modeling(CUMCM), Third prize, Sept. 2021  
+
+* The Chinese Mathematics Competitions, Second prize, Nov. 2022
