@@ -196,6 +196,24 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/guizhou/guiyang6.jpg" alt="Scenery 6"></div>
       </div>
     </div>
+    <div class="slider-container">
+      <h3 class="slider-title">Eating</h3>
+      <div class="slider-track">
+        <div class="photo-card"><img src="/images/travel/guizhou/eat1.jpg" alt="Scenery 1"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat2.jpg" alt="Scenery 2"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat3.jpg" alt="Scenery 3"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat4.jpg" alt="Scenery 4"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat5.jpg" alt="Scenery 5"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat6.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat7.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat8.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat9.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat10.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat11.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat12.jpg" alt="Scenery 6"></div>
+        <div class="photo-card"><img src="/images/travel/guizhou/eat13.jpg" alt="Scenery 6"></div>
+      </div>
+    </div>
   </div>
     <!-- <div class="slider-container">
       <h3 class="slider-title">美食</h3>
