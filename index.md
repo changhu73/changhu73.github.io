@@ -146,8 +146,6 @@ author_profile: true
     <h2 style="margin-top: 0; color: #2e4765; border-bottom: 1px solid #eee; padding-bottom: 0.5em;">
       Welcome to My Academic Profile!
     </h2>
-    
-
   </div>
 
   <script>
