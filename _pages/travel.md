@@ -189,17 +189,13 @@ author_profile: true
       <div class="slider-track">
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou41.jpg" alt="Scenery 6"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou30.jpg" alt="Scenery 1"></div>
-        <div class="photo-card"><img src="/images/travel/guizhou/guizhou44.jpg" alt="Scenery 4"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou39.jpg" alt="Scenery 4"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou40.jpg" alt="Scenery 5"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou31.jpg" alt="Scenery 2"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou32.jpg" alt="Scenery 3"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou33.jpg" alt="Scenery 4"></div>
-        <div class="photo-card"><img src="/images/travel/guizhou/guizhou34.jpg" alt="Scenery 5"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou35.jpg" alt="Scenery 6"></div>
-        <div class="photo-card"><img src="/images/travel/guizhou/guizhou37.jpg" alt="Scenery 2"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou38.jpg" alt="Scenery 3"></div>
-        <div class="photo-card"><img src="/images/travel/guizhou/guizhou42.jpg" alt="Scenery 2"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou43.jpg" alt="Scenery 3"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou36.jpg" alt="Scenery 1"></div>
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou45.jpg" alt="Scenery 5"></div>
