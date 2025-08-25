@@ -10,8 +10,11 @@ redirect_from:
 ### Education
 <!-- * (incoming) Ph.D in Data Science, Stevens Institute of Technology, Feb. 2026 -  -->
 * Visiting Research Student, The Hong Kong University of Science and Technology(Guangzhou), Jun. 2025 - Nov. 2025
+  *  Supervisor: Prof. Hui Xiong
 * M.S. in Computer Science, City University of Hong Kong, Sept. 2024 - Feb. 2026
+  *  Supervisor: Prof. Linqi Song
 * B.S. in Information Security, University of Science and Technology of China, Sept. 2019 - Jun. 2023
+  *  Supervisor: Prof. Xiaobin Tan
 
 
 
