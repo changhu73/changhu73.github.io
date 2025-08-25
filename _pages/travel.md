@@ -206,7 +206,6 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/guizhou/guizhou45.jpg" alt="Scenery 5"></div>
       </div>
     </div>
-  </div>
     <div class="slider-container">
       <h3 class="slider-title">貴陽</h3>
       <div class="slider-track">
