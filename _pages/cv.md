@@ -20,7 +20,11 @@ redirect_from:
 
 ### Work/Intern Experience
 
-<!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun,2025 - 
+<!-- * 19Pine, Research Intern, Sept. 2025 - 
+  *  Research Interests: 
+  *  Supervisor: Dr. Bojie Li -->
+
+<!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun 2025 - Sept. 2025
   *  Research Interests: 3D Printable Brain Atlas
   *  Supervisor: Prof. Yimin Wang -->
 
@@ -36,6 +40,7 @@ redirect_from:
   *  Research Interests: Software Development  
   *  Supervisor: Prof. Zexiang Li
 
+<!-- * iFLYTEK, Juinor Data Engineer Intern, Mar. 2023 - Jun. 2023   -->
 
 ### Campus Experience
 
