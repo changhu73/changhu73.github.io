@@ -20,7 +20,7 @@ redirect_from:
 
 ### Work/Intern Experience
 
-<!-- * 19Pine, Research Intern, Sept. 2025 - 
+<!-- * 19Pine, Research Intern (remote), Sept. 2025 - 
   *  Research Interests: 
   *  Supervisor: Dr. Bojie Li -->
 
@@ -28,7 +28,7 @@ redirect_from:
   *  Research Interests: 3D Printable Brain Atlas
   *  Supervisor: Prof. Yimin Wang -->
 
-* Stevens Institute of Technology, Research Intern, Aug. 2024 - 
+* Stevens Institute of Technology, Research Intern (remote), Aug. 2024 - 
   *  Research Interests: LLM Trustworthy, Business Analysis
   *  Supervisor: Prof. Denghui Zhang
 
