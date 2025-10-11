@@ -17,9 +17,8 @@ redirect_from:
 
 ### Work/Intern Experience
 
-<!-- * 19Pine, Research Intern (remote), Sept. 2025 - 
-  *  Research Interests: 
-  *  Supervisor: Dr. Bojie Li -->
+* 19Pine, Research Intern (remote), Sept. 2025 - 
+  *  Research Interests: Post-training for speech models: SFT/RL
 
 <!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun 2025 - Sept. 2025
   *  Research Interests: 3D Printable Brain Atlas
@@ -29,10 +28,10 @@ redirect_from:
   *  Research Interests: LLM Trustworthy, Business Analysis
   *  Supervisor: <a href="https://zhangdenghui.site/">Prof. Denghui Zhang</a>
 
-* The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025  <!-- Hong Kong Quantum AI Lab -->
+* The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025
   *  Research Interests: Software Development
 
-* The Hong Kong University of Science and Technology, Research Assistant, Aug. 2023 - Nov. 2023 <!-- Hong Kong Center for Construction Robotics -->
+* The Hong Kong University of Science and Technology, Research Assistant, Aug. 2023 - Nov. 2023
   *  Research Interests: Software Development  
 
 <!-- * iFLYTEK, Juinor Data Engineer Intern, Mar. 2023 - Jun. 2023   -->
