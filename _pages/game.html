@@ -26,36 +26,56 @@ author_profile: true
     <style>
       .page-header {
         text-align: center;
-        margin-bottom: 2rem;
-        padding: 1.5rem 0;
+        margin-bottom: 3rem;
+        padding: 2rem 1rem;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
+        border-radius: 20px;
         color: white;
         box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: headerGlow 4s ease-in-out infinite;
+      }
+      @keyframes headerGlow {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
       }
       .page-title {
-        font-size: 2.25rem;
+        font-size: 3rem;
         font-weight: 800;
-        margin: 0 0 .5rem 0;
+        margin: 0 0 1rem 0;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         letter-spacing: -0.02em;
+        position: relative;
+        z-index: 1;
       }
       .page-description {
-        font-size: 1rem;
+        font-size: 1.2rem;
         margin: 0;
-        opacity: 0.95;
+        opacity: 0.9;
         font-weight: 400;
+        position: relative;
+        z-index: 1;
       }
 
       #gameSelector {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         display: flex;
         justify-content: center;
         gap: 1rem;
         flex-wrap: wrap;
       }
       .gameBtn {
-        padding: .8rem 1.25rem;
+        padding: 1rem 2rem;
         margin: 0;
         border: 2px solid #3498db;
         background: #fff;
@@ -63,11 +83,11 @@ author_profile: true
         border-radius: 12px;
         cursor: pointer;
         font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.25s ease;
-        display: inline-flex;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: flex;
         align-items: center;
-        gap: .5rem;
+        gap: 0.5rem;
         box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
         position: relative;
         overflow: hidden;
@@ -79,47 +99,76 @@ author_profile: true
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
         transition: left 0.5s;
       }
-      .gameBtn:hover::before { left: 100%; }
+      .gameBtn:hover::before {
+        left: 100%;
+      }
       .gameBtn.active {
         background: #3498db;
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.35);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+      .gameBtn:hover {
+        background: #2980b9;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+      .game-icon {
+        font-size: 1.5rem;
       }
       .game-icon { font-size: 1.25rem; }
 
       .game-wrapper {
         display: flex;
-        gap: 1.25rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
         align-items: flex-start;
-        margin-top: .5rem;
-        padding: 1rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 14px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        animation: slideInUp 0.6s ease-out;
+      }
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .snake-game {
         background: #ffffff;
         border: 2px solid #e1e8ed;
-        border-radius: 14px;
-        padding: 1rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
       }
       .snake-game::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 4px;
         background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
         background-size: 400% 400%;
         animation: gradientShift 3s ease infinite;
+      }
+      .snake-game:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
       }
       @keyframes gradientShift {
         0% { background-position: 0% 50%; }
@@ -276,15 +325,55 @@ author_profile: true
       @keyframes flash { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 
       @media (max-width: 768px) {
-        .page-header { margin-bottom: 1.25rem; padding: 1rem; }
-        .page-title { font-size: 1.75rem; }
-        .page-description { font-size: .95rem; }
-        .game-wrapper { flex-direction: column; gap: 1rem; padding: 1rem; }
-        .snake-sidebar { min-width: auto; }
-        #snakeCanvas { width: 100%; height: auto; max-width: 420px; }
-        .snake-controls { grid-template-columns: 1fr; gap: .5rem; }
-        .snake-controls button.primary { grid-column: span 1; }
-        .gameBtn { width: 100%; }
+        .page-header {
+          margin-bottom: 2rem;
+          padding: 1.5rem 1rem;
+        }
+        .page-title {
+          font-size: 2.5rem;
+        }
+        .page-description {
+          font-size: 1rem;
+        }
+        .game-wrapper {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+        .snake-sidebar {
+          min-width: auto;
+        }
+        #snakeCanvas {
+          width: 100%;
+          height: auto;
+          max-width: 400px;
+        }
+        .snake-controls {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        .snake-controls button.primary {
+          grid-column: span 1;
+        }
+        .gameBtn {
+          display: block;
+          width: 100%;
+          margin-bottom: 0.5rem;
+          margin-right: 0;
+          padding: 1rem;
+          font-size: 1rem;
+        }
+        .snake-stats-value {
+          font-size: 2rem;
+        }
+        .snake-info-item {
+          flex-direction: column;
+          text-align: center;
+        }
+        .snake-info-icon {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+        }
       }
     </style>
 
@@ -309,7 +398,7 @@ author_profile: true
           </div>
           <div class="snake-info-item">
             <span class="snake-info-icon">⌨️</span>
-            <span>Use Arrow keys or WASD to move the snake.</span>
+            <span>Use Arrow keys or WASD to move. Press Space to pause/resume.</span>
           </div>
           <div class="snake-info-item">
             <span class="snake-info-icon">💥</span>
@@ -514,6 +603,7 @@ author_profile: true
   pauseBtn.addEventListener('click', pause);
   resetBtn.addEventListener('click', reset);
 
+  // Initialize game
   init();
 })();
 </script>
