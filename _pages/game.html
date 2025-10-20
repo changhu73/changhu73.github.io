@@ -5,21 +5,48 @@ permalink: /game/
 author_profile: true
 ---
 
-<h3>Games</h3>
-<p>Select a game to play. More games coming soon!</p>
+<div class="page-header">
+  <h1 class="page-title">🎮 Games</h1>
+  <p class="page-description">Select a game to play. More games coming soon!</p>
+</div>
 
 <div id="gameSelector">
-  <button class="gameBtn active" data-game="snake">Snake</button>
+  <button class="gameBtn active" data-game="snake">
+    <span class="game-icon">🐍</span>
+    Snake
+  </button>
   <!-- Future games can be added here -->
 </div>
 
 <div id="gameContainer">
   <!-- Snake Game -->
   <div id="snakeGame" class="game-wrapper">
-    <h4>Snake</h4>
-    <p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
+    <h4 class="game-title">🐍 Snake</h4>
+    <p class="game-description">Classic snake game with modern UI. Eat apples, grow longer, avoid walls!</p>
 
     <style>
+      .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        color: white;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+      }
+      .page-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0 0 1rem 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        letter-spacing: -0.02em;
+      }
+      .page-description {
+        font-size: 1.2rem;
+        margin: 0;
+        opacity: 0.9;
+        font-weight: 400;
+      }
       .game-wrapper {
         display: flex;
         gap: 1.5rem;
@@ -30,17 +57,47 @@ author_profile: true
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        animation: slideInUp 0.6s ease-out;
+      }
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .snake-game {
         background: #ffffff;
         border: 2px solid #e1e8ed;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        transition: transform 0.2s ease;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-game::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+      }
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
       }
       .snake-game:hover {
-        transform: translateY(-2px);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
       }
       #snakeCanvas {
         background: #2c3e50;
@@ -58,80 +115,211 @@ author_profile: true
       }
       .snake-stats {
         display: flex;
-        gap: 0.75rem;
+        flex-direction: column;
         align-items: center;
-        margin: 0.5rem 0 1.5rem;
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: #2c3e50;
+        margin: 0.5rem 0 2rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-stats::before {
+        content: '🏆';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        font-size: 2rem;
+        opacity: 0.8;
+      }
+      .snake-stats-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .snake-stats-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        animation: scorePulse 2s infinite;
+      }
+      @keyframes flash {
+        0% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
       }
       .snake-controls {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
       }
       .snake-controls button {
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
         border: none;
-        background: #3498db;
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
         color: #fff;
         cursor: pointer;
         font-weight: 600;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-controls button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      .snake-controls button:hover::before {
+        left: 100%;
       }
       .snake-controls button:hover {
-        background: #2980b9;
+        background: linear-gradient(135deg, #0984e3 0%, #0652dd 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(116, 185, 255, 0.4);
+      }
+      .snake-controls button:active {
         transform: translateY(-1px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       }
       .snake-controls button.primary {
-        background: #e74c3c;
+        background: linear-gradient(135deg, #ff7675 0%, #e17055 100%);
+        grid-column: span 2;
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);
       }
       .snake-controls button.primary:hover {
-        background: #c0392b;
+        background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+        box-shadow: 0 8px 25px rgba(255, 118, 117, 0.4);
       }
       .snake-controls button:disabled {
         opacity: 0.6;
         cursor: not-allowed;
         transform: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       }
       .snake-info {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
         font-size: 0.95rem;
+        color: #495057;
+        line-height: 1.7;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .snake-info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+        padding: 0.5rem;
+        background: white;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+        transition: all 0.2s ease;
+      }
+      .snake-info-item:hover {
+        background: #f8f9ff;
+        transform: translateX(2px);
+      }
+      .snake-info-item:last-child {
+        margin-bottom: 0;
+      }
+      .game-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin: 0 0 0.5rem 0;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      }
+      .game-description {
+        font-size: 1rem;
         color: #7f8c8d;
-        margin-top: 1rem;
-        line-height: 1.6;
+        margin: 0 0 1rem 0;
+        text-align: center;
+        font-style: italic;
       }
       #gameSelector {
         margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
       }
       .gameBtn {
-        padding: 0.75rem 1.5rem;
-        margin-right: 0.5rem;
+        padding: 1rem 2rem;
+        margin: 0;
         border: 2px solid #3498db;
         background: #fff;
         color: #3498db;
-        border-radius: 8px;
+        border-radius: 12px;
         cursor: pointer;
         font-weight: 600;
-        transition: all 0.2s ease;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+      .gameBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s;
+      }
+      .gameBtn:hover::before {
+        left: 100%;
       }
       .gameBtn.active {
         background: #3498db;
         color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
       }
       .gameBtn:hover {
         background: #2980b9;
         color: #fff;
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+      .game-icon {
+        font-size: 1.5rem;
       }
       @media (max-width: 768px) {
+        .page-header {
+          margin-bottom: 2rem;
+          padding: 1.5rem 1rem;
+        }
+        .page-title {
+          font-size: 2.5rem;
+        }
+        .page-description {
+          font-size: 1rem;
+        }
         .game-wrapper {
           flex-direction: column;
-          gap: 1rem;
-          padding: 1rem;
+          gap: 1.5rem;
+          padding: 1.5rem 1rem;
         }
         .snake-sidebar {
           min-width: auto;
@@ -142,13 +330,30 @@ author_profile: true
           max-width: 400px;
         }
         .snake-controls {
-          justify-content: center;
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        .snake-controls button.primary {
+          grid-column: span 1;
         }
         .gameBtn {
           display: block;
           width: 100%;
           margin-bottom: 0.5rem;
           margin-right: 0;
+          padding: 1rem;
+          font-size: 1rem;
+        }
+        .snake-stats-value {
+          font-size: 2rem;
+        }
+        .snake-info-item {
+          flex-direction: column;
+          text-align: center;
+        }
+        .snake-info-icon {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
         }
       }
     </style>
@@ -159,7 +364,8 @@ author_profile: true
       </div>
       <div class="snake-sidebar">
         <div class="snake-stats">
-          Score: <span id="snakeScore">0</span>
+          <div class="snake-stats-label">Score</div>
+          <div class="snake-stats-value" id="snakeScore">0</div>
         </div>
         <div class="snake-controls">
           <button id="startBtn" class="primary">Start</button>
@@ -167,9 +373,18 @@ author_profile: true
           <button id="resetBtn">Reset</button>
         </div>
         <div class="snake-info">
-          - The game does not start automatically. Click Start.<br/>
-          - Use Arrow keys or WASD to move.<br/>
-          - Colliding with a wall or yourself ends the game.
+          <div class="snake-info-item">
+            <span class="snake-info-icon">🎯</span>
+            <span>The game does not start automatically. Click Start to begin.</span>
+          </div>
+          <div class="snake-info-item">
+            <span class="snake-info-icon">⌨️</span>
+            <span>Use Arrow keys or WASD to move the snake.</span>
+          </div>
+          <div class="snake-info-item">
+            <span class="snake-info-icon">💥</span>
+            <span>Colliding with walls or yourself ends the game.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -206,7 +421,18 @@ author_profile: true
   }
 
   function updateScore() {
-    if (scoreEl) scoreEl.textContent = String(score);
+    if (scoreEl) {
+      const currentScore = parseInt(scoreEl.textContent) || 0;
+      if (currentScore !== score) {
+        scoreEl.style.transform = 'scale(1.2)';
+        scoreEl.style.color = '#f39c12';
+        setTimeout(() => {
+          scoreEl.textContent = String(score);
+          scoreEl.style.transform = 'scale(1)';
+          scoreEl.style.color = '';
+        }, 150);
+      }
+    }
   }
 
   function randomEmptyCell() {
@@ -250,6 +476,21 @@ author_profile: true
       score += 1;
       updateScore();
       apple = randomEmptyCell();
+      // Flash effect for eating apple
+      const canvasRect = canvas.getBoundingClientRect();
+      const flash = document.createElement('div');
+      flash.style.position = 'absolute';
+      flash.style.left = canvasRect.left + 'px';
+      flash.style.top = canvasRect.top + 'px';
+      flash.style.width = canvasRect.width + 'px';
+      flash.style.height = canvasRect.height + 'px';
+      flash.style.background = 'rgba(255, 255, 255, 0.3)';
+      flash.style.pointerEvents = 'none';
+      flash.style.borderRadius = '8px';
+      flash.style.zIndex = '1000';
+      flash.style.animation = 'flash 0.2s ease-out';
+      document.body.appendChild(flash);
+      setTimeout(() => document.body.removeChild(flash), 200);
       if (speed > 70) {
         speed -= 3;
         clearInterval(loopId);
@@ -345,4 +586,3 @@ author_profile: true
 
   init();
 })();
-</script>
