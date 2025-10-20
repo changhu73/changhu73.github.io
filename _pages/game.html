@@ -5,8 +5,8 @@ permalink: /game/
 author_profile: true
 ---
 
-<h3>贪吃蛇 Snake</h3>
-<p>方向键或 WASD 控制方向。点击开始开始游戏，暂停可继续，撞到边界或自己将结束。</p>
+<h3>Snake</h3>
+<p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
 
 <style>
   .snake-game-wrapper {
@@ -69,17 +69,17 @@ author_profile: true
   </div>
   <div class="snake-sidebar">
     <div class="snake-stats">
-      分数 Score：<span id="snakeScore">0</span>
+      Score: <span id="snakeScore">0</span>
     </div>
     <div class="snake-controls">
-      <button id="startBtn" class="primary">开始 Start</button>
-      <button id="pauseBtn">暂停 Pause</button>
-      <button id="resetBtn">重开 Reset</button>
+      <button id="startBtn" class="primary">Start</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
     </div>
     <div class="snake-info">
-      - 初始不自动开始，请点击开始<br/>
-      - 方向键或 WASD 控制方向<br/>
-      - 碰撞边界或自身则失败
+      - The game does not start automatically. Click Start.<br/>
+      - Use Arrow keys or WASD to move.<br/>
+      - Colliding with a wall or yourself ends the game.
     </div>
   </div>
 </div>
@@ -134,7 +134,7 @@ author_profile: true
     ctx.textAlign = 'center';
     ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 10);
     ctx.font = '16px sans-serif';
-    ctx.fillText('点击 重开 Reset 重新开始', canvas.width/2, canvas.height/2 + 20);
+    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 20);
   }
 
   function tick() {
@@ -208,13 +208,13 @@ author_profile: true
   function pause() {
     if (!running) return;
     paused = !paused;
-    pauseBtn.textContent = paused ? '继续 Resume' : '暂停 Pause';
+    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
   }
 
   function reset() {
     clearInterval(loopId);
     init();
-    pauseBtn.textContent = '暂停 Pause';
+    pauseBtn.textContent = 'Pause';
   }
 
   window.addEventListener('keydown', (e) => {
