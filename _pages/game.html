@@ -19,7 +19,7 @@ author_profile: true
 
 <div id="gameContainer">
   <!-- Snake Game -->
-  <div id="snakeGame" class="game-section">
+  <div id="snakeGame" class="game-wrapper">
     <h4 class="game-title">🐍 Snake</h4>
     <p class="game-description">Classic snake game with modern UI. Eat apples, grow longer, avoid walls!</p>
 
@@ -244,8 +244,18 @@ author_profile: true
         background: white;
         border-radius: 8px;
         border-left: 4px solid #3498db;
+        transition: all 0.2s ease;
+      }
+      .snake-info-item:hover {
+        background: #f8f9ff;
+        transform: translateX(2px);
       }
       .snake-info-item:last-child { margin-bottom: 0; }
+      .snake-info-icon {
+        margin-right: .5rem;
+        font-size: 1.1rem;
+        opacity: 0.8;
+      }
 
       .game-title {
         font-size: 1.5rem;
@@ -365,14 +375,14 @@ author_profile: true
   function gameOver() {
     running = false;
     clearInterval(loopId);
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillStyle = 'rgba(44, 62, 80, 0.8)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 28px sans-serif';
+    ctx.fillStyle = '#ecf0f1';
+    ctx.font = 'bold 32px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 10);
-    ctx.font = '16px sans-serif';
-    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 20);
+    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 15);
+    ctx.font = '18px sans-serif';
+    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 25);
   }
 
   function tick() {
@@ -440,13 +450,19 @@ author_profile: true
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGrid();
 
-    ctx.fillStyle = '#e53935';
-    ctx.fillRect(apple.x * tileSize + 2, apple.y * tileSize + 2, tileSize - 4, tileSize - 4);
+    ctx.fillStyle = '#e74c3c';
+    ctx.fillRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
+    ctx.strokeStyle = '#c0392b';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
 
     for (let i = 0; i < snake.length; i++) {
       const s = snake[i];
-      ctx.fillStyle = i === 0 ? '#4e73df' : '#6c8bef';
-      ctx.fillRect(s.x * tileSize + 2, s.y * tileSize + 2, tileSize - 4, tileSize - 4);
+      ctx.fillStyle = i === 0 ? '#27ae60' : '#2ecc71';
+      ctx.fillRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
+      ctx.strokeStyle = '#229954';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
     }
   }
 
@@ -472,11 +488,26 @@ author_profile: true
 
   window.addEventListener('keydown', (e) => {
     const k = e.key.toLowerCase();
-    if (k === 'arrowup' || k === 'w') { if (dir.y !== 1) nextDir = {x: 0, y: -1}; }
-    else if (k === 'arrowdown' || k === 's') { if (dir.y !== -1) nextDir = {x: 0, y: 1}; }
-    else if (k === 'arrowleft' || k === 'a') { if (dir.x !== 1) nextDir = {x: -1, y: 0}; }
-    else if (k === 'arrowright' || k === 'd') { if (dir.x !== -1) nextDir = {x: 1, y: 0}; }
-    else if (k === ' ') { e.preventDefault(); pause(); }
+    if (k === 'arrowup' || k === 'w') {
+      e.preventDefault();
+      if (dir.y !== 1) nextDir = {x: 0, y: -1};
+    }
+    else if (k === 'arrowdown' || k === 's') {
+      e.preventDefault();
+      if (dir.y !== -1) nextDir = {x: 0, y: 1};
+    }
+    else if (k === 'arrowleft' || k === 'a') {
+      e.preventDefault();
+      if (dir.x !== 1) nextDir = {x: -1, y: 0};
+    }
+    else if (k === 'arrowright' || k === 'd') {
+      e.preventDefault();
+      if (dir.x !== -1) nextDir = {x: 1, y: 0};
+    }
+    else if (k === ' ') {
+      e.preventDefault();
+      pause();
+    }
   }, { passive: false });
 
   startBtn.addEventListener('click', start);
