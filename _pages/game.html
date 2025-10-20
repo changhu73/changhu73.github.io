@@ -5,7 +5,6 @@ permalink: /game/
 author_profile: true
 ---
 
-<<<<<<< HEAD
 <div class="page-header">
   <h1 class="page-title">🎮 Games</h1>
   <p class="page-description">Select a game to play. More games coming soon!</p>
@@ -16,252 +15,47 @@ author_profile: true
     <span class="game-icon">🐍</span>
     Snake
   </button>
-  <!-- Future games can be added here -->
 </div>
 
 <div id="gameContainer">
   <!-- Snake Game -->
-  <div id="snakeGame" class="game-wrapper">
+  <div id="snakeGame" class="game-section">
     <h4 class="game-title">🐍 Snake</h4>
     <p class="game-description">Classic snake game with modern UI. Eat apples, grow longer, avoid walls!</p>
 
     <style>
       .page-header {
         text-align: center;
-        margin-bottom: 3rem;
-        padding: 2rem 0;
+        margin-bottom: 2rem;
+        padding: 1.5rem 0;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 20px;
+        border-radius: 16px;
         color: white;
         box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
       }
       .page-title {
-        font-size: 3rem;
+        font-size: 2.25rem;
         font-weight: 800;
-        margin: 0 0 1rem 0;
+        margin: 0 0 .5rem 0;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         letter-spacing: -0.02em;
       }
       .page-description {
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin: 0;
-        opacity: 0.9;
+        opacity: 0.95;
         font-weight: 400;
       }
-      .game-wrapper {
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        margin-top: 1rem;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        animation: slideInUp 0.6s ease-out;
-      }
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .snake-game {
-        background: #ffffff;
-        border: 2px solid #e1e8ed;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      .snake-game::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
-        background-size: 400% 400%;
-        animation: gradientShift 3s ease infinite;
-      }
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-      .snake-game:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-      }
-      #snakeCanvas {
-        background: #2c3e50;
-        border: 3px solid #34495e;
-        border-radius: 8px;
-        display: block;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
-      }
-      .snake-sidebar {
-        min-width: 250px;
-        background: #ffffff;
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      }
-      .snake-stats {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0.5rem 0 2rem;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        color: white;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        position: relative;
-        overflow: hidden;
-      }
-      .snake-stats::before {
-        content: '🏆';
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        font-size: 2rem;
-        opacity: 0.8;
-      }
-      .snake-stats-label {
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-        opacity: 0.9;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .snake-stats-value {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin: 0;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        animation: scorePulse 2s infinite;
-      }
-      @keyframes flash {
-        0% { opacity: 0; }
-        50% { opacity: 1; }
-        100% { opacity: 0; }
-      }
-      .snake-controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-      }
-      .snake-controls button {
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        border: none;
-        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-        color: #fff;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
-        position: relative;
-        overflow: hidden;
-      }
-      .snake-controls button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s;
-      }
-      .snake-controls button:hover::before {
-        left: 100%;
-      }
-      .snake-controls button:hover {
-        background: linear-gradient(135deg, #0984e3 0%, #0652dd 100%);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(116, 185, 255, 0.4);
-      }
-      .snake-controls button:active {
-        transform: translateY(-1px);
-      }
-      .snake-controls button.primary {
-        background: linear-gradient(135deg, #ff7675 0%, #e17055 100%);
-        grid-column: span 2;
-        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);
-      }
-      .snake-controls button.primary:hover {
-        background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
-        box-shadow: 0 8px 25px rgba(255, 118, 117, 0.4);
-      }
-      .snake-controls button:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      }
-      .snake-info {
-        background: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 12px;
-        padding: 1.5rem;
-        font-size: 0.95rem;
-        color: #495057;
-        line-height: 1.7;
-        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-      }
-      .snake-info-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 0.75rem;
-        padding: 0.5rem;
-        background: white;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
-        transition: all 0.2s ease;
-      }
-      .snake-info-item:hover {
-        background: #f8f9ff;
-        transform: translateX(2px);
-      }
-      .snake-info-item:last-child {
-        margin-bottom: 0;
-      }
-      .game-title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #2c3e50;
-        margin: 0 0 0.5rem 0;
-        text-align: center;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      }
-      .game-description {
-        font-size: 1rem;
-        color: #7f8c8d;
-        margin: 0 0 1rem 0;
-        text-align: center;
-        font-style: italic;
-      }
+
       #gameSelector {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         display: flex;
         justify-content: center;
         gap: 1rem;
         flex-wrap: wrap;
       }
       .gameBtn {
-        padding: 1rem 2rem;
+        padding: .8rem 1.25rem;
         margin: 0;
         border: 2px solid #3498db;
         background: #fff;
@@ -269,11 +63,11 @@ author_profile: true
         border-radius: 12px;
         cursor: pointer;
         font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        display: flex;
+        font-size: 1rem;
+        transition: all 0.25s ease;
+        display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: .5rem;
         box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
         position: relative;
         overflow: hidden;
@@ -285,81 +79,206 @@ author_profile: true
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
         transition: left 0.5s;
       }
-      .gameBtn:hover::before {
-        left: 100%;
-      }
+      .gameBtn:hover::before { left: 100%; }
       .gameBtn.active {
         background: #3498db;
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.35);
       }
-      .gameBtn:hover {
-        background: #2980b9;
+      .game-icon { font-size: 1.25rem; }
+
+      .game-wrapper {
+        display: flex;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: .5rem;
+        padding: 1rem;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
+
+      .snake-game {
+        background: #ffffff;
+        border: 2px solid #e1e8ed;
+        border-radius: 14px;
+        padding: 1rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-game::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+      }
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      #snakeCanvas {
+        background: #2c3e50;
+        border: 3px solid #34495e;
+        border-radius: 8px;
+        display: block;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+      }
+
+      .snake-sidebar {
+        min-width: 250px;
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      }
+
+      .snake-stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: .25rem 0 1rem;
+        padding: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-stats::before {
+        content: '🏆';
+        position: absolute;
+        top: -8px; right: -8px;
+        font-size: 1.75rem;
+        opacity: 0.8;
+      }
+      .snake-stats-label {
+        font-size: .8rem;
+        font-weight: 600;
+        margin-bottom: .25rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+      }
+      .snake-stats-value {
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+        animation: scorePulse 2s ease-in-out infinite;
+      }
+      @keyframes scorePulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .snake-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: .6rem;
+        margin-bottom: 1rem;
+      }
+      .snake-controls button {
+        padding: .8rem 1rem;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
         color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: .95rem;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 15px rgba(116, 185, 255, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+      .snake-controls button::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+        transition: left 0.5s;
+      }
+      .snake-controls button:hover::before { left: 100%; }
+      .snake-controls button:hover {
+        background: linear-gradient(135deg, #0984e3 0%, #0652dd 100%);
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        box-shadow: 0 8px 25px rgba(116, 185, 255, 0.35);
       }
-      .game-icon {
+      .snake-controls button.primary {
+        background: linear-gradient(135deg, #ff7675 0%, #e17055 100%);
+        grid-column: span 2;
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.25);
+      }
+      .snake-controls button.primary:hover {
+        background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+      }
+      .snake-controls button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+      .snake-info {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1rem;
+        font-size: .95rem;
+        color: #495057;
+        line-height: 1.6;
+      }
+      .snake-info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: .6rem;
+        padding: .4rem .5rem;
+        background: white;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+      }
+      .snake-info-item:last-child { margin-bottom: 0; }
+
+      .game-title {
         font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin: 0 0 .25rem 0;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.06);
       }
+      .game-description {
+        font-size: .95rem;
+        color: #7f8c8d;
+        margin: 0 0 .75rem 0;
+        text-align: center;
+        font-style: italic;
+      }
+
+      @keyframes flash { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
       @media (max-width: 768px) {
-        .page-header {
-          margin-bottom: 2rem;
-          padding: 1.5rem 1rem;
-        }
-        .page-title {
-          font-size: 2.5rem;
-        }
-        .page-description {
-          font-size: 1rem;
-        }
-        .game-wrapper {
-          flex-direction: column;
-          gap: 1.5rem;
-          padding: 1.5rem 1rem;
-        }
-        .snake-sidebar {
-          min-width: auto;
-        }
-        #snakeCanvas {
-          width: 100%;
-          height: auto;
-          max-width: 400px;
-        }
-        .snake-controls {
-          grid-template-columns: 1fr;
-          gap: 0.75rem;
-        }
-        .snake-controls button.primary {
-          grid-column: span 1;
-        }
-        .gameBtn {
-          display: block;
-          width: 100%;
-          margin-bottom: 0.5rem;
-          margin-right: 0;
-          padding: 1rem;
-          font-size: 1rem;
-        }
-        .snake-stats-value {
-          font-size: 2rem;
-        }
-        .snake-info-item {
-          flex-direction: column;
-          text-align: center;
-        }
-        .snake-info-icon {
-          margin-right: 0;
-          margin-bottom: 0.5rem;
-        }
+        .page-header { margin-bottom: 1.25rem; padding: 1rem; }
+        .page-title { font-size: 1.75rem; }
+        .page-description { font-size: .95rem; }
+        .game-wrapper { flex-direction: column; gap: 1rem; padding: 1rem; }
+        .snake-sidebar { min-width: auto; }
+        #snakeCanvas { width: 100%; height: auto; max-width: 420px; }
+        .snake-controls { grid-template-columns: 1fr; gap: .5rem; }
+        .snake-controls button.primary { grid-column: span 1; }
+        .gameBtn { width: 100%; }
       }
     </style>
 
-    <div class="snake-game-wrapper">
+    <div class="game-wrapper">
       <div class="snake-game">
         <canvas id="snakeCanvas" width="480" height="480"></canvas>
       </div>
@@ -388,83 +307,6 @@ author_profile: true
           </div>
         </div>
       </div>
-=======
-<h3>Snake</h3>
-<p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
-
-<style>
-  .snake-game-wrapper {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  .snake-game {
-    background: #fafafa;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  #snakeCanvas {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    display: block;
-  }
-  .snake-sidebar {
-    min-width: 220px;
-  }
-  .snake-stats {
-    display: flex;
-    gap: .75rem;
-    align-items: center;
-    margin: .5rem 0 1rem;
-    font-weight: 600;
-  }
-  .snake-controls {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-  }
-  .snake-controls button {
-    padding: .5rem 1rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background: #fff;
-    cursor: pointer;
-  }
-  .snake-controls button.primary {
-    background: #4e73df;
-    color: #fff;
-    border-color: #4e73df;
-  }
-  .snake-controls button:disabled { opacity: .6; cursor: not-allowed; }
-  .snake-info {
-    font-size: .9rem;
-    color: #666;
-    margin-top: .75rem;
-  }
-</style>
-
-<div class="snake-game-wrapper">
-  <div class="snake-game">
-    <canvas id="snakeCanvas" width="480" height="480"></canvas>
-  </div>
-  <div class="snake-sidebar">
-    <div class="snake-stats">
-      Score: <span id="snakeScore">0</span>
-    </div>
-    <div class="snake-controls">
-      <button id="startBtn" class="primary">Start</button>
-      <button id="pauseBtn">Pause</button>
-      <button id="resetBtn">Reset</button>
-    </div>
-    <div class="snake-info">
-      - The game does not start automatically. Click Start.<br/>
-      - Use Arrow keys or WASD to move.<br/>
-      - Colliding with a wall or yourself ends the game.
->>>>>>> parent of 743e2a9 (Update game.html)
     </div>
   </div>
 </div>
@@ -643,3 +485,4 @@ author_profile: true
 
   init();
 })();
+</script>
