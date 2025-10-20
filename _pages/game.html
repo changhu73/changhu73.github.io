@@ -5,6 +5,7 @@ permalink: /game/
 author_profile: true
 ---
 
+<<<<<<< HEAD
 <div class="page-header">
   <h1 class="page-title">🎮 Games</h1>
   <p class="page-description">Select a game to play. More games coming soon!</p>
@@ -387,6 +388,83 @@ author_profile: true
           </div>
         </div>
       </div>
+=======
+<h3>Snake</h3>
+<p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
+
+<style>
+  .snake-game-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .snake-game {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  #snakeCanvas {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: block;
+  }
+  .snake-sidebar {
+    min-width: 220px;
+  }
+  .snake-stats {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    margin: .5rem 0 1rem;
+    font-weight: 600;
+  }
+  .snake-controls {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .snake-controls button {
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+  }
+  .snake-controls button.primary {
+    background: #4e73df;
+    color: #fff;
+    border-color: #4e73df;
+  }
+  .snake-controls button:disabled { opacity: .6; cursor: not-allowed; }
+  .snake-info {
+    font-size: .9rem;
+    color: #666;
+    margin-top: .75rem;
+  }
+</style>
+
+<div class="snake-game-wrapper">
+  <div class="snake-game">
+    <canvas id="snakeCanvas" width="480" height="480"></canvas>
+  </div>
+  <div class="snake-sidebar">
+    <div class="snake-stats">
+      Score: <span id="snakeScore">0</span>
+    </div>
+    <div class="snake-controls">
+      <button id="startBtn" class="primary">Start</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <div class="snake-info">
+      - The game does not start automatically. Click Start.<br/>
+      - Use Arrow keys or WASD to move.<br/>
+      - Colliding with a wall or yourself ends the game.
+>>>>>>> parent of 743e2a9 (Update game.html)
     </div>
   </div>
 </div>
@@ -445,14 +523,14 @@ author_profile: true
   function gameOver() {
     running = false;
     clearInterval(loopId);
-    ctx.fillStyle = 'rgba(44, 62, 80, 0.8)';
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#ecf0f1';
-    ctx.font = 'bold 32px sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 28px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 15);
-    ctx.font = '18px sans-serif';
-    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 25);
+    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 10);
+    ctx.font = '16px sans-serif';
+    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 20);
   }
 
   function tick() {
@@ -520,19 +598,13 @@ author_profile: true
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGrid();
 
-    ctx.fillStyle = '#e74c3c';
-    ctx.fillRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
-    ctx.strokeStyle = '#c0392b';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
+    ctx.fillStyle = '#e53935';
+    ctx.fillRect(apple.x * tileSize + 2, apple.y * tileSize + 2, tileSize - 4, tileSize - 4);
 
     for (let i = 0; i < snake.length; i++) {
       const s = snake[i];
-      ctx.fillStyle = i === 0 ? '#27ae60' : '#2ecc71';
-      ctx.fillRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
-      ctx.strokeStyle = '#229954';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
+      ctx.fillStyle = i === 0 ? '#4e73df' : '#6c8bef';
+      ctx.fillRect(s.x * tileSize + 2, s.y * tileSize + 2, tileSize - 4, tileSize - 4);
     }
   }
 
@@ -558,26 +630,11 @@ author_profile: true
 
   window.addEventListener('keydown', (e) => {
     const k = e.key.toLowerCase();
-    if (k === 'arrowup' || k === 'w') {
-      e.preventDefault();
-      if (dir.y !== 1) nextDir = {x: 0, y: -1};
-    }
-    else if (k === 'arrowdown' || k === 's') {
-      e.preventDefault();
-      if (dir.y !== -1) nextDir = {x: 0, y: 1};
-    }
-    else if (k === 'arrowleft' || k === 'a') {
-      e.preventDefault();
-      if (dir.x !== 1) nextDir = {x: -1, y: 0};
-    }
-    else if (k === 'arrowright' || k === 'd') {
-      e.preventDefault();
-      if (dir.x !== -1) nextDir = {x: 1, y: 0};
-    }
-    else if (k === ' ') {
-      e.preventDefault();
-      pause();
-    }
+    if (k === 'arrowup' || k === 'w') { if (dir.y !== 1) nextDir = {x: 0, y: -1}; }
+    else if (k === 'arrowdown' || k === 's') { if (dir.y !== -1) nextDir = {x: 0, y: 1}; }
+    else if (k === 'arrowleft' || k === 'a') { if (dir.x !== 1) nextDir = {x: -1, y: 0}; }
+    else if (k === 'arrowright' || k === 'd') { if (dir.x !== -1) nextDir = {x: 1, y: 0}; }
+    else if (k === ' ') { e.preventDefault(); pause(); }
   }, { passive: false });
 
   startBtn.addEventListener('click', start);
