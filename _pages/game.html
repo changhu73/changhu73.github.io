@@ -5,81 +5,173 @@ permalink: /game/
 author_profile: true
 ---
 
-<h3>Snake</h3>
-<p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
+<h3>Games</h3>
+<p>Select a game to play. More games coming soon!</p>
 
-<style>
-  .snake-game-wrapper {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  .snake-game {
-    background: #fafafa;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  #snakeCanvas {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    display: block;
-  }
-  .snake-sidebar {
-    min-width: 220px;
-  }
-  .snake-stats {
-    display: flex;
-    gap: .75rem;
-    align-items: center;
-    margin: .5rem 0 1rem;
-    font-weight: 600;
-  }
-  .snake-controls {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-  }
-  .snake-controls button {
-    padding: .5rem 1rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background: #fff;
-    cursor: pointer;
-  }
-  .snake-controls button.primary {
-    background: #4e73df;
-    color: #fff;
-    border-color: #4e73df;
-  }
-  .snake-controls button:disabled { opacity: .6; cursor: not-allowed; }
-  .snake-info {
-    font-size: .9rem;
-    color: #666;
-    margin-top: .75rem;
-  }
-</style>
+<div id="gameSelector">
+  <button class="gameBtn active" data-game="snake">Snake</button>
+  <!-- Future games can be added here -->
+</div>
 
-<div class="snake-game-wrapper">
-  <div class="snake-game">
-    <canvas id="snakeCanvas" width="480" height="480"></canvas>
-  </div>
-  <div class="snake-sidebar">
-    <div class="snake-stats">
-      Score: <span id="snakeScore">0</span>
-    </div>
-    <div class="snake-controls">
-      <button id="startBtn" class="primary">Start</button>
-      <button id="pauseBtn">Pause</button>
-      <button id="resetBtn">Reset</button>
-    </div>
-    <div class="snake-info">
-      - The game does not start automatically. Click Start.<br/>
-      - Use Arrow keys or WASD to move.<br/>
-      - Colliding with a wall or yourself ends the game.
+<div id="gameContainer">
+  <!-- Snake Game -->
+  <div id="snakeGame" class="game-wrapper">
+    <h4>Snake</h4>
+    <p>Use Arrow keys or WASD to move. Click Start to begin. Pause toggles the game. Colliding with walls or yourself ends the game.</p>
+
+    <style>
+      .game-wrapper {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: 1rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      .snake-game {
+        background: #ffffff;
+        border: 2px solid #e1e8ed;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: transform 0.2s ease;
+      }
+      .snake-game:hover {
+        transform: translateY(-2px);
+      }
+      #snakeCanvas {
+        background: #2c3e50;
+        border: 3px solid #34495e;
+        border-radius: 8px;
+        display: block;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+      }
+      .snake-sidebar {
+        min-width: 250px;
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      }
+      .snake-stats {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        margin: 0.5rem 0 1.5rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #2c3e50;
+      }
+      .snake-controls {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .snake-controls button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        background: #3498db;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .snake-controls button:hover {
+        background: #2980b9;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+      .snake-controls button.primary {
+        background: #e74c3c;
+      }
+      .snake-controls button.primary:hover {
+        background: #c0392b;
+      }
+      .snake-controls button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .snake-info {
+        font-size: 0.95rem;
+        color: #7f8c8d;
+        margin-top: 1rem;
+        line-height: 1.6;
+      }
+      #gameSelector {
+        margin-bottom: 2rem;
+      }
+      .gameBtn {
+        padding: 0.75rem 1.5rem;
+        margin-right: 0.5rem;
+        border: 2px solid #3498db;
+        background: #fff;
+        color: #3498db;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .gameBtn.active {
+        background: #3498db;
+        color: #fff;
+      }
+      .gameBtn:hover {
+        background: #2980b9;
+        color: #fff;
+        transform: translateY(-1px);
+      }
+      @media (max-width: 768px) {
+        .game-wrapper {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+        .snake-sidebar {
+          min-width: auto;
+        }
+        #snakeCanvas {
+          width: 100%;
+          height: auto;
+          max-width: 400px;
+        }
+        .snake-controls {
+          justify-content: center;
+        }
+        .gameBtn {
+          display: block;
+          width: 100%;
+          margin-bottom: 0.5rem;
+          margin-right: 0;
+        }
+      }
+    </style>
+
+    <div class="snake-game-wrapper">
+      <div class="snake-game">
+        <canvas id="snakeCanvas" width="480" height="480"></canvas>
+      </div>
+      <div class="snake-sidebar">
+        <div class="snake-stats">
+          Score: <span id="snakeScore">0</span>
+        </div>
+        <div class="snake-controls">
+          <button id="startBtn" class="primary">Start</button>
+          <button id="pauseBtn">Pause</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+        <div class="snake-info">
+          - The game does not start automatically. Click Start.<br/>
+          - Use Arrow keys or WASD to move.<br/>
+          - Colliding with a wall or yourself ends the game.
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -127,14 +219,14 @@ author_profile: true
   function gameOver() {
     running = false;
     clearInterval(loopId);
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillStyle = 'rgba(44, 62, 80, 0.8)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 28px sans-serif';
+    ctx.fillStyle = '#ecf0f1';
+    ctx.font = 'bold 32px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 10);
-    ctx.font = '16px sans-serif';
-    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 20);
+    ctx.fillText('Game Over', canvas.width/2, canvas.height/2 - 15);
+    ctx.font = '18px sans-serif';
+    ctx.fillText('Click Reset to play again', canvas.width/2, canvas.height/2 + 25);
   }
 
   function tick() {
@@ -187,13 +279,19 @@ author_profile: true
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGrid();
 
-    ctx.fillStyle = '#e53935';
-    ctx.fillRect(apple.x * tileSize + 2, apple.y * tileSize + 2, tileSize - 4, tileSize - 4);
+    ctx.fillStyle = '#e74c3c';
+    ctx.fillRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
+    ctx.strokeStyle = '#c0392b';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(apple.x * tileSize + 3, apple.y * tileSize + 3, tileSize - 6, tileSize - 6);
 
     for (let i = 0; i < snake.length; i++) {
       const s = snake[i];
-      ctx.fillStyle = i === 0 ? '#4e73df' : '#6c8bef';
-      ctx.fillRect(s.x * tileSize + 2, s.y * tileSize + 2, tileSize - 4, tileSize - 4);
+      ctx.fillStyle = i === 0 ? '#27ae60' : '#2ecc71';
+      ctx.fillRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
+      ctx.strokeStyle = '#229954';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(s.x * tileSize + 3, s.y * tileSize + 3, tileSize - 6, tileSize - 6);
     }
   }
 
@@ -219,11 +317,26 @@ author_profile: true
 
   window.addEventListener('keydown', (e) => {
     const k = e.key.toLowerCase();
-    if (k === 'arrowup' || k === 'w') { if (dir.y !== 1) nextDir = {x: 0, y: -1}; }
-    else if (k === 'arrowdown' || k === 's') { if (dir.y !== -1) nextDir = {x: 0, y: 1}; }
-    else if (k === 'arrowleft' || k === 'a') { if (dir.x !== 1) nextDir = {x: -1, y: 0}; }
-    else if (k === 'arrowright' || k === 'd') { if (dir.x !== -1) nextDir = {x: 1, y: 0}; }
-    else if (k === ' ') { e.preventDefault(); pause(); }
+    if (k === 'arrowup' || k === 'w') {
+      e.preventDefault();
+      if (dir.y !== 1) nextDir = {x: 0, y: -1};
+    }
+    else if (k === 'arrowdown' || k === 's') {
+      e.preventDefault();
+      if (dir.y !== -1) nextDir = {x: 0, y: 1};
+    }
+    else if (k === 'arrowleft' || k === 'a') {
+      e.preventDefault();
+      if (dir.x !== 1) nextDir = {x: -1, y: 0};
+    }
+    else if (k === 'arrowright' || k === 'd') {
+      e.preventDefault();
+      if (dir.x !== -1) nextDir = {x: 1, y: 0};
+    }
+    else if (k === ' ') {
+      e.preventDefault();
+      pause();
+    }
   }, { passive: false });
 
   startBtn.addEventListener('click', start);
