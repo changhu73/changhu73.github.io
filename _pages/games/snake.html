@@ -8,7 +8,7 @@ author_profile: true
 <a href="/game/" class="back-link" style="display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;text-decoration:none;color:#3498db;font-weight:600;">⟵ Back to Games</a>
 
 <h3>Snake</h3>
-<p>Use WASD keys to move. The game starts immediately when you open the page. Use Space to pause/resume. Colliding with walls or yourself ends the game.</p>
+<p>Use WASD or Arrow keys to move. On mobile, use the on-screen D-pad or swipe on the canvas. The game starts immediately when you open the page. Press Space to pause/resume. Colliding with walls or yourself ends the game.</p>
 
 <style>
   .game-wrapper {
@@ -98,6 +98,33 @@ author_profile: true
   .snake-controls button.primary:hover { background: #c0392b; }
   .snake-controls button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   .snake-controls button#startBtn { display: none; }
+
+  /* On-screen D-pad for touch users */
+  .snake-touch-controls {
+    display: grid;
+    grid-template-columns: 56px 56px 56px;
+    grid-template-rows: 56px 56px 56px;
+    gap: 8px;
+    margin-top: 0.25rem;
+  }
+  .snake-touch-controls button {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .snake-touch-controls button:hover { background: #f3f4f6; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  #btnUp { grid-column: 2; grid-row: 1; }
+  #btnLeft { grid-column: 1; grid-row: 2; }
+  #btnRight { grid-column: 3; grid-row: 2; }
+  #btnDown { grid-column: 2; grid-row: 3; }
+
   .snake-info {
     font-size: 0.95rem;
     color: #7f8c8d;
@@ -124,9 +151,15 @@ author_profile: true
       <button id="pauseBtn">Pause</button>
       <button id="resetBtn">Reset</button>
     </div>
+    <div class="snake-touch-controls" aria-label="Touch controls" role="group">
+      <button id="btnUp" aria-label="Up">▲</button>
+      <button id="btnLeft" aria-label="Left">◀</button>
+      <button id="btnRight" aria-label="Right">▶</button>
+      <button id="btnDown" aria-label="Down">▼</button>
+    </div>
     <div class="snake-info">
       - The game starts automatically when you open this page.<br/>
-      - Use WASD keys to move. Press Space to pause/resume.<br/>
+      - Move with WASD or Arrow keys. On mobile, use the on-screen D-pad or swipe on the canvas. Press Space to pause/resume.<br/>
       - Colliding with a wall or yourself ends the game.
     </div>
   </div>
@@ -331,14 +364,59 @@ author_profile: true
     pauseBtn.textContent = 'Pause';
   }
 
+  function setNextDirection(dx, dy) {
+    if ((dx === 1 && dir.x === -1) || (dx === -1 && dir.x === 1) || (dy === 1 && dir.y === -1) || (dy === -1 && dir.y === 1)) return;
+    nextDir = { x: dx, y: dy };
+  }
+
   window.addEventListener('keydown', (e) => {
-    const k = e.key.toLowerCase();
-    if (k === 'w') { if (dir.y !== 1) nextDir = {x: 0, y: -1}; }
-    else if (k === 's') { if (dir.y !== -1) nextDir = {x: 0, y: 1}; }
-    else if (k === 'a') { if (dir.x !== 1) nextDir = {x: -1, y: 0}; }
-    else if (k === 'd') { if (dir.x !== -1) nextDir = {x: 1, y: 0}; }
-    else if (k === ' ') { e.preventDefault(); pause(); }
+    const k = e.key;
+    if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight' || k === ' ') {
+      e.preventDefault();
+    }
+    const kl = k.toLowerCase();
+    if (kl === 'w' || k === 'ArrowUp') { setNextDirection(0, -1); }
+    else if (kl === 's' || k === 'ArrowDown') { setNextDirection(0, 1); }
+    else if (kl === 'a' || k === 'ArrowLeft') { setNextDirection(-1, 0); }
+    else if (kl === 'd' || k === 'ArrowRight') { setNextDirection(1, 0); }
+    else if (k === ' ') { pause(); }
   }, { passive: false });
+
+  const upBtn = document.getElementById('btnUp');
+  const downBtn = document.getElementById('btnDown');
+  const leftBtn = document.getElementById('btnLeft');
+  const rightBtn = document.getElementById('btnRight');
+
+  function bindDirBtn(btn, dx, dy) {
+    if (!btn) return;
+    const handler = (ev) => { ev.preventDefault(); setNextDirection(dx, dy); };
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchstart', handler, { passive: false });
+  }
+  bindDirBtn(upBtn, 0, -1);
+  bindDirBtn(downBtn, 0, 1);
+  bindDirBtn(leftBtn, -1, 0);
+  bindDirBtn(rightBtn, 1, 0);
+
+  // swipe on canvas to control on touch devices
+  let pointerStart = null;
+  canvas.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse') return;
+    pointerStart = { x: e.clientX, y: e.clientY };
+  });
+  canvas.addEventListener('pointerup', (e) => {
+    if (!pointerStart || e.pointerType === 'mouse') { pointerStart = null; return; }
+    const dx = e.clientX - pointerStart.x;
+    const dy = e.clientY - pointerStart.y;
+    const absx = Math.abs(dx), absy = Math.abs(dy);
+    const threshold = Math.max(12, tileSize * 0.4);
+    if (Math.max(absx, absy) >= threshold) {
+      if (absx > absy) setNextDirection(dx > 0 ? 1 : -1, 0);
+      else setNextDirection(0, dy > 0 ? 1 : -1);
+    }
+    pointerStart = null;
+  });
+  canvas.addEventListener('pointercancel', () => { pointerStart = null; });
 
   if (startBtn) startBtn.style.display = 'none';
   pauseBtn.addEventListener('click', pause);
