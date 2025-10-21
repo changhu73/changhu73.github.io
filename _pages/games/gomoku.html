@@ -1,0 +1,687 @@
+---
+layout: archive
+title: "Gomoku (五子棋)"
+permalink: /game/gomoku/
+author_profile: true
+---
+
+<a href="/game/" class="back-link" style="display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1rem;text-decoration:none;color:#3498db;font-weight:600;">⟵ Back to Games</a>
+
+<h3>Gomoku (五子棋)</h3>
+<p>Place five stones in a row to win. Click on the board to place your stone. The AI uses a time-limited alpha-beta search with heuristics for a stronger challenge.</p>
+
+<style>
+  .game-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .gomoku-game {
+    background: #ffffff;
+    border: 2px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+  }
+  .gomoku-game:hover { transform: translateY(-2px); }
+  #gomokuCanvas {
+    background: #f8e7b1; /* light wood */
+    border: 3px solid #c9a36a;
+    border-radius: 8px;
+    display: block;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+    touch-action: manipulation;
+  }
+  .gomoku-sidebar {
+    min-width: 270px;
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+  .gomoku-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem .75rem;
+    align-items: center;
+    margin: 0.25rem 0 1rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #2c3e50;
+  }
+  .gomoku-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .gomoku-controls button, .gomoku-controls select {
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  }
+  .gomoku-controls button:hover, .gomoku-controls select:hover { background: #f3f4f6; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  .gomoku-controls button.primary { background: #3498db; color: #fff; border-color: transparent; }
+  .gomoku-controls button.primary:hover { background: #2980b9; }
+  .gomoku-info { font-size: 0.95rem; color: #7f8c8d; margin-top: .5rem; line-height: 1.6; }
+  .ai-indicator { display: inline-flex; align-items: center; gap: .4rem; font-size: .95rem; color: #6b7280; }
+  .ai-dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.6; } }
+  @media (max-width: 768px) {
+    .game-wrapper { flex-direction: column; gap: 1rem; padding: 1rem; }
+    .gomoku-sidebar { min-width: auto; }
+    #gomokuCanvas { width: 100%; height: auto; max-width: 520px; }
+    .gomoku-controls { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<div class="gomoku-game-wrapper game-wrapper">
+  <div class="gomoku-game">
+    <canvas id="gomokuCanvas" width="600" height="600"></canvas>
+  </div>
+  <div class="gomoku-sidebar">
+    <div class="gomoku-stats">
+      <div>Turn:</div>
+      <div><span id="gomokuTurn">Black (You)</span></div>
+      <div>Status:</div>
+      <div><span id="gomokuStatus">Playing</span></div>
+    </div>
+    <div class="gomoku-controls">
+      <button id="gmNew" class="primary">New Game</button>
+      <button id="gmUndo">Undo</button>
+      <select id="gmAiLevel" title="AI Strength">
+        <option value="800">AI: Fast (0.8s)</option>
+        <option value="1500" selected>AI: Strong (1.5s)</option>
+        <option value="3000">AI: Very Strong (3s)</option>
+      </select>
+      <select id="gmMaxDepth" title="Max Search Depth">
+        <option value="2">Depth: 2</option>
+        <option value="3" selected>Depth: 3</option>
+        <option value="4">Depth: 4</option>
+      </select>
+      <button id="gmSwitch">AI First</button>
+      <span id="aiThinking" class="ai-indicator" style="display:none;"><span class="ai-dot"></span> AI thinking...</span>
+    </div>
+    <div class="gomoku-info">
+      - Place five stones in a row (horizontal, vertical, or diagonal) to win.<br/>
+      - You are Black by default. Click AI First to let AI start as Black.<br/>
+      - AI uses alpha-beta search with iterative deepening and pattern-based evaluation.
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('gomokuCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const SIZE = 15; // 15x15 board
+  const CELL = Math.floor((canvas.width - 40) / (SIZE - 1)); // spacing between lines
+  const OFFSET = 20; // board margin
+
+  const EMPTY = 0, BLACK = 1, WHITE = 2;
+
+  const turnEl = document.getElementById('gomokuTurn');
+  const statusEl = document.getElementById('gomokuStatus');
+  const btnNew = document.getElementById('gmNew');
+  const btnUndo = document.getElementById('gmUndo');
+  const btnSwitch = document.getElementById('gmSwitch');
+  const selLevel = document.getElementById('gmAiLevel');
+  const selDepth = document.getElementById('gmMaxDepth');
+  const thinkingEl = document.getElementById('aiThinking');
+
+  let board, moves, currentTurn, gameOver, aiColor, humanColor;
+  let aiTimeLimit = parseInt(selLevel.value, 10); // ms
+  let aiMaxDepth = parseInt(selDepth.value, 10);
+  let aiThinking = false;
+
+  function reset(aiFirst = false) {
+    board = Array.from({ length: SIZE }, () => Array(SIZE).fill(EMPTY));
+    moves = [];
+    aiColor = aiFirst ? BLACK : WHITE;
+    humanColor = aiFirst ? WHITE : BLACK;
+    currentTurn = BLACK; // Black always starts
+    gameOver = false;
+    aiThinking = false;
+    updateStatus();
+    draw();
+    if (aiFirst) doAiMove();
+  }
+
+  function updateStatus() {
+    if (gameOver) {
+      const last = moves[moves.length - 1];
+      const winner = last ? last.player : null;
+      statusEl.textContent = winner === BLACK ? 'Black wins' : winner === WHITE ? 'White wins' : 'Draw';
+    } else {
+      statusEl.textContent = aiThinking ? 'AI thinking…' : 'Playing';
+    }
+    turnEl.textContent = currentTurn === BLACK ? (humanColor === BLACK ? 'Black (You)' : 'Black (AI)') : (humanColor === WHITE ? 'White (You)' : 'White (AI)');
+    thinkingEl.style.display = aiThinking ? 'inline-flex' : 'none';
+  }
+
+  function drawBoard() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // Grid lines
+    ctx.strokeStyle = '#a07d3b';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < SIZE; i++) {
+      const x = OFFSET + i * CELL;
+      const y0 = OFFSET;
+      const y1 = OFFSET + (SIZE - 1) * CELL;
+      ctx.beginPath();
+      ctx.moveTo(x + 0.5, y0 + 0.5);
+      ctx.lineTo(x + 0.5, y1 + 0.5);
+      ctx.stroke();
+    }
+    for (let i = 0; i < SIZE; i++) {
+      const y = OFFSET + i * CELL;
+      const x0 = OFFSET;
+      const x1 = OFFSET + (SIZE - 1) * CELL;
+      ctx.beginPath();
+      ctx.moveTo(x0 + 0.5, y + 0.5);
+      ctx.lineTo(x1 + 0.5, y + 0.5);
+      ctx.stroke();
+    }
+    // star points (hoshi) for 15x15
+    const stars = [3, 7, 11];
+    ctx.fillStyle = '#5b431f';
+    for (const i of stars) {
+      for (const j of stars) {
+        const cx = OFFSET + i * CELL;
+        const cy = OFFSET + j * CELL;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function drawStones() {
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        if (board[y][x] === EMPTY) continue;
+        const cx = OFFSET + x * CELL;
+        const cy = OFFSET + y * CELL;
+        const r = Math.floor(CELL * 0.42);
+        const color = board[y][x] === BLACK ? '#111827' : '#f9fafb';
+        // shadow
+        ctx.beginPath();
+        ctx.arc(cx + 1.5, cy + 1.5, r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,0,0,0.15)';
+        ctx.fill();
+        // stone
+        const grad = ctx.createRadialGradient(cx - r*0.3, cy - r*0.3, r*0.2, cx, cy, r);
+        if (board[y][x] === BLACK) {
+          grad.addColorStop(0, '#374151');
+          grad.addColorStop(1, '#0f172a');
+        } else {
+          grad.addColorStop(0, '#ffffff');
+          grad.addColorStop(1, '#d1d5db');
+        }
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+    }
+    // highlight last move
+    if (moves.length > 0) {
+      const last = moves[moves.length - 1];
+      const cx = OFFSET + last.x * CELL;
+      const cy = OFFSET + last.y * CELL;
+      ctx.strokeStyle = '#ef4444';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, Math.floor(CELL * 0.18), 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  }
+
+  function draw() {
+    drawBoard();
+    drawStones();
+  }
+
+  function inBounds(x, y) { return x >= 0 && x < SIZE && y >= 0 && y < SIZE; }
+
+  function place(x, y, player) {
+    if (!inBounds(x, y) || board[y][x] !== EMPTY) return false;
+    board[y][x] = player;
+    moves.push({ x, y, player });
+    currentTurn = (player === BLACK ? WHITE : BLACK);
+    return true;
+  }
+
+  function undo() {
+    if (moves.length === 0) return;
+    const last = moves.pop();
+    board[last.y][last.x] = EMPTY;
+    // If we just undid AI move, also undo the human move to keep turns consistent
+    if (moves.length > 0) {
+      const last2 = moves[moves.length - 1];
+      if (last2.player !== currentTurn) {
+        const m2 = moves.pop();
+        board[m2.y][m2.x] = EMPTY;
+      }
+    }
+    currentTurn = moves.length ? (moves[moves.length - 1].player === BLACK ? WHITE : BLACK) : BLACK;
+    gameOver = false;
+    aiThinking = false;
+    updateStatus();
+    draw();
+  }
+
+  function dirCount(x, y, dx, dy, player) {
+    let cnt = 0; let i = x + dx, j = y + dy;
+    while (inBounds(i, j) && board[j][i] === player) { cnt++; i += dx; j += dy; }
+    return cnt;
+  }
+
+  function isWinningMove(x, y, player) {
+    // assume (x,y) is empty and would be placed by player
+    board[y][x] = player;
+    const win = hasFive(x, y, player);
+    board[y][x] = EMPTY;
+    return win;
+  }
+
+  function hasFive(x, y, player) {
+    const dirs = [[1,0],[0,1],[1,1],[1,-1]];
+    for (const [dx, dy] of dirs) {
+      let count = 1;
+      let i = x + dx, j = y + dy;
+      while (inBounds(i, j) && board[j][i] === player) { count++; i += dx; j += dy; }
+      i = x - dx; j = y - dy;
+      while (inBounds(i, j) && board[j][i] === player) { count++; i -= dx; j -= dy; }
+      if (count >= 5) return true;
+    }
+    return false;
+  }
+
+  function checkGameEndFrom(x, y) {
+    const p = board[y][x];
+    if (p === EMPTY) return null;
+    if (hasFive(x, y, p)) {
+      gameOver = true;
+      updateStatus();
+      draw();
+      return p;
+    }
+    return null;
+  }
+
+  function getAllStones() {
+    const stones = [];
+    for (let y = 0; y < SIZE; y++) for (let x = 0; x < SIZE; x++) if (board[y][x] !== EMPTY) stones.push([x,y]);
+    return stones;
+  }
+
+  function hasNeighbor(x, y, dist) {
+    for (let j = Math.max(0, y - dist); j <= Math.min(SIZE - 1, y + dist); j++) {
+      for (let i = Math.max(0, x - dist); i <= Math.min(SIZE - 1, x + dist); i++) {
+        if (i === x && j === y) continue;
+        if (board[j][i] !== EMPTY) return true;
+      }
+    }
+    return false;
+  }
+
+  function genCandidates(player, lastMove) {
+    const candidates = [];
+    // bounding box
+    let minX = SIZE-1, minY = SIZE-1, maxX = 0, maxY = 0, any = false;
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        if (board[y][x] !== EMPTY) {
+          any = true;
+          if (x < minX) minX = x; if (x > maxX) maxX = x;
+          if (y < minY) minY = y; if (y > maxY) maxY = y;
+        }
+      }
+    }
+    if (!any) {
+      const mid = Math.floor(SIZE / 2);
+      return [{ x: mid, y: mid }];
+    }
+    minX = Math.max(0, minX - 2); minY = Math.max(0, minY - 2);
+    maxX = Math.min(SIZE - 1, maxX + 2); maxY = Math.min(SIZE - 1, maxY + 2);
+
+    for (let y = minY; y <= maxY; y++) {
+      for (let x = minX; x <= maxX; x++) {
+        if (board[y][x] !== EMPTY) continue;
+        // must be near existing stones
+        if (!hasNeighbor(x, y, 2)) continue;
+        // prefer immediate neighbors
+        const near1 = hasNeighbor(x, y, 1);
+        const score = localHeuristic(x, y, player) + localHeuristic(x, y, (player === BLACK ? WHITE : BLACK));
+        candidates.push({ x, y, near1, score });
+      }
+    }
+    // immediate win/block priority
+    candidates.sort((a,b) => (b.near1 - a.near1) || (b.score - a.score));
+
+    // If lastMove provided, move it to front of equal scores for better locality
+    if (lastMove) {
+      candidates.sort((a, b) => {
+        const da = Math.abs(a.x - lastMove.x) + Math.abs(a.y - lastMove.y);
+        const db = Math.abs(b.x - lastMove.x) + Math.abs(b.y - lastMove.y);
+        return da - db;
+      });
+    }
+
+    // limit branching factor
+    return candidates.slice(0, 14);
+  }
+
+  function localHeuristic(x, y, player) {
+    // place temporarily and check immediate potential
+    board[y][x] = player;
+    let val = 0;
+    const dirs = [[1,0],[0,1],[1,1],[1,-1]];
+    for (const [dx, dy] of dirs) {
+      let count = 1;
+      let openEnds = 0;
+      // forward
+      let i = x + dx, j = y + dy;
+      while (inBounds(i, j) && board[j][i] === player) { count++; i += dx; j += dy; }
+      if (inBounds(i, j) && board[j][i] === EMPTY) openEnds++;
+      // backward
+      i = x - dx; j = y - dy;
+      while (inBounds(i, j) && board[j][i] === player) { count++; i -= dx; j -= dy; }
+      if (inBounds(i, j) && board[j][i] === EMPTY) openEnds++;
+      val += runScore(count, openEnds);
+    }
+    board[y][x] = EMPTY;
+    return val;
+  }
+
+  function runScore(len, open) {
+    if (len >= 5) return 10000000;
+    if (open === 2) {
+      if (len === 4) return 100000;
+      if (len === 3) return 6000;
+      if (len === 2) return 800;
+      if (len === 1) return 80;
+    } else if (open === 1) {
+      if (len === 4) return 10000;
+      if (len === 3) return 1200;
+      if (len === 2) return 150;
+      if (len === 1) return 15;
+    }
+    return 0;
+  }
+
+  // Board evaluation: positive for AI, negative for human
+  function evaluateBoard(perspective) {
+    const ai = aiColor;
+    const opp = (ai === BLACK ? WHITE : BLACK);
+    const aiScore = scoreSide(ai);
+    const oppScore = scoreSide(opp);
+    return (ai === perspective ? aiScore - oppScore : oppScore - aiScore);
+  }
+
+  function scoreSide(player) {
+    let total = 0;
+    // rows
+    for (let y = 0; y < SIZE; y++) total += scoreLine(player, 0, y, 1, 0, SIZE);
+    // cols
+    for (let x = 0; x < SIZE; x++) total += scoreLine(player, x, 0, 0, 1, SIZE);
+    // diagonals TL-BR
+    for (let k = 0; k <= SIZE - 5; k++) {
+      total += scoreLine(player, 0, k, 1, 1, SIZE - k);
+      if (k !== 0) total += scoreLine(player, k, 0, 1, 1, SIZE - k);
+    }
+    // diagonals TR-BL
+    for (let k = 0; k <= SIZE - 5; k++) {
+      total += scoreLine(player, SIZE-1, k, -1, 1, SIZE - k);
+      if (k !== 0) total += scoreLine(player, SIZE-1 - k, 0, -1, 1, SIZE - k);
+    }
+    return total;
+  }
+
+  function scoreLine(player, sx, sy, dx, dy, len) {
+    // build line array
+    const opp = (player === BLACK ? WHITE : BLACK);
+    let run = 0, total = 0;
+    let openL = 0;
+    let x = sx, y = sy;
+    for (let i = 0; i < len; i++, x += dx, y += dy) {
+      const v = board[y][x];
+      if (v === player) {
+        if (run === 0) {
+          // check left open
+          const px = x - dx, py = y - dy;
+          openL = (inBounds(px, py) && board[py][px] === EMPTY) ? 1 : 0;
+        }
+        run++;
+      } else {
+        if (run > 0) {
+          // right open
+          const px = x, py = y;
+          const openR = (inBounds(px, py) && board[py][px] === EMPTY) ? 1 : 0;
+          total += runScore(run, openL + openR);
+          run = 0; openL = 0;
+        }
+        // no-op on opponent or empty
+      }
+    }
+    if (run > 0) {
+      const px = x - dx, py = y - dy; // last cell where run ended
+      const openR = (inBounds(px + dx, py + dy) && board[py + dy][px + dx] === EMPTY) ? 1 : 0; // beyond last
+      total += runScore(run, openL + openR);
+    }
+
+    // bonus for gapped-threes patterns
+    // Build string for regex-based detection across this line only once if needed
+    // 0 empty, 1 player, 2 opponent
+    let s = '';
+    x = sx; y = sy;
+    for (let i = 0; i < len; i++, x += dx, y += dy) {
+      const v = board[y][x];
+      s += (v === EMPTY ? '0' : (v === player ? '1' : '2'));
+    }
+    // immediate five
+    if (s.indexOf('11111') !== -1) total += 10000000;
+    // open four: 011110
+    total += countPattern(s, /011110/g) * 100000;
+    // half-open four: 211110|011112
+    total += countPattern(s, /211110|011112/g) * 12000;
+    // open three: 01110
+    total += countPattern(s, /01110/g) * 5000;
+    // broken three: 010110 or 011010
+    total += countPattern(s, /010110|011010/g) * 3000;
+    return total;
+  }
+
+  function countPattern(s, re) {
+    let m, cnt = 0;
+    while ((m = re.exec(s)) !== null) cnt++;
+    return cnt;
+  }
+
+  // Negamax with alpha-beta pruning and iterative deepening
+  function aiFindBestMove() {
+    const start = performance.now();
+    const timeLimit = aiTimeLimit;
+    const maxDepth = aiMaxDepth;
+
+    let best = null;
+    let bestScore = -Infinity;
+    let lastPV = null;
+
+    const lastMove = moves.length ? moves[moves.length - 1] : null;
+
+    for (let depth = 1; depth <= maxDepth; depth++) {
+      const result = searchRoot(depth, start, timeLimit, lastPV, lastMove);
+      if (!result) break; // timeout
+      best = result.move;
+      bestScore = result.score;
+      lastPV = best; // use best move as hint
+      if (performance.now() - start > timeLimit * 0.9) break;
+      // If we already found a winning move, stop
+      if (bestScore > 5000000) break;
+    }
+
+    return best;
+  }
+
+  function searchRoot(depth, start, timeLimit, hintMove, lastMove) {
+    const candidates = genCandidates(aiColor, lastMove);
+
+    // immediate tactical checks
+    for (const c of candidates) {
+      if (isWinningMove(c.x, c.y, aiColor)) return { move: c, score: 9999999 };
+    }
+    for (const c of candidates) {
+      if (isWinningMove(c.x, c.y, humanColor)) return { move: c, score: 8000000 };
+    }
+
+    // move ordering: hint first
+    if (hintMove) {
+      candidates.sort((a, b) => (a.x === hintMove.x && a.y === hintMove.y ? -1 : 0));
+    }
+
+    let best = null;
+    let bestScore = -Infinity;
+    let alpha = -Infinity, beta = Infinity;
+
+    for (const c of candidates) {
+      if (performance.now() - start > timeLimit) break;
+      board[c.y][c.x] = aiColor;
+      moves.push({ x: c.x, y: c.y, player: aiColor });
+
+      const score = -negamax(depth - 1, -beta, -alpha, humanColor, start, timeLimit, c);
+
+      moves.pop();
+      board[c.y][c.x] = EMPTY;
+
+      if (score > bestScore) {
+        bestScore = score;
+        best = { x: c.x, y: c.y };
+      }
+      if (score > alpha) alpha = score;
+      if (alpha >= beta) break; // alpha-beta cutoff
+    }
+
+    if (!best) return null; // timeout
+    return { move: best, score: bestScore };
+  }
+
+  function negamax(depth, alpha, beta, player, start, timeLimit, lastMove) {
+    if (performance.now() - start > timeLimit) return 0; // timeout safeguard
+
+    const last = moves.length ? moves[moves.length - 1] : null;
+    if (last && hasFive(last.x, last.y, last.player)) {
+      const distToWin = moves.length; // prefer faster wins
+      const base = last.player === aiColor ? 10000000 : -10000000;
+      return (base - distToWin);
+    }
+
+    if (depth === 0) {
+      return evaluateBoard(aiColor);
+    }
+
+    const candidates = genCandidates(player, lastMove);
+
+    let bestScore = -Infinity;
+    for (const c of candidates) {
+      if (performance.now() - start > timeLimit) break;
+      board[c.y][c.x] = player;
+      moves.push({ x: c.x, y: c.y, player });
+      const nextPlayer = (player === BLACK ? WHITE : BLACK);
+      const score = -negamax(depth - 1, -beta, -alpha, nextPlayer, start, timeLimit, c);
+      moves.pop();
+      board[c.y][c.x] = EMPTY;
+      if (score > bestScore) bestScore = score;
+      if (score > alpha) alpha = score;
+      if (alpha >= beta) break; // prune
+    }
+
+    return bestScore === -Infinity ? 0 : bestScore;
+  }
+
+  function doAiMove() {
+    if (gameOver || aiThinking) return;
+    if (currentTurn !== aiColor) return;
+    aiThinking = true; updateStatus();
+
+    setTimeout(() => {
+      const best = aiFindBestMove();
+      // if no move found (timeout very early), fallback to center/random
+      const move = best || fallbackMove();
+      aiThinking = false;
+      if (move && place(move.x, move.y, aiColor)) {
+        const winner = checkGameEndFrom(move.x, move.y);
+        draw();
+        if (!winner) {
+          updateStatus();
+          // continue
+        } else {
+          updateStatus();
+        }
+      } else {
+        updateStatus();
+      }
+    }, 10);
+  }
+
+  function fallbackMove() {
+    // center if empty else choose a candidate randomly
+    const mid = Math.floor(SIZE / 2);
+    if (board[mid][mid] === EMPTY) return { x: mid, y: mid };
+    const cs = genCandidates(aiColor, moves[moves.length - 1] || null);
+    return cs.length ? { x: cs[0].x, y: cs[0].y } : null;
+  }
+
+  function handleClick(evt) {
+    if (gameOver || aiThinking) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = evt.clientX - rect.left;
+    const my = evt.clientY - rect.top;
+    // find nearest grid intersection
+    const x = Math.round((mx - OFFSET) / CELL);
+    const y = Math.round((my - OFFSET) / CELL);
+    const gx = OFFSET + x * CELL;
+    const gy = OFFSET + y * CELL;
+    const dist2 = (mx - gx) * (mx - gx) + (my - gy) * (my - gy);
+    const tol = (CELL * 0.45) * (CELL * 0.45);
+    if (!inBounds(x, y) || dist2 > tol) return;
+
+    if (currentTurn !== humanColor) return;
+    if (!place(x, y, humanColor)) return;
+    const winner = checkGameEndFrom(x, y);
+    draw();
+    if (!winner) {
+      updateStatus();
+      // AI turn
+      doAiMove();
+    } else {
+      updateStatus();
+    }
+  }
+
+  canvas.addEventListener('click', handleClick);
+  btnNew.addEventListener('click', () => reset(false));
+  btnUndo.addEventListener('click', undo);
+  btnSwitch.addEventListener('click', () => reset(true));
+  selLevel.addEventListener('change', () => { aiTimeLimit = parseInt(selLevel.value, 10); });
+  selDepth.addEventListener('change', () => { aiMaxDepth = parseInt(selDepth.value, 10); });
+
+  reset(false);
+})();
+</script>
