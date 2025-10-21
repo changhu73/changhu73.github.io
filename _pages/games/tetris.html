@@ -481,9 +481,13 @@ author_profile: true
 
   window.addEventListener('keydown', (e) => {
     const k = e.key;
+    // Always prevent page scrolling for control keys
+    if (k === 'ArrowLeft' || k === 'ArrowRight' || k === 'ArrowUp' || k === 'ArrowDown' || k === ' ') {
+      e.preventDefault();
+    }
     if (!running || paused) {
-      // allow resume via space key
-      if (k === ' ') { e.preventDefault(); start(); }
+      // allow resume/start via space key
+      if (k === ' ') { start(); }
       return;
     }
     if (k === 'ArrowLeft' || k === 'a' || k === 'A') {
@@ -495,7 +499,6 @@ author_profile: true
     } else if (k === 'ArrowUp' || k === 'w' || k === 'W') {
       rotatePiece();
     } else if (k === ' ') {
-      e.preventDefault();
       hardDrop();
     } else if (k === 'p' || k === 'P') {
       pause();
