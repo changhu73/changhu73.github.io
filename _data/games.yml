@@ -8,3 +8,8 @@
   slug: tetris
   description: "Stack falling blocks to clear lines. Move with A/D or ←/→, rotate with W or ↑, drop with Space."
   icon: "🧱"
+
+- title: Gomoku
+  slug: gomoku
+  description: "Place five stones in a row. Strong AI opponent with alpha-beta search."
+  icon: "⚫"
