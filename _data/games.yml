@@ -1,5 +1,5 @@
 # List of available games to display on the Games index page
 - title: Snake
   slug: snake
-  description: "Use Arrow keys or WASD to move. Eat apples to grow, avoid walls and yourself."
+  description: "Use WASD keys to move. Eat apples to grow, avoid walls and yourself."
   icon: "🐍"
