@@ -182,41 +182,10 @@ author_profile: true
 
   let snake, dir, nextDir, apple, score, running, loopId, paused, speed;
 
-  function isFullscreen() {
-    return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-  }
-
-  function requestFullscreen() {
-    if (isFullscreen()) return;
-    const el = canvas;
-    if (el.requestFullscreen) el.requestFullscreen();
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-    else if (el.msRequestFullscreen) el.msRequestFullscreen();
-  }
-
-  function setupFullscreenAuto() {
-    const handler = () => {
-      // try to enter fullscreen on first user interaction
-      requestFullscreen();
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch(() => {});
-      }
-      resizeCanvas();
-    };
-    // one-time listeners to satisfy browser gesture requirement
-    document.addEventListener('pointerdown', handler, { once: true });
-    document.addEventListener('keydown', handler, { once: true });
-    document.addEventListener('touchstart', handler, { once: true, passive: true });
-
-    document.addEventListener('fullscreenchange', () => { resizeCanvas(); if (snake) draw(); }, { passive: true });
-    document.addEventListener('webkitfullscreenchange', () => { resizeCanvas(); if (snake) draw(); }, { passive: true });
-  }
-
   function resizeCanvas() {
     const ratio = tileCountX / tileCountY;
-    const fs = !!isFullscreen();
-    const maxW = Math.floor(window.innerWidth * (fs ? 1.0 : 0.96));
-    const maxH = Math.floor(window.innerHeight * (fs ? 1.0 : 0.80));
+    const maxW = Math.floor(window.innerWidth * 0.96);
+    const maxH = Math.floor(window.innerHeight * 0.80);
     let width = Math.min(maxW, Math.floor(maxH * ratio));
     let height = Math.floor(width / ratio);
     const cell = Math.max(12, Math.floor(Math.min(width / tileCountX, height / tileCountY)));
@@ -426,7 +395,6 @@ author_profile: true
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 
-  setupFullscreenAuto();
   resizeCanvas();
   init();
   start();
