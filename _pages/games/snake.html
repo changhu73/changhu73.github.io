@@ -22,6 +22,11 @@ author_profile: true
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
+  /* Make snake layout vertically stacked to give canvas maximum space */
+  .snake-game-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
   .snake-game {
     background: #ffffff;
     border: 2px solid #e1e8ed;
@@ -29,6 +34,7 @@ author_profile: true
     padding: 1.5rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: transform 0.2s ease;
+    margin: 0 auto;
   }
   .snake-game:hover {
     transform: translateY(-2px);
@@ -39,19 +45,29 @@ author_profile: true
     border-radius: 8px;
     display: block;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    max-width: 92vmin; /* nearly full screen while keeping square */
+    max-height: 92vmin;
   }
   .snake-sidebar {
-    min-width: 250px;
+    min-width: 0;
+    width: 100%;
+    max-width: 860px;
     background: #ffffff;
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin: 0.75rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .snake-stats {
     display: flex;
     gap: 0.75rem;
     align-items: center;
-    margin: 0.5rem 0 1.5rem;
+    justify-content: center;
+    margin: 0.5rem 0 1.0rem;
     font-weight: 700;
     font-size: 1.2rem;
     color: #2c3e50;
@@ -60,7 +76,8 @@ author_profile: true
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    justify-content: center;
   }
   .snake-controls button {
     padding: 0.75rem 1.5rem;
@@ -84,13 +101,13 @@ author_profile: true
   .snake-info {
     font-size: 0.95rem;
     color: #7f8c8d;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     line-height: 1.6;
   }
   @media (max-width: 768px) {
     .game-wrapper { flex-direction: column; gap: 1rem; padding: 1rem; }
     .snake-sidebar { min-width: auto; }
-    #snakeCanvas { width: 100%; height: auto; max-width: 400px; }
+    #snakeCanvas { max-width: 92vmin; max-height: 92vmin; }
     .snake-controls { justify-content: center; }
   }
 </style>
@@ -128,11 +145,28 @@ author_profile: true
   const resetBtn = document.getElementById('resetBtn');
 
   const tileCount = 20;
-  const tileSize = Math.floor(canvas.width / tileCount);
+  let tileSize = Math.floor(canvas.width / tileCount);
 
   let snake, dir, nextDir, apple, score, running, loopId, paused, speed;
 
+  function resizeCanvas() {
+    const vmin = Math.min(window.innerWidth, window.innerHeight);
+    const size = Math.max(320, Math.floor(vmin * 0.92));
+    const pixels = Math.floor(size / tileCount) * tileCount;
+    canvas.width = pixels;
+    canvas.height = pixels;
+    canvas.style.width = pixels + 'px';
+    canvas.style.height = pixels + 'px';
+    tileSize = Math.floor(canvas.width / tileCount);
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    if (snake) draw();
+  });
+
   function init() {
+    resizeCanvas();
     snake = [ {x: 10, y: 10}, {x: 9, y: 10}, {x: 8, y: 10} ];
     dir = {x: 1, y: 0};
     nextDir = {x: 1, y: 0};
@@ -268,6 +302,7 @@ author_profile: true
   pauseBtn.addEventListener('click', pause);
   resetBtn.addEventListener('click', reset);
 
+  resizeCanvas();
   init();
 })();
 </script>
