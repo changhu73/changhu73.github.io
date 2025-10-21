@@ -3,3 +3,8 @@
   slug: snake
   description: "Use WASD keys to move. Eat apples to grow, avoid walls and yourself."
   icon: "🐍"
+
+- title: Tetris
+  slug: tetris
+  description: "Stack falling blocks to clear lines. Move with A/D or ←/→, rotate with W or ↑, drop with Space."
+  icon: "🧱"
