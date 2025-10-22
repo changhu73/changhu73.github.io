@@ -76,6 +76,24 @@ author_profile: true
   }
   .btn-play:hover { background:#2980b9; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(52,152,219,.45); }
   .games-intro { color:#6b7280; }
+  .no-games-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f9fc 100%);
+    border-radius: 14px;
+    border: 1px solid #e6ecf1;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+  .no-games-message h3 {
+    color: #2c3e50;
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  .no-games-message p {
+    color: #68737d;
+    margin: 0;
+    font-size: 1rem;
+  }
   @media (max-width: 480px) {
     .game-card { padding: 1rem; }
   }
@@ -96,11 +114,10 @@ author_profile: true
       </a>
     {% endfor %}
   {% else %}
-    <a href="/game/snake/" class="game-card">
-      <div class="game-icon">🐍</div>
-      <div class="game-title">Snake</div>
-      <div class="game-desc">Use WASD keys to move. Eat apples to grow, avoid walls and yourself.</div>
-      <div class="game-actions"><span class="btn-play">Play</span></div>
-    </a>
+    <div class="no-games-message">
+      <div class="game-icon" style="font-size: 3rem;">🎮</div>
+      <h3>No Games Available</h3>
+      <p>Games are currently being developed. Check back later!</p>
+    </div>
   {% endif %}
 </div>
