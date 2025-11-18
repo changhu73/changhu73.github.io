@@ -34,6 +34,8 @@ redirect_from:
 * The Hong Kong University of Science and Technology, Research Assistant, Aug. 2023 - Nov. 2023
   *  Research Interests: Software Development  
 
+<!-- * iFLYTEK, Juinor Data Engineer Intern, Mar. 2023 - Jun. 2023   -->
+
 ### Campus Experience
 
 * Training Program of Innovation and Entrepreneurship for Undergraduate (Junior), USTC, School of Cyber Science and Technology, May 2022 - Apr. 2023
