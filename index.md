@@ -194,6 +194,6 @@ author_profile: true
 
 <div style="display: flex; justify-content: center; margin: 2em 0;">
   <a href="https://clustrmaps.com/site/1c7ct" title="ClustrMaps">
-    <img src="//www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" />
+    <img src="https://www.clustrmaps.com/map_v2.png?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff" alt="ClustrMaps Visitor Map" />
   </a>
 </div>
