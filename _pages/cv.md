@@ -17,7 +17,7 @@ redirect_from:
 
 ### Work/Intern Experience
 
-* 19Pine, Research Intern (remote), Sept. 2025 - 
+* Pine AI, Research Intern (remote), Sept. 2025 - 
   *  Research Interests: Post-training for speech models: SFT/RL for ASR model.
 
 <!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun 2025 - Sept. 2025
