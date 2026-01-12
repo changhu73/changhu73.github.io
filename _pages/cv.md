@@ -9,16 +9,16 @@ redirect_from:
 
 <style>
   .cv-section {
-    margin-bottom: 3em;
+    margin-bottom: 2em;
   }
   
   .cv-section h3 {
-    color: #2c3e50;
-    font-size: 1.6em;
+    color: #2d3748;
+    font-size: 1.3em;
     font-weight: 600;
-    margin-bottom: 1.5em;
-    padding-bottom: 0.8em;
-    border-bottom: 3px solid #2f7f93;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #e2e8f0;
   }
   
   .cv-section ul {
@@ -27,57 +27,48 @@ redirect_from:
     margin: 0;
   }
   
-  .cv-section ul li {
-    padding: 1.2em;
-    margin-bottom: 1em;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 8px;
-    border-left: 4px solid #2f7f93;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    line-height: 1.8;
+  .cv-section ul > li {
+    margin-bottom: 1.2em;
+    padding: 1em;
+    background: #ffffff;
+    border-left: 3px solid #4299e1;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+  
+  .cv-section ul > li:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transform: translateX(2px);
+  }
+  
+  .cv-section ul > li > ul {
+    margin-top: 0.5em;
+    padding-left: 1.5em;
+  }
+  
+  .cv-section ul > li > ul > li {
+    margin-bottom: 0.4em;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 0.95em;
     color: #4a5568;
   }
   
-  .cv-section ul li:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-left-color: #1a5f73;
+  .cv-section ul > li > ul > li:hover {
+    transform: none;
   }
   
-  .cv-section ul li ul {
-    margin-top: 0.8em;
-    margin-left: 1em;
-  }
-  
-  .cv-section ul li ul li {
-    background: white;
-    border-left-color: #cbd5e0;
-    font-size: 0.95em;
-    padding: 0.8em;
-    margin-bottom: 0.5em;
-  }
-  
-  .cv-section ul li a {
-    color: #2f7f93;
+  .cv-section a {
+    color: #3182ce;
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.3s ease;
   }
   
-  .cv-section ul li a:hover {
-    color: #1a5f73;
+  .cv-section a:hover {
     text-decoration: underline;
-  }
-  
-  @media (max-width: 768px) {
-    .cv-section h3 {
-      font-size: 1.4em;
-    }
-    
-    .cv-section ul li {
-      padding: 1em;
-    }
   }
 </style>
 
@@ -89,6 +80,8 @@ redirect_from:
 * B.S. in Information Security, University of Science and Technology of China, Sept. 2019 - Jun. 2023
 
 
+
+</div>
 
 <div class="cv-section">
 ### Work/Intern Experience
@@ -111,6 +104,7 @@ redirect_from:
   *  Research Interests: Software Development  
 
 <!-- * iFLYTEK, Juinor Data Engineer Intern, Mar. 2023 - Jun. 2023   -->
+
 </div>
 
 <div class="cv-section">
@@ -131,10 +125,10 @@ redirect_from:
 * Contemporary Undergraduate Mathematical Contest in Modeling(CUMCM), Third prize, Sept. 2021  
 
 * The Chinese Mathematics Competitions, Second prize, Nov. 2022
+
 </div>
 
 <div class="cv-section">
 ### Service
 
 * Reviewer for Neurocomputing
-</div>

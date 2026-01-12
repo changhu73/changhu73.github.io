@@ -55,158 +55,132 @@ author_profile: true
 
 
 <style>
-  .welcome-section {
-    margin-bottom: 3em;
+  .home-container {
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .page-summary {
-    margin-bottom: 4em;
-    padding: 2em;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2em;
+    padding: 1.5em;
+    background: #ffffff;
+    border-radius: 8px;
+    border-left: 3px solid #2c3e50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
   }
   
   .page-summary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
   }
   
   .page-summary h2 {
-    border-bottom: 3px solid #2f7f93;
-    padding-bottom: 0.8em;
-    margin-top: 0;
-    margin-bottom: 1.5em;
-    font-size: 1.8em;
+    margin: 0 0 1em 0;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 1.5em;
     font-weight: 600;
-    color: #2c3e50;
   }
   
   .page-summary h2 a {
     color: #2c3e50;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
   }
   
   .page-summary h2 a:hover {
-    color: #2f7f93;
+    color: #1a202c;
   }
   
   .page-content {
-    line-height: 1.8;
+    line-height: 1.7;
     color: #4a5568;
-    font-size: 1.05em;
   }
   
   .page-content ul {
-    list-style: none;
-    padding-left: 0;
+    margin: 0.5em 0;
+    padding-left: 1.5em;
   }
   
   .page-content ul li {
-    padding: 0.8em 0;
-    border-bottom: 1px solid #e2e8f0;
-    transition: padding-left 0.3s ease;
-  }
-  
-  .page-content ul li:hover {
-    padding-left: 1em;
-    background-color: #f7fafc;
-    border-left: 3px solid #2f7f93;
-    margin-left: -1em;
-    padding-left: calc(1em - 3px);
-  }
-  
-  .page-content ul li:last-child {
-    border-bottom: none;
+    margin: 0.5em 0;
+    padding: 0.3em 0;
   }
   
   .page-content a {
-    color: #2f7f93;
+    color: #3182ce;
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
   
   .page-content a:hover {
-    color: #1a5f73;
-    border-bottom-color: #2f7f93;
+    color: #2c5282;
+    border-bottom-color: #3182ce;
   }
   
   .page-content b {
-    color: #2c3e50;
+    color: #2d3748;
     font-weight: 600;
   }
   
   .page-content i {
     color: #718096;
-    font-style: italic;
   }
   
   .wordwrap {
-    margin-top: 2em;
-    padding: 1.5em;
-    background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
-    border-radius: 8px;
+    margin-top: 1.5em;
+    padding: 1em;
+    background: #f7fafc;
+    border-radius: 6px;
     text-align: center;
-    border-left: 4px solid #2f7f93;
+    border-left: 3px solid #4299e1;
   }
   
   .wordwrap a {
-    color: #2f7f93;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  .wordwrap a:hover {
-    color: #1a5f73;
-    text-decoration: underline;
+    color: #3182ce;
+    font-weight: 500;
   }
   
   .clustrmaps-container {
-    display: flex;
-    justify-content: center;
-    margin: 3em 0;
-    padding: 2em;
-    background: #f8f9fa;
-    border-radius: 12px;
+    margin: 2em 0;
+    padding: 1.5em;
+    background: #f7fafc;
+    border-radius: 8px;
+    text-align: center;
   }
   
   @media (max-width: 768px) {
     .page-summary {
-      padding: 1.5em;
-      margin-bottom: 2em;
+      padding: 1em;
+      margin-bottom: 1.5em;
     }
     
     .page-summary h2 {
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
   }
 </style>
 
-<div class="welcome-section">
-
+<div class="home-container">
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p and p.name != "travel.md" %}
     <section id="{{ item.title | slugify }}" class="page-summary">
-      
       <h2>
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
       </h2>
-
       <div class="page-content">
         {{ p.content | remove: '<h2>' | remove: '</h2>' }}
       </div>
-
     </section>
   {% endif %}
 {% endfor %}
 
-
 <div class="clustrmaps-container">
   <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
+</div>
+
 </div>

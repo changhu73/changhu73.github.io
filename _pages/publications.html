@@ -14,120 +14,99 @@ author_profile: true
   }
   
   .publications-list li {
-    margin-bottom: 2em;
-    padding: 1.5em;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 10px;
-    border-left: 4px solid #2f7f93;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    margin-bottom: 1.5em;
+    padding: 1.2em;
+    background: #ffffff;
+    border-left: 3px solid #4299e1;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
   }
   
   .publications-list li:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    border-left-color: #1a5f73;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    transform: translateX(4px);
   }
   
   .publications-list li b {
     display: block;
-    font-size: 1.1em;
-    color: #2c3e50;
-    margin-bottom: 0.8em;
-    font-weight: 600;
+    font-size: 1.05em;
+    color: #2d3748;
+    margin-bottom: 0.6em;
+    line-height: 1.4;
+  }
+  
+  .publications-list .authors {
+    color: #4a5568;
+    font-size: 0.95em;
+    margin-bottom: 0.4em;
     line-height: 1.5;
-  }
-  
-  .publications-list li u {
-    color: #2f7f93;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .publications-list li a {
-    display: inline-block;
-    margin-left: 0.5em;
-    padding: 0.3em 0.8em;
-    background: #2f7f93;
-    color: white !important;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  .publications-list li a:hover {
-    background: #1a5f73;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(47, 127, 147, 0.3);
-  }
-  
-  .publications-list li br {
-    margin-bottom: 0.5em;
-  }
-  
-  .publications-list li i {
     display: block;
-    margin-top: 0.5em;
+  }
+  
+  .publications-list .venue {
     color: #718096;
     font-style: italic;
-    font-size: 0.95em;
+    font-size: 0.9em;
+  }
+  
+  .publications-list a {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 0.3em;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+  
+  .publications-list a:hover {
+    background: #ebf8ff;
+    color: #2c5282;
   }
   
   .wordwrap {
-    margin-top: 3em;
-    padding: 1.5em;
-    background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
-    border-radius: 10px;
+    margin-top: 2em;
+    padding: 1em 1.5em;
+    background: #f7fafc;
+    border-radius: 6px;
     text-align: center;
-    border-left: 4px solid #2f7f93;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 3px solid #4299e1;
   }
   
   .wordwrap a {
-    color: #2f7f93;
-    font-weight: 600;
+    color: #3182ce;
+    font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
   }
   
   .wordwrap a:hover {
-    color: #1a5f73;
     text-decoration: underline;
-  }
-  
-  @media (max-width: 768px) {
-    .publications-list li {
-      padding: 1em;
-    }
-    
-    .publications-list li a {
-      display: block;
-      margin: 0.5em 0 0 0;
-      text-align: center;
-    }
   }
 </style>
 
 <ul class="publications-list">
   <li>
-    <b>Large Language Models as Virtual Survey Respondents: Evaluating Sociodemographic Response Generation</b> [<a href="https://arxiv.org/abs/2509.06337">Paper</a>]<br>
-    Jianpeng Zhao, Chenyu Yuan, Weiming Luo, Haoling Xie, <u>Guangwei Zhang</u>, Steven Jige Quan, Zixuan Yuan, Pengyang Wang, Denghui Zhang<br>
-    <i>arXiv:2509.06337 </i>
+    <b>Large Language Models as Virtual Survey Respondents: Evaluating Sociodemographic Response Generation</b>
+    <span class="authors">Jianpeng Zhao, Chenyu Yuan, Weiming Luo, Haoling Xie, <u>Guangwei Zhang</u>, Steven Jige Quan, Zixuan Yuan, Pengyang Wang, Denghui Zhang</span>
+    <div class="venue">arXiv:2509.06337 [<a href="https://arxiv.org/abs/2509.06337">Paper</a>]</div>
   </li>
 
   <li>
-    <b>ISACL: Internal State Analyzer for Copyrighted Training Data Leakage</b> [<a href="https://aclanthology.org/2025.findings-emnlp.571/">Paper</a>]<br>
-    <u>Guangwei Zhang</u>, Qisheng Su, Jiateng Liu, Cheng Qian, Yanzhou Pan, Yanjie Fu, Denghui Zhang<br>
-    <i>EMNLP 2025 Findings</i>
+    <b>ISACL: Internal State Analyzer for Copyrighted Training Data Leakage</b>
+    <span class="authors"><u>Guangwei Zhang</u>, Qisheng Su, Jiateng Liu, Cheng Qian, Yanzhou Pan, Yanjie Fu, Denghui Zhang</span>
+    <div class="venue">EMNLP 2025 Findings [<a href="https://aclanthology.org/2025.findings-emnlp.571/">Paper</a>]</div>
   </li>
 
   <li>
-    <b>HeadText: Exploring Hands-free Text Entry using Head Gestures by Motion Sensing on a Smart Earpiece</b> [<a href="https://arxiv.org/abs/2205.09978">Paper</a>]<br>
-    Songlin Xu, Guanjie Wang, Ziyuan Fang, <u>Guangwei Zhang</u>, Guangzhu Shang, Rongde Lu, Liqun He<br>
-    <i>arXiv:2205.09978</i>
+    <b>HeadText: Exploring Hands-free Text Entry using Head Gestures by Motion Sensing on a Smart Earpiece</b>
+    <span class="authors">Songlin Xu, Guanjie Wang, Ziyuan Fang, <u>Guangwei Zhang</u>, Guangzhu Shang, Rongde Lu, Liqun He</span>
+    <div class="venue">arXiv:2205.09978 [<a href="https://arxiv.org/abs/2205.09978">Paper</a>]</div>
   </li>
 </ul>
+
+
+
+
 
 <div class="wordwrap">Find my articles on <a href="https://scholar.google.com/citations?hl=zh-CN&user=3A1Iqm4AAAAJ">Google Scholar profile</a>.</div>
