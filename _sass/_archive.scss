@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .archive {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 
   @include breakpoint($medium) {
     @include span(12 of 12);
@@ -28,8 +28,8 @@
 }
 
 .archive__subtitle {
-  margin: 1.414em 0 0;
-  padding-bottom: 0.5em;
+  margin: 0.8em 0 0;
+  padding-bottom: 0.3em;
   font-size: $type-size-5;
   color: mix(#fff, $gray, 25%);
   border-bottom: 1px solid $border-color;
@@ -40,7 +40,7 @@
 }
 
 .archive__item-title {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.15em;
   font-family: $sans-serif-narrow;
 
   a + a {
@@ -60,6 +60,7 @@
 .archive__item-excerpt {
   margin-top: 0;
   font-size: $type-size-6;
+  line-height: 1.3;
 
   & + p {
     text-indent: 0;
@@ -67,7 +68,7 @@
 }
 
 .archive__item-teaser {
-  border-radius: $border-radius;
+  border-radius: 0;
   overflow: hidden;
   img {
     width: 100%;
@@ -76,7 +77,8 @@
 
 .archive__item:hover {
   .archive__item-teaser {
-    box-shadow: 0 0 10px rgba(#000, 0.25);
+    box-shadow: none;
+    opacity: 0.9;
   }
 
   .archive__item-title {
@@ -113,7 +115,7 @@
    ========================================================================== */
 
 .grid__item {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 
   .page__meta {
     margin: 0 0 4px;
@@ -158,13 +160,13 @@
 
 .feature__wrapper {
   @include clearfix();
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border-bottom: 1px solid $border-color;
 }
 
 .feature__item {
-  margin-bottom: 2em;
-  font-size: 1.25rem;
+  margin-bottom: 1em;
+  font-size: 1.1rem;
 
   @include breakpoint($small) {
     margin-bottom: 0;

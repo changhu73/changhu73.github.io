@@ -10,10 +10,10 @@ html {
 body {
   margin: 0;
   padding: $masthead-height 0 0;
-  padding-bottom: 9em;
+  padding-bottom: 4em;
   color: $text-color;
   font-family: $global-font-family;
-  line-height: 1.5;
+  line-height: 1.4;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
@@ -22,10 +22,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 2em 0 0.5em;
+  margin: 1.2em 0 0.3em;
   line-height: 1.2;
   font-family: $header-font-family;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 h1 {
@@ -58,7 +58,7 @@ small, .small {
 }
 
 p {
-  margin-bottom: 1.3em;
+  margin-bottom: 0.8em;
 }
 
 u,
@@ -93,11 +93,11 @@ abbr[data-original-title] {
 /* blockquotes */
 
 blockquote {
-  margin: 2em 1em 2em 0;
-  padding-left: 1em;
-  padding-right: 1em;
-  font-style: italic;
-  border-left: 0.25em solid $primary-color;
+  margin: 1em 0.5em 1em 0;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  font-style: normal;
+  border-left: 2px solid $primary-color;
 
   cite {
     font-style: italic;
@@ -164,7 +164,7 @@ hr {
 
 ul li,
 ol li {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 li ul,
@@ -186,7 +186,7 @@ figure {
   -webkit-box-align: start;
           align-items: flex-start;
   flex-wrap: wrap;
-  margin: 2em 0;
+  margin: 1em 0;
 
   img,
   iframe,
@@ -196,7 +196,7 @@ figure {
 
   img {
     width: 100%;
-    border-radius: $border-radius;
+    border-radius: 0;
     -webkit-transition: $global-transition;
     transition: $global-transition;
   }
