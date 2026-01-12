@@ -54,133 +54,27 @@ author_profile: true
 
 
 
-<style>
-  .home-container {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
-  .page-summary {
-    margin-bottom: 2em;
-    padding: 1.5em;
-    background: #ffffff;
-    border-radius: 8px;
-    border-left: 3px solid #2c3e50;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-  }
-  
-  .page-summary:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
-  }
-  
-  .page-summary h2 {
-    margin: 0 0 1em 0;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid #e2e8f0;
-    font-size: 1.5em;
-    font-weight: 600;
-  }
-  
-  .page-summary h2 a {
-    color: #2c3e50;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  .page-summary h2 a:hover {
-    color: #1a202c;
-  }
-  
-  .page-content {
-    line-height: 1.7;
-    color: #4a5568;
-  }
-  
-  .page-content ul {
-    margin: 0.5em 0;
-    padding-left: 1.5em;
-  }
-  
-  .page-content ul li {
-    margin: 0.5em 0;
-    padding: 0.3em 0;
-  }
-  
-  .page-content a {
-    color: #3182ce;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-  }
-  
-  .page-content a:hover {
-    color: #2c5282;
-    border-bottom-color: #3182ce;
-  }
-  
-  .page-content b {
-    color: #2d3748;
-    font-weight: 600;
-  }
-  
-  .page-content i {
-    color: #718096;
-  }
-  
-  .wordwrap {
-    margin-top: 1.5em;
-    padding: 1em;
-    background: #f7fafc;
-    border-radius: 6px;
-    text-align: center;
-    border-left: 3px solid #4299e1;
-  }
-  
-  .wordwrap a {
-    color: #3182ce;
-    font-weight: 500;
-  }
-  
-  .clustrmaps-container {
-    margin: 2em 0;
-    padding: 1.5em;
-    background: #f7fafc;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  @media (max-width: 768px) {
-    .page-summary {
-      padding: 1em;
-      margin-bottom: 1.5em;
-    }
-    
-    .page-summary h2 {
-      font-size: 1.3em;
-    }
-  }
-</style>
+<div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
 
-<div class="home-container">
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p and p.name != "travel.md" %}
-    <section id="{{ item.title | slugify }}" class="page-summary">
-      <h2>
+    <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 3em;">
+      
+      <h2 style="border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-top: 2em;">
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
       </h2>
+
       <div class="page-content">
         {{ p.content | remove: '<h2>' | remove: '</h2>' }}
       </div>
+
     </section>
   {% endif %}
 {% endfor %}
 
-<div class="clustrmaps-container">
-  <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
-</div>
 
+<div style="display: flex; justify-content: center; margin: 2em 0;">
+  <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
 </div>
