@@ -54,15 +54,16 @@ author_profile: true
 
 
 
-<div class="welcome-section" style="margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
+<div class="welcome-section">
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p and p.name != "travel.md" and p.name != "projects.html" %}
-    <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 3em;">
+    <section id="{{ item.title | slugify }}" class="page-summary">
       
-      <h2 style="border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-top: 2em;">
+      <h2>
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
       </h2>
 
@@ -74,7 +75,7 @@ author_profile: true
   {% endif %}
 {% endfor %}
 
-
-<div style="display: flex; justify-content: center; margin: 2em 0;">
+<div class="clustrmaps-container">
   <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
+</div>
 </div>
