@@ -59,7 +59,7 @@ author_profile: true
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
-  {% if p and p.name != "travel.md" %}
+  {% if p and p.name != "travel.md" and p.name != "projects.html" %}
     <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 3em;">
       
       <h2 style="border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-top: 2em;">
