@@ -6,7 +6,111 @@ author_profile: true
 
 ---
 
-<ul>
+<style>
+  .publications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .publications-list li {
+    margin-bottom: 2em;
+    padding: 1.5em;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 10px;
+    border-left: 4px solid #2f7f93;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .publications-list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-left-color: #1a5f73;
+  }
+  
+  .publications-list li b {
+    display: block;
+    font-size: 1.1em;
+    color: #2c3e50;
+    margin-bottom: 0.8em;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  
+  .publications-list li u {
+    color: #2f7f93;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .publications-list li a {
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 0.3em 0.8em;
+    background: #2f7f93;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .publications-list li a:hover {
+    background: #1a5f73;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(47, 127, 147, 0.3);
+  }
+  
+  .publications-list li br {
+    margin-bottom: 0.5em;
+  }
+  
+  .publications-list li i {
+    display: block;
+    margin-top: 0.5em;
+    color: #718096;
+    font-style: italic;
+    font-size: 0.95em;
+  }
+  
+  .wordwrap {
+    margin-top: 3em;
+    padding: 1.5em;
+    background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
+    border-radius: 10px;
+    text-align: center;
+    border-left: 4px solid #2f7f93;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .wordwrap a {
+    color: #2f7f93;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .wordwrap a:hover {
+    color: #1a5f73;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .publications-list li {
+      padding: 1em;
+    }
+    
+    .publications-list li a {
+      display: block;
+      margin: 0.5em 0 0 0;
+      text-align: center;
+    }
+  }
+</style>
+
+<ul class="publications-list">
   <li>
     <b>Large Language Models as Virtual Survey Respondents: Evaluating Sociodemographic Response Generation</b> [<a href="https://arxiv.org/abs/2509.06337">Paper</a>]<br>
     Jianpeng Zhao, Chenyu Yuan, Weiming Luo, Haoling Xie, <u>Guangwei Zhang</u>, Steven Jige Quan, Zixuan Yuan, Pengyang Wang, Denghui Zhang<br>
@@ -26,8 +130,4 @@ author_profile: true
   </li>
 </ul>
 
-
-
-
-
-  <div class="wordwrap">Find my articles on <a href="https://scholar.google.com/citations?hl=zh-CN&user=3A1Iqm4AAAAJ">Google Scholar profile</a>.</div>
+<div class="wordwrap">Find my articles on <a href="https://scholar.google.com/citations?hl=zh-CN&user=3A1Iqm4AAAAJ">Google Scholar profile</a>.</div>
