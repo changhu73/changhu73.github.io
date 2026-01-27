@@ -42,6 +42,9 @@
 
     for (var i = 0; i < accordionHeaders.length; i++) {
       (function(header) {
+        if (header.getAttribute('data-accordion-init') === 'true') return;
+        header.setAttribute('data-accordion-init', 'true');
+
         header.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
