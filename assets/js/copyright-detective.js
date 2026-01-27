@@ -37,33 +37,32 @@
   }
 
   // ========== Accordion Toggle ==========
+  var accordionsBound = false;
+
   function initAccordions() {
-    var accordionHeaders = document.querySelectorAll('[data-accordion="true"]');
+    if (accordionsBound) return;
+    accordionsBound = true;
 
-    for (var i = 0; i < accordionHeaders.length; i++) {
-      (function(header) {
-        if (header.getAttribute('data-accordion-init') === 'true') return;
-        header.setAttribute('data-accordion-init', 'true');
+    document.addEventListener('click', function(e) {
+      var header = e.target.closest('[data-accordion="true"]');
+      if (!header) return;
 
-        header.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
 
-          var content = this.nextElementSibling;
-          if (!content) return;
+      var content = header.nextElementSibling;
+      if (!content) return;
 
-          var isExpanded = content.classList.contains('expanded');
+      var isExpanded = content.classList.contains('expanded');
 
-          if (isExpanded) {
-            content.classList.remove('expanded');
-            this.classList.remove('expanded');
-          } else {
-            content.classList.add('expanded');
-            this.classList.add('expanded');
-          }
-        });
-      })(accordionHeaders[i]);
-    }
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        header.classList.remove('expanded');
+      } else {
+        content.classList.add('expanded');
+        header.classList.add('expanded');
+      }
+    });
   }
 
   // ========== Copy BibTeX ==========
