@@ -5,15 +5,129 @@ permalink: /projects/
 author_profile: true
 ---
 
-<div style="max-width: 800px; margin: 0 auto;">
-  <div style="margin-bottom: 1em;">
-    <h2>Copyright Detective</h2>
-    <div style="background: #f5f5f5; border-radius: 0; padding: 0.6em; margin-top: 0.5em; border: 1px solid #ddd;">
-      <video controls style="width: 100%; max-width: 100%; border-radius: 0;">
-        <source src="{{ '/video/test.mp4' | relative_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+<style>
+  .projects-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1em 2em;
+  }
+  
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  
+  .project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.8em 2em;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+    color: inherit;
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #e67e22 0%, #d35400 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+  }
+  
+  .project-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-color: #e67e22;
+  }
+  
+  .project-card:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .project-icon {
+    font-size: 2em;
+    flex-shrink: 0;
+  }
+  
+  .project-content {
+    flex: 1;
+  }
+  
+  .project-title {
+    margin: 0 0 0.3em 0;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2c3e50;
+    transition: color 0.3s;
+  }
+  
+  .project-card:hover .project-title {
+    color: #e67e22;
+  }
+  
+  .project-subtitle {
+    margin: 0;
+    font-size: 0.95em;
+    color: #6c757d;
+    font-weight: 400;
+  }
+  
+  .project-arrow {
+    font-size: 1.2em;
+    color: #adb5bd;
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  
+  .project-card:hover .project-arrow {
+    color: #e67e22;
+    transform: translateX(4px);
+  }
+  
+  @media (max-width: 768px) {
+    .projects-container {
+      padding: 1em 1em;
+    }
+    
+    .project-card {
+      padding: 1.5em;
+    }
+    
+    .project-title {
+      font-size: 1.2em;
+    }
+  }
+</style>
+
+<div class="projects-container">
+  
+  <div class="projects-grid">
+    
+    <!-- Project 1: Copyright Detective -->
+    <a href="{{ '/projects/copyright-detective/' | relative_url }}" class="project-card">
+      <span class="project-icon">🔍</span>
+      <div class="project-content">
+        <h2 class="project-title">Copyright Detective</h2>
+        <p class="project-subtitle">Interactive forensic system for detecting copyright risks in LLM outputs</p>
+      </div>
+      <span class="project-arrow">→</span>
+    </a>
+    
   </div>
+  
 </div>
 
