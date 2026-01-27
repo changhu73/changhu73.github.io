@@ -819,38 +819,6 @@ author_profile: false
     pointer-events: none;
   }
   
-  .case-study-run-button {
-    width: 100%;
-    padding: 0.7em 1.2em;
-    background: #e0e0e0;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #2c3e50;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4em;
-    transition: all 0.3s ease;
-    margin-top: 0.6em;
-  }
-  
-  .case-study-run-button:hover {
-    background: #d0d0d0;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .case-study-run-button:active {
-    transform: translateY(0);
-  }
-  
-  .case-study-run-button .rocket-icon {
-    font-size: 1.1em;
-  }
-  
   .case-study-mutation {
     margin-bottom: 1em;
     border: 1px solid #e0e0e0;
@@ -1733,11 +1701,6 @@ author_profile: false
       gap: 1em;
     }
     
-    .case-study-run-button {
-      padding: 0.8em 1.2em;
-      font-size: 0.95em;
-    }
-    
     .case-study-runs-header {
       padding: 0.8em 1em;
       font-size: 1em;
@@ -1999,10 +1962,6 @@ author_profile: false
         <div class="case-study-info" style="margin-top: 0.6em; margin-bottom: 0.6em;">
           The length of the generated text will be adjusted to match the character count of your Ground Truth input.
         </div>
-        <button class="case-study-run-button" data-action="runDetection">
-          <span class="rocket-icon">🚀</span>
-          <span>Run: Text Memorization Detection</span>
-        </button>
       </div>
       
       <div class="case-study-prompt-preview">
@@ -2338,10 +2297,6 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
             <input type="text" value="0.90" readonly class="readonly-display">
           </div>
         </div>
-        <button class="case-study-run-button" data-action="runDetection">
-          <span class="rocket-icon">🚀</span>
-          <span>Run: Persuasive Jailbreak Detection</span>
-        </button>
       </div>
       
       <div class="case-study-prompt-preview">
@@ -3067,12 +3022,8 @@ I hope this brings back some fond memories for you!">
             <input type="text" value="0.00 - 1.00" readonly class="readonly-display">
           </div>
         </div>
-        <button class="case-study-run-button" data-action="runDetection">
-          <span class="rocket-icon">🚀</span>
-          <span>Run: Knowledge Memorization Detection</span>
-        </button>
       </div>
-      
+
       <!-- Q/A Pair Results -->
       <div class="case-study-runs-container">
         <div class="case-study-runs-header" data-action="toggleRunsContainer">
@@ -3200,7 +3151,7 @@ I hope this brings back some fond memories for you!">
 <script>
 (function() {
   // 保存原始提示文字
-  var hintElement = document.querySelector('.bibtex-copy-hint');
+  const hintElement = document.querySelector('.bibtex-copy-hint');
   if (hintElement && !hintElement.dataset.originalText) {
     hintElement.dataset.originalText = hintElement.textContent.trim();
   }
@@ -3208,24 +3159,39 @@ I hope this brings back some fond memories for you!">
   // Case Study Selection Function
   function showCaseStudy(value) {
     // Hide all case study contents
-    var allContents = document.querySelectorAll('.case-study-content');
-    for (var i = 0; i < allContents.length; i++) {
-      allContents[i].classList.remove('active');
-    }
+    const allContents = document.querySelectorAll('.case-study-content');
+    allContents.forEach(function(content) {
+      content.classList.remove('active');
+    });
     
     // Show selected case study
-    var selectedContent = document.getElementById('case-study-' + value);
+    const selectedContent = document.getElementById('case-study-' + value);
     if (selectedContent) {
       selectedContent.classList.add('active');
     }
   }
   
+  // Initialize case study selector
+  function initCaseStudySelector() {
+    const caseStudySelect = document.getElementById('case-study-select');
+    if (caseStudySelect) {
+      // Remove any existing listeners to prevent duplicates
+      const newSelect = caseStudySelect.cloneNode(true);
+      caseStudySelect.parentNode.replaceChild(newSelect, caseStudySelect);
+      
+      newSelect.addEventListener('change', function(e) {
+        e.preventDefault();
+        showCaseStudy(this.value);
+      });
+    }
+  }
+  
   // Toggle accordion function (generic)
   function toggleAccordion(header) {
-    var content = header.nextElementSibling;
+    const content = header.nextElementSibling;
     if (!content) return;
     
-    var isExpanded = content.classList.contains('expanded');
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
       content.classList.remove('expanded');
@@ -3236,24 +3202,19 @@ I hope this brings back some fond memories for you!">
     }
   }
   
-  // Run Detection Function
-  function runDetection() {
-    console.log('Running Text Memorization Detection...');
-  }
-  
   // Copy BibTeX Function
   function copyBibtex() {
-    var bibtexElement = document.getElementById('bibtex-content');
+    const bibtexElement = document.getElementById('bibtex-content');
     if (!bibtexElement) return;
     
-    var bibtex = bibtexElement.textContent.trim();
+    const bibtex = bibtexElement.textContent.trim();
     
     navigator.clipboard.writeText(bibtex).then(function() {
       bibtexElement.classList.add('copied');
       
-      var hintEl = document.querySelector('.bibtex-copy-hint');
+      const hintEl = document.querySelector('.bibtex-copy-hint');
       if (hintEl) {
-        var originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
+        const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
         hintEl.textContent = '✓ Copied to clipboard!';
         hintEl.style.color = '#38ef7d';
         hintEl.style.fontWeight = '600';
@@ -3267,7 +3228,7 @@ I hope this brings back some fond memories for you!">
       }
     }).catch(function(err) {
       console.error('Failed to copy: ', err);
-      var hintEl = document.querySelector('.bibtex-copy-hint');
+      const hintEl = document.querySelector('.bibtex-copy-hint');
       if (hintEl) {
         hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
         hintEl.style.color = '#e74c3c';
@@ -3281,58 +3242,49 @@ I hope this brings back some fond memories for you!">
     });
   }
   
-  // Initialize all event handlers
+  // Event delegation handler - using event capturing for more reliable handling
+  function handleGlobalClick(e) {
+    const target = e.target.closest('[data-action]');
+    if (!target) return;
+    
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const action = target.getAttribute('data-action');
+    
+    switch(action) {
+      case 'togglePromptPreview':
+      case 'toggleRunsContainer':
+      case 'toggleRun':
+      case 'toggleStrategy':
+        toggleAccordion(target);
+        break;
+      case 'copyBibtex':
+        copyBibtex();
+        break;
+    }
+  }
+  
+  // Main initialization function
   function initializeAll() {
-    // Case study selector
-    var caseStudySelect = document.getElementById('case-study-select');
-    if (caseStudySelect) {
-      caseStudySelect.addEventListener('change', function(e) {
-        showCaseStudy(e.target.value);
-      });
-    }
+    // Initialize case study selector
+    initCaseStudySelector();
     
-    // Bind click events directly to all accordion headers
-    var promptPreviewHeaders = document.querySelectorAll('.case-study-prompt-preview-header');
-    for (var i = 0; i < promptPreviewHeaders.length; i++) {
-      promptPreviewHeaders[i].addEventListener('click', function(e) {
-        toggleAccordion(e.currentTarget);
-      });
-    }
-    
-    var runsHeaders = document.querySelectorAll('.case-study-runs-header');
-    for (var i = 0; i < runsHeaders.length; i++) {
-      runsHeaders[i].addEventListener('click', function(e) {
-        toggleAccordion(e.currentTarget);
-      });
-    }
-    
-    var runHeaders = document.querySelectorAll('.case-study-run-header');
-    for (var i = 0; i < runHeaders.length; i++) {
-      runHeaders[i].addEventListener('click', function(e) {
-        toggleAccordion(e.currentTarget);
-      });
-    }
-    
-    var strategyHeaders = document.querySelectorAll('.case-study-strategy-header');
-    for (var i = 0; i < strategyHeaders.length; i++) {
-      strategyHeaders[i].addEventListener('click', function(e) {
-        toggleAccordion(e.currentTarget);
-      });
-    }
-    
-    // Bibtex copy
-    var bibtexContent = document.getElementById('bibtex-content');
-    if (bibtexContent) {
-      bibtexContent.addEventListener('click', copyBibtex);
-    }
+    // Add global click handler with capturing phase for better reliability
+    document.removeEventListener('click', handleGlobalClick, true);
+    document.addEventListener('click', handleGlobalClick, true);
   }
   
   // Run initialization when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeAll);
   } else {
+    // DOM already loaded, run immediately
     initializeAll();
   }
+  
+  // Also run on window load as a fallback
+  window.addEventListener('load', initializeAll);
   
   // Adjust Number Input
   window.adjustNumber = function(button, delta) {
