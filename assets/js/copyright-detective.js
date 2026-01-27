@@ -2,6 +2,20 @@
   'use strict';
 
   // ========== Case Study Tab Switching ==========
+  function applyCaseStudySelection(caseValue) {
+    if (!caseValue) return;
+
+    var allContents = document.querySelectorAll('.case-study-content');
+    for (var j = 0; j < allContents.length; j++) {
+      allContents[j].classList.remove('active');
+    }
+
+    var selectedContent = document.getElementById('case-study-' + caseValue);
+    if (selectedContent) {
+      selectedContent.classList.add('active');
+    }
+  }
+
   function initCaseStudyTabs() {
     var tabContainer = document.getElementById('case-study-tabs');
     if (!tabContainer) return;
@@ -15,17 +29,7 @@
           e.stopPropagation();
 
           var caseValue = this.getAttribute('data-case');
-          if (!caseValue) return;
-
-          var allContents = document.querySelectorAll('.case-study-content');
-          for (var j = 0; j < allContents.length; j++) {
-            allContents[j].classList.remove('active');
-          }
-
-          var selectedContent = document.getElementById('case-study-' + caseValue);
-          if (selectedContent) {
-            selectedContent.classList.add('active');
-          }
+          applyCaseStudySelection(caseValue);
 
           for (var k = 0; k < tabs.length; k++) {
             tabs[k].classList.remove('active');
@@ -36,7 +40,30 @@
     }
   }
 
+  function initCaseStudySelect() {
+    var select = document.getElementById('case-study-select');
+    if (!select) return;
+    select.addEventListener('change', function() {
+      applyCaseStudySelection(this.value);
+    });
+  }
+
   // ========== Accordion Toggle ==========
+  function toggleAccordion(header) {
+    var content = header.nextElementSibling;
+    if (!content) return;
+
+    var isExpanded = content.classList.contains('expanded');
+
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      header.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      header.classList.add('expanded');
+    }
+  }
+
   function initAccordions() {
     var accordionHeaders = document.querySelectorAll('[data-accordion="true"]');
 
@@ -45,22 +72,33 @@
         header.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
-
-          var content = this.nextElementSibling;
-          if (!content) return;
-
-          var isExpanded = content.classList.contains('expanded');
-
-          if (isExpanded) {
-            content.classList.remove('expanded');
-            this.classList.remove('expanded');
-          } else {
-            content.classList.add('expanded');
-            this.classList.add('expanded');
-          }
+          toggleAccordion(this);
         });
       })(accordionHeaders[i]);
     }
+  }
+
+  function initAccordionDelegation() {
+    document.addEventListener('click', function(e) {
+      var header = e.target.closest('[data-accordion="true"]');
+      if (header) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleAccordion(header);
+        return;
+      }
+
+      // Backwards compatibility: old markup still using data-action
+      var legacy = e.target.closest('[data-action]');
+      if (legacy) {
+        var action = legacy.getAttribute('data-action');
+        if (action === 'togglePromptPreview' || action === 'toggleRunsContainer' || action === 'toggleRun' || action === 'toggleStrategy') {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleAccordion(legacy);
+        }
+      }
+    });
   }
 
   // ========== Copy BibTeX ==========
@@ -309,6 +347,8 @@
   function initializeAll() {
     initCaseStudyTabs();
     initAccordions();
+    initAccordionDelegation();
+    initCaseStudySelect();
     initCopyBibtex();
     initializeDiffRendering();
   }
