@@ -538,7 +538,7 @@ author_profile: false
     margin-bottom: 2em;
   }
   
-  .case-study-selector label {
+  .case-study-selector > label {
     display: block;
     font-weight: 600;
     color: #2c3e50;
@@ -546,27 +546,41 @@ author_profile: false
     font-size: 1.1em;
   }
   
-  .case-study-selector select {
-    width: 100%;
-    padding: 0.8em 1em;
-    font-size: 1em;
-    border: 2px solid #e0e0e0;
+  .custom-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    background: #f5f5f5;
+    padding: 0.5em;
+    border-radius: 10px;
+  }
+  
+  .custom-tab {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.8em 1.2em;
+    font-size: 0.95em;
+    font-weight: 600;
+    border: 2px solid transparent;
     border-radius: 8px;
     background: #ffffff;
-    color: #2c3e50;
+    color: #666;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    text-align: center;
   }
   
-  .case-study-selector select:hover {
+  .custom-tab:hover {
     border-color: #e67e22;
+    color: #e67e22;
   }
   
-  .case-study-selector select:focus {
-    outline: none;
+  .custom-tab.active {
+    background: #e67e22;
+    color: #ffffff;
     border-color: #e67e22;
-    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+    box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
   }
   
   .case-study-content {
@@ -1538,6 +1552,16 @@ author_profile: false
       max-width: 100%;
     }
     
+    .custom-tabs {
+      flex-direction: column;
+    }
+    
+    .custom-tab {
+      min-width: 100%;
+      padding: 0.7em 1em;
+      font-size: 0.9em;
+    }
+    
     .project-header {
       margin: -1em -1.5em 1.5em -1.5em;
       width: calc(100% + 3em);
@@ -1899,12 +1923,12 @@ author_profile: false
     <h2>📚 Case Studies</h2>
     
     <div class="case-study-selector">
-      <label for="case-study-select">Select Case Study Type:</label>
-      <select id="case-study-select">
-        <option value="content-recall">Content Recall Detection</option>
-        <option value="persuasive-jailbreak">Persuasive Jailbreak Detection</option>
-        <option value="knowledge-memorization">Knowledge Memorization Detection</option>
-      </select>
+      <label>Select Case Study Type:</label>
+      <div class="custom-tabs">
+        <button class="custom-tab active" onclick="switchCaseStudy('content-recall', this)">Content Recall Detection</button>
+        <button class="custom-tab" onclick="switchCaseStudy('persuasive-jailbreak', this)">Persuasive Jailbreak Detection</button>
+        <button class="custom-tab" onclick="switchCaseStudy('knowledge-memorization', this)">Knowledge Memorization Detection</button>
+      </div>
     </div>
     
     <!-- Content Recall Detection Case Study -->
@@ -1965,7 +1989,7 @@ author_profile: false
       </div>
       
       <div class="case-study-prompt-preview">
-        <div class="case-study-prompt-preview-header" data-action="togglePromptPreview">
+        <div class="case-study-prompt-preview-header" onclick="toggleAccordion(this)">
           📝 Prompt Preview
         </div>
         <div class="case-study-prompt-preview-content">
@@ -1982,13 +2006,13 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- All Runs Container -->
       <div class="case-study-runs-container">
-        <div class="case-study-runs-header" data-action="toggleRunsContainer">
+        <div class="case-study-runs-header" onclick="toggleAccordion(this)">
           All Runs
         </div>
         <div class="case-study-runs-content">
           <!-- Run 1 -->
           <div class="case-study-run">
-        <div class="case-study-run-header" data-action="toggleRun">
+        <div class="case-study-run-header" onclick="toggleAccordion(this)">
           Run 1
         </div>
         <div class="case-study-run-content">
@@ -2039,7 +2063,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 2 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" data-action="toggleRun">
+        <div class="case-study-run-header" onclick="toggleAccordion(this)">
           Run 2
         </div>
         <div class="case-study-run-content">
@@ -2090,7 +2114,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 3 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" data-action="toggleRun">
+        <div class="case-study-run-header" onclick="toggleAccordion(this)">
           Run 3
         </div>
         <div class="case-study-run-content">
@@ -2141,7 +2165,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 4 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" data-action="toggleRun">
+        <div class="case-study-run-header" onclick="toggleAccordion(this)">
           Run 4
         </div>
         <div class="case-study-run-content">
@@ -2192,7 +2216,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 5 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" data-action="toggleRun">
+        <div class="case-study-run-header" onclick="toggleAccordion(this)">
           Run 5
         </div>
         <div class="case-study-run-content">
@@ -2326,7 +2350,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
           
           <!-- Ethos Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" data-action="toggleStrategy">
+            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
               🔧 Ethos (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2351,7 +2375,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Alliance Building Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" data-action="toggleStrategy">
+            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
               🔧 Alliance Building (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2376,7 +2400,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Relationship Leverages Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" data-action="toggleStrategy">
+            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
               🔧 Relationship Leverages (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2415,7 +2439,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #1 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" data-action="toggleRun">
+            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
               Mutation #1 — Ethos | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8857 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2596,7 +2620,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #2 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" data-action="toggleRun">
+            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
               Mutation #2 — Alliance Building | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8352 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2781,7 +2805,7 @@ Would you like me to continue or is there something specific you'd like to know 
           
           <!-- Mutation #3 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" data-action="toggleRun">
+            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
               Mutation #3 — Relationship Leverages | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.6840 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -3149,142 +3173,95 @@ I hope this brings back some fond memories for you!">
 </div>
 
 <script>
+// ========== Global Functions for Case Study and Accordion ==========
+
+// Switch Case Study Tab
+function switchCaseStudy(value, clickedTab) {
+  // Hide all case study contents
+  var allContents = document.querySelectorAll('.case-study-content');
+  for (var i = 0; i < allContents.length; i++) {
+    allContents[i].classList.remove('active');
+  }
+  
+  // Show selected case study
+  var selectedContent = document.getElementById('case-study-' + value);
+  if (selectedContent) {
+    selectedContent.classList.add('active');
+  }
+  
+  // Update tab states
+  var allTabs = document.querySelectorAll('.custom-tab');
+  for (var j = 0; j < allTabs.length; j++) {
+    allTabs[j].classList.remove('active');
+  }
+  if (clickedTab) {
+    clickedTab.classList.add('active');
+  }
+}
+
+// Toggle Accordion
+function toggleAccordion(header) {
+  var content = header.nextElementSibling;
+  if (!content) return;
+  
+  var isExpanded = content.classList.contains('expanded');
+  
+  if (isExpanded) {
+    content.classList.remove('expanded');
+    header.classList.remove('expanded');
+  } else {
+    content.classList.add('expanded');
+    header.classList.add('expanded');
+  }
+}
+
+// Copy BibTeX Function
+function copyBibtex() {
+  var bibtexElement = document.getElementById('bibtex-content');
+  if (!bibtexElement) return;
+  
+  var bibtex = bibtexElement.textContent.trim();
+  
+  navigator.clipboard.writeText(bibtex).then(function() {
+    bibtexElement.classList.add('copied');
+    
+    var hintEl = document.querySelector('.bibtex-copy-hint');
+    if (hintEl) {
+      var originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
+      hintEl.textContent = '✓ Copied to clipboard!';
+      hintEl.style.color = '#38ef7d';
+      hintEl.style.fontWeight = '600';
+      
+      setTimeout(function() {
+        bibtexElement.classList.remove('copied');
+        hintEl.textContent = originalHint;
+        hintEl.style.color = '#6c757d';
+        hintEl.style.fontWeight = 'normal';
+      }, 2000);
+    }
+  }).catch(function(err) {
+    console.error('Failed to copy: ', err);
+    var hintEl = document.querySelector('.bibtex-copy-hint');
+    if (hintEl) {
+      hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
+      hintEl.style.color = '#e74c3c';
+      hintEl.style.fontWeight = '600';
+      setTimeout(function() {
+        hintEl.textContent = 'Click the BibTeX code above to copy';
+        hintEl.style.color = '#6c757d';
+        hintEl.style.fontWeight = 'normal';
+      }, 3000);
+    }
+  });
+}
+
+// ========== IIFE for Other Initialization ==========
 (function() {
   // 保存原始提示文字
-  const hintElement = document.querySelector('.bibtex-copy-hint');
+  var hintElement = document.querySelector('.bibtex-copy-hint');
   if (hintElement && !hintElement.dataset.originalText) {
     hintElement.dataset.originalText = hintElement.textContent.trim();
   }
-  
-  // Case Study Selection Function
-  function showCaseStudy(value) {
-    // Hide all case study contents
-    const allContents = document.querySelectorAll('.case-study-content');
-    allContents.forEach(function(content) {
-      content.classList.remove('active');
-    });
-    
-    // Show selected case study
-    const selectedContent = document.getElementById('case-study-' + value);
-    if (selectedContent) {
-      selectedContent.classList.add('active');
-    }
-  }
-  
-  // Initialize case study selector
-  function initCaseStudySelector() {
-    const caseStudySelect = document.getElementById('case-study-select');
-    if (caseStudySelect) {
-      // Remove any existing listeners to prevent duplicates
-      const newSelect = caseStudySelect.cloneNode(true);
-      caseStudySelect.parentNode.replaceChild(newSelect, caseStudySelect);
-      
-      newSelect.addEventListener('change', function(e) {
-        e.preventDefault();
-        showCaseStudy(this.value);
-      });
-    }
-  }
-  
-  // Toggle accordion function (generic)
-  function toggleAccordion(header) {
-    const content = header.nextElementSibling;
-    if (!content) return;
-    
-    const isExpanded = content.classList.contains('expanded');
-    
-    if (isExpanded) {
-      content.classList.remove('expanded');
-      header.classList.remove('expanded');
-    } else {
-      content.classList.add('expanded');
-      header.classList.add('expanded');
-    }
-  }
-  
-  // Copy BibTeX Function
-  function copyBibtex() {
-    const bibtexElement = document.getElementById('bibtex-content');
-    if (!bibtexElement) return;
-    
-    const bibtex = bibtexElement.textContent.trim();
-    
-    navigator.clipboard.writeText(bibtex).then(function() {
-      bibtexElement.classList.add('copied');
-      
-      const hintEl = document.querySelector('.bibtex-copy-hint');
-      if (hintEl) {
-        const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
-        hintEl.textContent = '✓ Copied to clipboard!';
-        hintEl.style.color = '#38ef7d';
-        hintEl.style.fontWeight = '600';
-        
-        setTimeout(function() {
-          bibtexElement.classList.remove('copied');
-          hintEl.textContent = originalHint;
-          hintEl.style.color = '#6c757d';
-          hintEl.style.fontWeight = 'normal';
-        }, 2000);
-      }
-    }).catch(function(err) {
-      console.error('Failed to copy: ', err);
-      const hintEl = document.querySelector('.bibtex-copy-hint');
-      if (hintEl) {
-        hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
-        hintEl.style.color = '#e74c3c';
-        hintEl.style.fontWeight = '600';
-        setTimeout(function() {
-          hintEl.textContent = 'Click the BibTeX code above to copy';
-          hintEl.style.color = '#6c757d';
-          hintEl.style.fontWeight = 'normal';
-        }, 3000);
-      }
-    });
-  }
-  
-  // Event delegation handler - using event capturing for more reliable handling
-  function handleGlobalClick(e) {
-    const target = e.target.closest('[data-action]');
-    if (!target) return;
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const action = target.getAttribute('data-action');
-    
-    switch(action) {
-      case 'togglePromptPreview':
-      case 'toggleRunsContainer':
-      case 'toggleRun':
-      case 'toggleStrategy':
-        toggleAccordion(target);
-        break;
-      case 'copyBibtex':
-        copyBibtex();
-        break;
-    }
-  }
-  
-  // Main initialization function
-  function initializeAll() {
-    // Initialize case study selector
-    initCaseStudySelector();
-    
-    // Add global click handler with capturing phase for better reliability
-    document.removeEventListener('click', handleGlobalClick, true);
-    document.addEventListener('click', handleGlobalClick, true);
-  }
-  
-  // Run initialization when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeAll);
-  } else {
-    // DOM already loaded, run immediately
-    initializeAll();
-  }
-  
-  // Also run on window load as a fallback
-  window.addEventListener('load', initializeAll);
   
   // Adjust Number Input
   window.adjustNumber = function(button, delta) {
