@@ -1937,7 +1937,7 @@ author_profile: false
     
     <div class="case-study-selector">
       <label for="case-study-select">Select Case Study Type:</label>
-      <select id="case-study-select" onchange="showCaseStudy(this.value)">
+      <select id="case-study-select">
         <option value="content-recall">Content Recall Detection</option>
         <option value="persuasive-jailbreak">Persuasive Jailbreak Detection</option>
         <option value="knowledge-memorization">Knowledge Memorization Detection</option>
@@ -1999,14 +1999,14 @@ author_profile: false
         <div class="case-study-info" style="margin-top: 0.6em; margin-bottom: 0.6em;">
           The length of the generated text will be adjusted to match the character count of your Ground Truth input.
         </div>
-        <button class="case-study-run-button" onclick="runDetection()">
+        <button class="case-study-run-button" data-action="runDetection">
           <span class="rocket-icon">🚀</span>
           <span>Run: Text Memorization Detection</span>
         </button>
       </div>
       
       <div class="case-study-prompt-preview">
-        <div class="case-study-prompt-preview-header" onclick="togglePromptPreview(this)">
+        <div class="case-study-prompt-preview-header" data-action="togglePromptPreview">
           📝 Prompt Preview
         </div>
         <div class="case-study-prompt-preview-content">
@@ -2023,13 +2023,13 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- All Runs Container -->
       <div class="case-study-runs-container">
-        <div class="case-study-runs-header" onclick="toggleRunsContainer(this)">
+        <div class="case-study-runs-header" data-action="toggleRunsContainer">
           All Runs
         </div>
         <div class="case-study-runs-content">
           <!-- Run 1 -->
           <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleRun(this)">
+        <div class="case-study-run-header" data-action="toggleRun">
           Run 1
         </div>
         <div class="case-study-run-content">
@@ -2080,7 +2080,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 2 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleRun(this)">
+        <div class="case-study-run-header" data-action="toggleRun">
           Run 2
         </div>
         <div class="case-study-run-content">
@@ -2131,7 +2131,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 3 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleRun(this)">
+        <div class="case-study-run-header" data-action="toggleRun">
           Run 3
         </div>
         <div class="case-study-run-content">
@@ -2182,7 +2182,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 4 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleRun(this)">
+        <div class="case-study-run-header" data-action="toggleRun">
           Run 4
         </div>
         <div class="case-study-run-content">
@@ -2233,7 +2233,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 5 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleRun(this)">
+        <div class="case-study-run-header" data-action="toggleRun">
           Run 5
         </div>
         <div class="case-study-run-content">
@@ -2338,14 +2338,14 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
             <input type="text" value="0.90" readonly class="readonly-display">
           </div>
         </div>
-        <button class="case-study-run-button" onclick="runDetection()">
+        <button class="case-study-run-button" data-action="runDetection">
           <span class="rocket-icon">🚀</span>
           <span>Run: Persuasive Jailbreak Detection</span>
         </button>
       </div>
       
       <div class="case-study-prompt-preview">
-        <div class="case-study-prompt-preview-header" onclick="togglePromptPreview(this)">
+        <div class="case-study-prompt-preview-header" data-action="togglePromptPreview">
           Information Preview
         </div>
         <div class="case-study-prompt-preview-content">
@@ -2371,7 +2371,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
           
           <!-- Ethos Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleStrategy(this)">
+            <div class="case-study-strategy-header" data-action="toggleStrategy">
               🔧 Ethos (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2396,7 +2396,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Alliance Building Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleStrategy(this)">
+            <div class="case-study-strategy-header" data-action="toggleStrategy">
               🔧 Alliance Building (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2421,7 +2421,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Relationship Leverages Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleStrategy(this)">
+            <div class="case-study-strategy-header" data-action="toggleStrategy">
               🔧 Relationship Leverages (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2449,7 +2449,7 @@ Output the result in the following format (You need to keep the original detaile
       
       <!-- Results Section -->
       <div class="case-study-runs-container">
-        <div class="case-study-runs-header" onclick="toggleRunsContainer(this)">
+        <div class="case-study-runs-header" data-action="toggleRunsContainer">
           Results
         </div>
         <div class="case-study-runs-content">
@@ -2460,7 +2460,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #1 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleRun(this)">
+            <div class="case-study-mutation-header" data-action="toggleRun">
               Mutation #1 — Ethos | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8857 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2641,7 +2641,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #2 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleRun(this)">
+            <div class="case-study-mutation-header" data-action="toggleRun">
               Mutation #2 — Alliance Building | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8352 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2826,7 +2826,7 @@ Would you like me to continue or is there something specific you'd like to know 
           
           <!-- Mutation #3 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleRun(this)">
+            <div class="case-study-mutation-header" data-action="toggleRun">
               Mutation #3 — Relationship Leverages | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.6840 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -3067,7 +3067,7 @@ I hope this brings back some fond memories for you!">
             <input type="text" value="0.00 - 1.00" readonly class="readonly-display">
           </div>
         </div>
-        <button class="case-study-run-button" onclick="runDetection()">
+        <button class="case-study-run-button" data-action="runDetection">
           <span class="rocket-icon">🚀</span>
           <span>Run: Knowledge Memorization Detection</span>
         </button>
@@ -3075,7 +3075,7 @@ I hope this brings back some fond memories for you!">
       
       <!-- Q/A Pair Results -->
       <div class="case-study-runs-container">
-        <div class="case-study-runs-header" onclick="toggleRunsContainer(this)">
+        <div class="case-study-runs-header" data-action="toggleRunsContainer">
           Q/A Pair 4 · What is the relationship between the Bennet sisters?
         </div>
         <div class="case-study-runs-content">
@@ -3183,7 +3183,7 @@ I hope this brings back some fond memories for you!">
       If you find Copyright Detective useful in your research, we would appreciate it if you consider citing our work:
     </p>
     <div class="bibtex-wrapper">
-      <pre class="bibtex-code" id="bibtex-content" onclick="copyBibtex()" title="Click to copy">@article{copyright_detective_2025,
+      <pre class="bibtex-code" id="bibtex-content" data-action="copyBibtex" title="Click to copy">@article{copyright_detective_2025,
   title={},
   author={},
   journal={},
@@ -3206,10 +3206,10 @@ I hope this brings back some fond memories for you!">
   }
   
   // Case Study Selection Function
-  window.showCaseStudy = function(value) {
+  function showCaseStudy(value) {
     // Hide all case study contents
     const allContents = document.querySelectorAll('.case-study-content');
-    allContents.forEach(content => {
+    allContents.forEach(function(content) {
       content.classList.remove('active');
     });
     
@@ -3218,63 +3218,117 @@ I hope this brings back some fond memories for you!">
     if (selectedContent) {
       selectedContent.classList.add('active');
     }
-  };
+  }
   
-  // Toggle Runs Container Function
-  window.toggleRunsContainer = function(header) {
-    const containerContent = header.nextElementSibling;
-    const isExpanded = containerContent.classList.contains('expanded');
+  // Initialize case study selector
+  function initCaseStudySelector() {
+    const caseStudySelect = document.getElementById('case-study-select');
+    if (caseStudySelect) {
+      caseStudySelect.addEventListener('change', function() {
+        showCaseStudy(this.value);
+      });
+    }
+  }
+  
+  // Run initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCaseStudySelector);
+  } else {
+    initCaseStudySelector();
+  }
+  
+  // Toggle accordion function (generic)
+  function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    if (!content) return;
+    
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
-      containerContent.classList.remove('expanded');
+      content.classList.remove('expanded');
       header.classList.remove('expanded');
     } else {
-      containerContent.classList.add('expanded');
+      content.classList.add('expanded');
       header.classList.add('expanded');
     }
-  };
+  }
   
-  // Toggle Prompt Preview Function
-  window.togglePromptPreview = function(header) {
-    const previewContent = header.nextElementSibling;
-    const isExpanded = previewContent.classList.contains('expanded');
-    
-    if (isExpanded) {
-      previewContent.classList.remove('expanded');
-      header.classList.remove('expanded');
-    } else {
-      previewContent.classList.add('expanded');
-      header.classList.add('expanded');
-    }
-  };
+  // Event delegation for all toggle actions
+  function initEventDelegation() {
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('[data-action]');
+      if (!target) return;
+      
+      const action = target.getAttribute('data-action');
+      
+      switch(action) {
+        case 'togglePromptPreview':
+        case 'toggleRunsContainer':
+        case 'toggleRun':
+        case 'toggleStrategy':
+          toggleAccordion(target);
+          break;
+        case 'runDetection':
+          runDetection();
+          break;
+        case 'copyBibtex':
+          copyBibtex();
+          break;
+      }
+    });
+  }
   
-  // Toggle Strategy Accordion Function
-  window.toggleStrategy = function(header) {
-    const strategyContent = header.nextElementSibling;
-    const isExpanded = strategyContent.classList.contains('expanded');
-    
-    if (isExpanded) {
-      strategyContent.classList.remove('expanded');
-      header.classList.remove('expanded');
-    } else {
-      strategyContent.classList.add('expanded');
-      header.classList.add('expanded');
-    }
-  };
+  // Run Detection Function
+  function runDetection() {
+    console.log('Running Text Memorization Detection...');
+  }
   
-  // Toggle Run Function
-  window.toggleRun = function(header) {
-    const runContent = header.nextElementSibling;
-    const isExpanded = runContent.classList.contains('expanded');
+  // Copy BibTeX Function
+  function copyBibtex() {
+    const bibtexElement = document.getElementById('bibtex-content');
+    if (!bibtexElement) return;
     
-    if (isExpanded) {
-      runContent.classList.remove('expanded');
-      header.classList.remove('expanded');
-    } else {
-      runContent.classList.add('expanded');
-      header.classList.add('expanded');
-    }
-  };
+    const bibtex = bibtexElement.textContent.trim();
+    
+    navigator.clipboard.writeText(bibtex).then(function() {
+      bibtexElement.classList.add('copied');
+      
+      const hintEl = document.querySelector('.bibtex-copy-hint');
+      if (hintEl) {
+        const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
+        hintEl.textContent = '✓ Copied to clipboard!';
+        hintEl.style.color = '#38ef7d';
+        hintEl.style.fontWeight = '600';
+        
+        setTimeout(function() {
+          bibtexElement.classList.remove('copied');
+          hintEl.textContent = originalHint;
+          hintEl.style.color = '#6c757d';
+          hintEl.style.fontWeight = 'normal';
+        }, 2000);
+      }
+    }).catch(function(err) {
+      console.error('Failed to copy: ', err);
+      const hintEl = document.querySelector('.bibtex-copy-hint');
+      if (hintEl) {
+        hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
+        hintEl.style.color = '#e74c3c';
+        hintEl.style.fontWeight = '600';
+        setTimeout(function() {
+          hintEl.textContent = 'Click the BibTeX code above to copy';
+          hintEl.style.color = '#6c757d';
+          hintEl.style.fontWeight = 'normal';
+        }, 3000);
+      }
+    });
+  }
+  
+  // Initialize event delegation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEventDelegation);
+  } else {
+    initEventDelegation();
+  }
   
   // Adjust Number Input
   window.adjustNumber = function(button, delta) {
@@ -3291,13 +3345,6 @@ I hope this brings back some fond memories for you!">
     const percentage = (value / (parseFloat(slider.max) - parseFloat(slider.min))) * 100;
     valueSpan.textContent = value.toFixed(2);
     valueSpan.style.left = percentage + '%';
-  };
-  
-  // Run Detection Function
-  window.runDetection = function() {
-    // This would trigger the detection process
-    console.log('Running Text Memorization Detection...');
-    // In a real implementation, this would make an API call or trigger the detection
   };
   
   // Text Matching and Highlighting Function
@@ -3463,42 +3510,6 @@ I hope this brings back some fond memories for you!">
   } else {
     initializeDiffRendering();
   }
-  
-  window.copyBibtex = function() {
-    const bibtexElement = document.getElementById('bibtex-content');
-    const bibtex = bibtexElement.textContent.trim();
-    
-    navigator.clipboard.writeText(bibtex).then(function() {
-      // 添加成功状态的类，不改变文本内容
-      bibtexElement.classList.add('copied');
-      
-      // 更新提示文字
-      const hintEl = document.querySelector('.bibtex-copy-hint');
-      const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
-      hintEl.textContent = '✓ Copied to clipboard!';
-      hintEl.style.color = '#38ef7d';
-      hintEl.style.fontWeight = '600';
-      
-      setTimeout(function() {
-        bibtexElement.classList.remove('copied');
-        hintEl.textContent = originalHint;
-        hintEl.style.color = '#6c757d';
-        hintEl.style.fontWeight = 'normal';
-      }, 2000);
-    }).catch(function(err) {
-      console.error('Failed to copy: ', err);
-      const hintEl = document.querySelector('.bibtex-copy-hint');
-      const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
-      hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
-      hintEl.style.color = '#e74c3c';
-      hintEl.style.fontWeight = '600';
-      setTimeout(function() {
-        hintEl.textContent = originalHint;
-        hintEl.style.color = '#6c757d';
-        hintEl.style.fontWeight = 'normal';
-      }, 3000);
-    });
-  };
 })();
 </script>
 
