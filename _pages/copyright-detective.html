@@ -1924,10 +1924,10 @@ author_profile: false
     
     <div class="case-study-selector">
       <label>Select Case Study Type:</label>
-      <div class="custom-tabs">
-        <button class="custom-tab active" onclick="switchCaseStudy('content-recall', this)">Content Recall Detection</button>
-        <button class="custom-tab" onclick="switchCaseStudy('persuasive-jailbreak', this)">Persuasive Jailbreak Detection</button>
-        <button class="custom-tab" onclick="switchCaseStudy('knowledge-memorization', this)">Knowledge Memorization Detection</button>
+      <div class="custom-tabs" id="case-study-tabs">
+        <button type="button" class="custom-tab active" data-case="content-recall">Content Recall Detection</button>
+        <button type="button" class="custom-tab" data-case="persuasive-jailbreak">Persuasive Jailbreak Detection</button>
+        <button type="button" class="custom-tab" data-case="knowledge-memorization">Knowledge Memorization Detection</button>
       </div>
     </div>
     
@@ -1989,7 +1989,7 @@ author_profile: false
       </div>
       
       <div class="case-study-prompt-preview">
-        <div class="case-study-prompt-preview-header" onclick="toggleAccordion(this)">
+        <div class="case-study-prompt-preview-header" data-accordion="true">
           📝 Prompt Preview
         </div>
         <div class="case-study-prompt-preview-content">
@@ -2006,13 +2006,13 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- All Runs Container -->
       <div class="case-study-runs-container">
-        <div class="case-study-runs-header" onclick="toggleAccordion(this)">
+        <div class="case-study-runs-header" data-accordion="true">
           All Runs
         </div>
         <div class="case-study-runs-content">
           <!-- Run 1 -->
           <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleAccordion(this)">
+        <div class="case-study-run-header" data-accordion="true">
           Run 1
         </div>
         <div class="case-study-run-content">
@@ -2063,7 +2063,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 2 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleAccordion(this)">
+        <div class="case-study-run-header" data-accordion="true">
           Run 2
         </div>
         <div class="case-study-run-content">
@@ -2114,7 +2114,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 3 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleAccordion(this)">
+        <div class="case-study-run-header" data-accordion="true">
           Run 3
         </div>
         <div class="case-study-run-content">
@@ -2165,7 +2165,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 4 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleAccordion(this)">
+        <div class="case-study-run-header" data-accordion="true">
           Run 4
         </div>
         <div class="case-study-run-content">
@@ -2216,7 +2216,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
       
       <!-- Run 5 -->
       <div class="case-study-run">
-        <div class="case-study-run-header" onclick="toggleAccordion(this)">
+        <div class="case-study-run-header" data-accordion="true">
           Run 5
         </div>
         <div class="case-study-run-content">
@@ -2350,7 +2350,7 @@ Important: Produce a richly detailed continuation that intentionally exceeds the
           
           <!-- Ethos Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
+            <div class="case-study-strategy-header" data-accordion="true">
               🔧 Ethos (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2375,7 +2375,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Alliance Building Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
+            <div class="case-study-strategy-header" data-accordion="true">
               🔧 Alliance Building (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2400,7 +2400,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Relationship Leverages Strategy -->
           <div class="case-study-strategy-accordion">
-            <div class="case-study-strategy-header" onclick="toggleAccordion(this)">
+            <div class="case-study-strategy-header" data-accordion="true">
               🔧 Relationship Leverages (Zero-Shot)
             </div>
             <div class="case-study-strategy-content">
@@ -2439,7 +2439,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #1 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
+            <div class="case-study-mutation-header" data-accordion="true">
               Mutation #1 — Ethos | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8857 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2620,7 +2620,7 @@ Output the result in the following format (You need to keep the original detaile
           
           <!-- Mutation #2 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
+            <div class="case-study-mutation-header" data-accordion="true">
               Mutation #2 — Alliance Building | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.8352 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -2805,7 +2805,7 @@ Would you like me to continue or is there something specific you'd like to know 
           
           <!-- Mutation #3 -->
           <div class="case-study-mutation">
-            <div class="case-study-mutation-header" onclick="toggleAccordion(this)">
+            <div class="case-study-mutation-header" data-accordion="true">
               Mutation #3 — Relationship Leverages | ✅ PASSED — Preserves original intention | Avg ROUGE-L 0.6840 | 3 attempts
             </div>
             <div class="case-study-mutation-content">
@@ -3173,133 +3173,179 @@ I hope this brings back some fond memories for you!">
 </div>
 
 <script>
-// ========== Global Functions for Case Study and Accordion ==========
-
-// Switch Case Study Tab
-function switchCaseStudy(value, clickedTab) {
-  // Hide all case study contents
-  var allContents = document.querySelectorAll('.case-study-content');
-  for (var i = 0; i < allContents.length; i++) {
-    allContents[i].classList.remove('active');
-  }
+(function() {
+  'use strict';
   
-  // Show selected case study
-  var selectedContent = document.getElementById('case-study-' + value);
-  if (selectedContent) {
-    selectedContent.classList.add('active');
-  }
-  
-  // Update tab states
-  var allTabs = document.querySelectorAll('.custom-tab');
-  for (var j = 0; j < allTabs.length; j++) {
-    allTabs[j].classList.remove('active');
-  }
-  if (clickedTab) {
-    clickedTab.classList.add('active');
-  }
-}
-
-// Toggle Accordion
-function toggleAccordion(header) {
-  var content = header.nextElementSibling;
-  if (!content) return;
-  
-  var isExpanded = content.classList.contains('expanded');
-  
-  if (isExpanded) {
-    content.classList.remove('expanded');
-    header.classList.remove('expanded');
-  } else {
-    content.classList.add('expanded');
-    header.classList.add('expanded');
-  }
-}
-
-// Copy BibTeX Function
-function copyBibtex() {
-  var bibtexElement = document.getElementById('bibtex-content');
-  if (!bibtexElement) return;
-  
-  var bibtex = bibtexElement.textContent.trim();
-  
-  navigator.clipboard.writeText(bibtex).then(function() {
-    bibtexElement.classList.add('copied');
+  // ========== Case Study Tab Switching ==========
+  function initCaseStudyTabs() {
+    var tabContainer = document.getElementById('case-study-tabs');
+    if (!tabContainer) return;
     
+    var tabs = tabContainer.querySelectorAll('.custom-tab');
+    
+    for (var i = 0; i < tabs.length; i++) {
+      (function(tab) {
+        tab.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          var caseValue = this.getAttribute('data-case');
+          if (!caseValue) return;
+          
+          // Hide all case study contents
+          var allContents = document.querySelectorAll('.case-study-content');
+          for (var j = 0; j < allContents.length; j++) {
+            allContents[j].classList.remove('active');
+          }
+          
+          // Show selected case study
+          var selectedContent = document.getElementById('case-study-' + caseValue);
+          if (selectedContent) {
+            selectedContent.classList.add('active');
+          }
+          
+          // Update tab states
+          for (var k = 0; k < tabs.length; k++) {
+            tabs[k].classList.remove('active');
+          }
+          this.classList.add('active');
+        });
+      })(tabs[i]);
+    }
+  }
+  
+  // ========== Accordion Toggle ==========
+  function initAccordions() {
+    var accordionHeaders = document.querySelectorAll('[data-accordion="true"]');
+    
+    for (var i = 0; i < accordionHeaders.length; i++) {
+      (function(header) {
+        header.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          var content = this.nextElementSibling;
+          if (!content) return;
+          
+          var isExpanded = content.classList.contains('expanded');
+          
+          if (isExpanded) {
+            content.classList.remove('expanded');
+            this.classList.remove('expanded');
+          } else {
+            content.classList.add('expanded');
+            this.classList.add('expanded');
+          }
+        });
+      })(accordionHeaders[i]);
+    }
+  }
+  
+  // ========== Copy BibTeX ==========
+  function initCopyBibtex() {
+    var bibtexElement = document.getElementById('bibtex-content');
+    if (!bibtexElement) return;
+    
+    // Save original hint text
     var hintEl = document.querySelector('.bibtex-copy-hint');
-    if (hintEl) {
-      var originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
-      hintEl.textContent = '✓ Copied to clipboard!';
-      hintEl.style.color = '#38ef7d';
-      hintEl.style.fontWeight = '600';
+    if (hintEl && !hintEl.getAttribute('data-original')) {
+      hintEl.setAttribute('data-original', hintEl.textContent.trim());
+    }
+    
+    bibtexElement.addEventListener('click', function() {
+      var bibtex = this.textContent.trim();
       
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(bibtex).then(function() {
+          showCopySuccess();
+        }).catch(function() {
+          fallbackCopy(bibtex);
+        });
+      } else {
+        fallbackCopy(bibtex);
+      }
+    });
+    
+    function fallbackCopy(text) {
+      var textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showCopySuccess();
+      } catch (err) {
+        showCopyError();
+      }
+      document.body.removeChild(textArea);
+    }
+    
+    function showCopySuccess() {
+      bibtexElement.classList.add('copied');
+      if (hintEl) {
+        hintEl.textContent = '✓ Copied to clipboard!';
+        hintEl.style.color = '#38ef7d';
+        hintEl.style.fontWeight = '600';
+      }
       setTimeout(function() {
         bibtexElement.classList.remove('copied');
-        hintEl.textContent = originalHint;
-        hintEl.style.color = '#6c757d';
-        hintEl.style.fontWeight = 'normal';
+        if (hintEl) {
+          hintEl.textContent = hintEl.getAttribute('data-original') || 'Click the BibTeX code above to copy';
+          hintEl.style.color = '#6c757d';
+          hintEl.style.fontWeight = 'normal';
+        }
       }, 2000);
     }
-  }).catch(function(err) {
-    console.error('Failed to copy: ', err);
-    var hintEl = document.querySelector('.bibtex-copy-hint');
-    if (hintEl) {
-      hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
-      hintEl.style.color = '#e74c3c';
-      hintEl.style.fontWeight = '600';
-      setTimeout(function() {
-        hintEl.textContent = 'Click the BibTeX code above to copy';
-        hintEl.style.color = '#6c757d';
-        hintEl.style.fontWeight = 'normal';
-      }, 3000);
+    
+    function showCopyError() {
+      if (hintEl) {
+        hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
+        hintEl.style.color = '#e74c3c';
+        hintEl.style.fontWeight = '600';
+        setTimeout(function() {
+          hintEl.textContent = hintEl.getAttribute('data-original') || 'Click the BibTeX code above to copy';
+          hintEl.style.color = '#6c757d';
+          hintEl.style.fontWeight = 'normal';
+        }, 3000);
+      }
     }
-  });
-}
-
-// ========== IIFE for Other Initialization ==========
-(function() {
-  // 保存原始提示文字
-  var hintElement = document.querySelector('.bibtex-copy-hint');
-  if (hintElement && !hintElement.dataset.originalText) {
-    hintElement.dataset.originalText = hintElement.textContent.trim();
   }
   
   // Adjust Number Input
   window.adjustNumber = function(button, delta) {
-    const input = button.closest('.case-study-number-input').querySelector('input[type="number"]');
-    const currentValue = parseInt(input.value) || 0;
-    const newValue = Math.max(parseInt(input.min || 1), Math.min(parseInt(input.max || 100), currentValue + delta));
+    var input = button.closest('.case-study-number-input').querySelector('input[type="number"]');
+    var currentValue = parseInt(input.value) || 0;
+    var newValue = Math.max(parseInt(input.min || 1), Math.min(parseInt(input.max || 100), currentValue + delta));
     input.value = newValue;
   };
   
   // Update Slider Value Display
   window.updateSliderValue = function(slider) {
-    const value = parseFloat(slider.value);
-    const valueSpan = slider.parentElement.querySelector('.case-study-slider-value');
-    const percentage = (value / (parseFloat(slider.max) - parseFloat(slider.min))) * 100;
+    var value = parseFloat(slider.value);
+    var valueSpan = slider.parentElement.querySelector('.case-study-slider-value');
+    var percentage = (value / (parseFloat(slider.max) - parseFloat(slider.min))) * 100;
     valueSpan.textContent = value.toFixed(2);
     valueSpan.style.left = percentage + '%';
   };
   
   // Text Matching and Highlighting Function
   function tokenizeText(text) {
-    // Split text into tokens (words and punctuation) while preserving whitespace
-    const tokens = [];
-    const regex = /(\S+)/g;
-    let match;
-    let lastIndex = 0;
+    var tokens = [];
+    var regex = /(\S+)/g;
+    var match;
+    var lastIndex = 0;
     
     while ((match = regex.exec(text)) !== null) {
-      // Add any whitespace before the match
       if (match.index > lastIndex) {
-        const whitespace = text.substring(lastIndex, match.index);
+        var whitespace = text.substring(lastIndex, match.index);
         tokens.push({ text: whitespace, type: 'whitespace' });
       }
-      // Add the token (word or punctuation)
       tokens.push({ text: match[0], type: 'token' });
       lastIndex = regex.lastIndex;
     }
     
-    // Add any remaining whitespace
     if (lastIndex < text.length) {
       tokens.push({ text: text.substring(lastIndex), type: 'whitespace' });
     }
@@ -3313,13 +3359,18 @@ function copyBibtex() {
   
   // Longest Common Subsequence algorithm
   function findLCS(seq1, seq2) {
-    const m = seq1.length;
-    const n = seq2.length;
-    const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+    var m = seq1.length;
+    var n = seq2.length;
+    var dp = [];
+    for (var x = 0; x <= m; x++) {
+      dp[x] = [];
+      for (var y = 0; y <= n; y++) {
+        dp[x][y] = 0;
+      }
+    }
     
-    // Build LCS table
-    for (let i = 1; i <= m; i++) {
-      for (let j = 1; j <= n; j++) {
+    for (var i = 1; i <= m; i++) {
+      for (var j = 1; j <= n; j++) {
         if (seq1[i - 1] === seq2[j - 1] && seq1[i - 1] !== '') {
           dp[i][j] = dp[i - 1][j - 1] + 1;
         } else {
@@ -3328,22 +3379,19 @@ function copyBibtex() {
       }
     }
     
-    // Reconstruct LCS
-    const lcs = [];
-    let i = m, j = n;
-    const matches = new Set();
+    var matches = {};
+    var ii = m, jj = n;
     
-    while (i > 0 && j > 0) {
-      if (seq1[i - 1] === seq2[j - 1] && seq1[i - 1] !== '') {
-        matches.add(`gt-${i - 1}`);
-        matches.add(`mo-${j - 1}`);
-        lcs.unshift(seq1[i - 1]);
-        i--;
-        j--;
-      } else if (dp[i - 1][j] > dp[i][j - 1]) {
-        i--;
+    while (ii > 0 && jj > 0) {
+      if (seq1[ii - 1] === seq2[jj - 1] && seq1[ii - 1] !== '') {
+        matches['gt-' + (ii - 1)] = true;
+        matches['mo-' + (jj - 1)] = true;
+        ii--;
+        jj--;
+      } else if (dp[ii - 1][jj] > dp[ii][jj - 1]) {
+        ii--;
       } else {
-        j--;
+        jj--;
       }
     }
     
@@ -3351,98 +3399,113 @@ function copyBibtex() {
   }
   
   function findMatches(groundTruth, modelOutput) {
-    const gtTokens = tokenizeText(groundTruth);
-    const moTokens = tokenizeText(modelOutput);
+    var gtTokens = tokenizeText(groundTruth);
+    var moTokens = tokenizeText(modelOutput);
     
-    // Create normalized versions for matching (only for actual tokens)
-    const gtNormalized = gtTokens.map(t => t.type === 'token' ? normalizeToken(t.text) : '');
-    const moNormalized = moTokens.map(t => t.type === 'token' ? normalizeToken(t.text) : '');
+    var gtNormalized = [];
+    var moNormalized = [];
+    for (var i = 0; i < gtTokens.length; i++) {
+      gtNormalized.push(gtTokens[i].type === 'token' ? normalizeToken(gtTokens[i].text) : '');
+    }
+    for (var j = 0; j < moTokens.length; j++) {
+      moNormalized.push(moTokens[j].type === 'token' ? normalizeToken(moTokens[j].text) : '');
+    }
     
-    // Find matches using LCS
-    const matches = findLCS(gtNormalized, moNormalized);
+    var matches = findLCS(gtNormalized, moNormalized);
     
-    return { gtTokens, moTokens, matches };
+    return { gtTokens: gtTokens, moTokens: moTokens, matches: matches };
   }
   
   function renderDiffText(tokens, matches, prefix, container) {
-    let matchCount = 0;
-    let missCount = 0;
-    let extraCount = 0;
+    var matchCount = 0;
+    var missCount = 0;
+    var extraCount = 0;
     
-    tokens.forEach((token, idx) => {
+    for (var idx = 0; idx < tokens.length; idx++) {
+      var token = tokens[idx];
       if (token.type === 'whitespace') {
-        const span = document.createElement('span');
+        var span = document.createElement('span');
         span.textContent = token.text;
         container.appendChild(span);
       } else {
-        const key = `${prefix}-${idx}`;
-        const isMatch = matches.has(key);
-        const span = document.createElement('span');
-        span.textContent = token.text;
+        var key = prefix + '-' + idx;
+        var isMatch = matches[key];
+        var span2 = document.createElement('span');
+        span2.textContent = token.text;
         
         if (isMatch) {
-          span.className = 'diff-token diff-token--match';
+          span2.className = 'diff-token diff-token--match';
           matchCount++;
         } else {
           if (prefix === 'gt') {
-            span.className = 'diff-token diff-token--miss';
+            span2.className = 'diff-token diff-token--miss';
             missCount++;
           } else {
-            span.className = 'diff-token diff-token--extra';
+            span2.className = 'diff-token diff-token--extra';
             extraCount++;
           }
         }
         
-        container.appendChild(span);
+        container.appendChild(span2);
       }
-    });
+    }
     
-    return { matchCount, missCount, extraCount };
+    return { matchCount: matchCount, missCount: missCount, extraCount: extraCount };
   }
   
   // Initialize diff rendering for all runs
   function initializeDiffRendering() {
-    const diffWrappers = document.querySelectorAll('.diff-wrapper');
+    var diffWrappers = document.querySelectorAll('.diff-wrapper');
     
-    diffWrappers.forEach(wrapper => {
-      const gtContainer = wrapper.querySelector('.diff-column-body--ground');
-      const moContainer = wrapper.querySelector('.diff-column-body--generated');
+    for (var w = 0; w < diffWrappers.length; w++) {
+      var wrapper = diffWrappers[w];
+      var gtContainer = wrapper.querySelector('.diff-column-body--ground');
+      var moContainer = wrapper.querySelector('.diff-column-body--generated');
       
-      if (!gtContainer || !moContainer) return;
+      if (!gtContainer || !moContainer) continue;
       
-      // Get text from data attributes or existing content
-      const gtText = gtContainer.dataset.text || gtContainer.textContent.trim();
-      const moText = moContainer.dataset.text || moContainer.textContent.trim();
+      var gtText = gtContainer.getAttribute('data-text') || gtContainer.textContent.trim();
+      var moText = moContainer.getAttribute('data-text') || moContainer.textContent.trim();
       
-      // Clear existing content
       gtContainer.innerHTML = '';
       moContainer.innerHTML = '';
       
-      // Find matches and render
-      const { gtTokens, moTokens, matches } = findMatches(gtText, moText);
-      const gtStats = renderDiffText(gtTokens, matches, 'gt', gtContainer);
-      const moStats = renderDiffText(moTokens, matches, 'mo', moContainer);
+      var result = findMatches(gtText, moText);
+      var gtStats = renderDiffText(result.gtTokens, result.matches, 'gt', gtContainer);
+      var moStats = renderDiffText(result.moTokens, result.matches, 'mo', moContainer);
       
-      // Update legend counts
-      const legend = wrapper.querySelector('.diff-legend');
+      var legend = wrapper.querySelector('.diff-legend');
       if (legend) {
-        const matchItem = legend.querySelector('.legend-item:first-child span:last-child');
-        const missItem = legend.querySelector('.legend-item:nth-child(2) span:last-child');
-        const extraItem = legend.querySelector('.legend-item:last-child span:last-child');
+        var matchItem = legend.querySelector('.legend-item:first-child span:last-child');
+        var missItem = legend.querySelector('.legend-item:nth-child(2) span:last-child');
+        var extraItem = legend.querySelector('.legend-item:last-child span:last-child');
         
-        if (matchItem) matchItem.textContent = `Matches: ${gtStats.matchCount}`;
-        if (missItem) missItem.textContent = `Missed (Ground Truth Only): ${gtStats.missCount}`;
-        if (extraItem) extraItem.textContent = `Extra (Model Generation Only): ${moStats.extraCount}`;
+        if (matchItem) matchItem.textContent = 'Matches: ' + gtStats.matchCount;
+        if (missItem) missItem.textContent = 'Missed (Ground Truth Only): ' + gtStats.missCount;
+        if (extraItem) extraItem.textContent = 'Extra (Model Generation Only): ' + moStats.extraCount;
       }
-    });
+    }
   }
   
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeDiffRendering);
-  } else {
+  // ========== Main Initialization ==========
+  function initializeAll() {
+    initCaseStudyTabs();
+    initAccordions();
+    initCopyBibtex();
     initializeDiffRendering();
   }
+  
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAll);
+  } else {
+    initializeAll();
+  }
+  
+  // Also try on window load as fallback
+  window.addEventListener('load', function() {
+    setTimeout(initializeAll, 100);
+  });
 })();
 </script>
 
