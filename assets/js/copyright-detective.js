@@ -1,6 +1,22 @@
 (function() {
   'use strict';
 
+  function matchesSelector(el, selector) {
+    var proto = Element.prototype;
+    var fn = proto.matches || proto.msMatchesSelector || proto.webkitMatchesSelector;
+    if (!fn) return false;
+    return fn.call(el, selector);
+  }
+
+  function closestElement(el, selector) {
+    var current = el;
+    while (current && current !== document) {
+      if (matchesSelector(current, selector)) return current;
+      current = current.parentElement;
+    }
+    return null;
+  }
+
   // ========== Case Study Tab Switching ==========
   function applyCaseStudySelection(caseValue) {
     if (!caseValue) return;
@@ -16,36 +32,14 @@
     }
   }
 
-  function initCaseStudyTabs() {
-    var tabContainer = document.getElementById('case-study-tabs');
-    if (!tabContainer) return;
-
-    var tabs = tabContainer.querySelectorAll('.custom-tab');
-
+  function setActiveTab(tab) {
+    var tabs = document.querySelectorAll('.custom-tab');
     for (var i = 0; i < tabs.length; i++) {
-      (function(tab) {
-        tab.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          var caseValue = this.getAttribute('data-case');
-          applyCaseStudySelection(caseValue);
-
-          for (var k = 0; k < tabs.length; k++) {
-            tabs[k].classList.remove('active');
-          }
-          this.classList.add('active');
-        });
-      })(tabs[i]);
+      tabs[i].classList.remove('active');
     }
-  }
-
-  function initCaseStudySelect() {
-    var select = document.getElementById('case-study-select');
-    if (!select) return;
-    select.addEventListener('change', function() {
-      applyCaseStudySelection(this.value);
-    });
+    if (tab) {
+      tab.classList.add('active');
+    }
   }
 
   // ========== Accordion Toggle ==========
@@ -64,41 +58,48 @@
     }
   }
 
-  function initAccordions() {
-    var accordionHeaders = document.querySelectorAll('[data-accordion="true"]');
+  function onDocumentClick(e) {
+    var header = closestElement(e.target, '[data-accordion="true"]');
+    if (header) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleAccordion(header);
+      return;
+    }
 
-    for (var i = 0; i < accordionHeaders.length; i++) {
-      (function(header) {
-        header.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleAccordion(this);
-        });
-      })(accordionHeaders[i]);
+    var legacy = closestElement(e.target, '[data-action]');
+    if (legacy) {
+      var action = legacy.getAttribute('data-action');
+      if (action === 'togglePromptPreview' || action === 'toggleRunsContainer' || action === 'toggleRun' || action === 'toggleStrategy') {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleAccordion(legacy);
+        return;
+      }
+    }
+
+    var tab = closestElement(e.target, '.custom-tab');
+    if (tab) {
+      e.preventDefault();
+      e.stopPropagation();
+      var caseValue = tab.getAttribute('data-case');
+      applyCaseStudySelection(caseValue);
+      setActiveTab(tab);
     }
   }
 
-  function initAccordionDelegation() {
-    document.addEventListener('click', function(e) {
-      var header = e.target.closest('[data-accordion="true"]');
-      if (header) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleAccordion(header);
-        return;
-      }
+  function onDocumentChange(e) {
+    var select = closestElement(e.target, '#case-study-select');
+    if (select) {
+      applyCaseStudySelection(select.value);
+    }
+  }
 
-      // Backwards compatibility: old markup still using data-action
-      var legacy = e.target.closest('[data-action]');
-      if (legacy) {
-        var action = legacy.getAttribute('data-action');
-        if (action === 'togglePromptPreview' || action === 'toggleRunsContainer' || action === 'toggleRun' || action === 'toggleStrategy') {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleAccordion(legacy);
-        }
-      }
-    });
+  function initGlobalDelegation() {
+    document.removeEventListener('click', onDocumentClick, true);
+    document.addEventListener('click', onDocumentClick, true);
+    document.removeEventListener('change', onDocumentChange, true);
+    document.addEventListener('change', onDocumentChange, true);
   }
 
   // ========== Copy BibTeX ==========
@@ -346,9 +347,7 @@
   // ========== Main Initialization ==========
   function initializeAll() {
     initCaseStudyTabs();
-    initAccordions();
-    initAccordionDelegation();
-    initCaseStudySelect();
+    initGlobalDelegation();
     initCopyBibtex();
     initializeDiffRendering();
   }
