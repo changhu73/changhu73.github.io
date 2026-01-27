@@ -3200,7 +3200,7 @@ I hope this brings back some fond memories for you!">
 <script>
 (function() {
   // 保存原始提示文字
-  const hintElement = document.querySelector('.bibtex-copy-hint');
+  var hintElement = document.querySelector('.bibtex-copy-hint');
   if (hintElement && !hintElement.dataset.originalText) {
     hintElement.dataset.originalText = hintElement.textContent.trim();
   }
@@ -3208,41 +3208,24 @@ I hope this brings back some fond memories for you!">
   // Case Study Selection Function
   function showCaseStudy(value) {
     // Hide all case study contents
-    const allContents = document.querySelectorAll('.case-study-content');
-    allContents.forEach(function(content) {
-      content.classList.remove('active');
-    });
+    var allContents = document.querySelectorAll('.case-study-content');
+    for (var i = 0; i < allContents.length; i++) {
+      allContents[i].classList.remove('active');
+    }
     
     // Show selected case study
-    const selectedContent = document.getElementById('case-study-' + value);
+    var selectedContent = document.getElementById('case-study-' + value);
     if (selectedContent) {
       selectedContent.classList.add('active');
     }
   }
   
-  // Initialize case study selector
-  function initCaseStudySelector() {
-    const caseStudySelect = document.getElementById('case-study-select');
-    if (caseStudySelect) {
-      caseStudySelect.addEventListener('change', function() {
-        showCaseStudy(this.value);
-      });
-    }
-  }
-  
-  // Run initialization when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCaseStudySelector);
-  } else {
-    initCaseStudySelector();
-  }
-  
   // Toggle accordion function (generic)
   function toggleAccordion(header) {
-    const content = header.nextElementSibling;
+    var content = header.nextElementSibling;
     if (!content) return;
     
-    const isExpanded = content.classList.contains('expanded');
+    var isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
       content.classList.remove('expanded');
@@ -3253,31 +3236,6 @@ I hope this brings back some fond memories for you!">
     }
   }
   
-  // Event delegation for all toggle actions
-  function initEventDelegation() {
-    document.addEventListener('click', function(e) {
-      const target = e.target.closest('[data-action]');
-      if (!target) return;
-      
-      const action = target.getAttribute('data-action');
-      
-      switch(action) {
-        case 'togglePromptPreview':
-        case 'toggleRunsContainer':
-        case 'toggleRun':
-        case 'toggleStrategy':
-          toggleAccordion(target);
-          break;
-        case 'runDetection':
-          runDetection();
-          break;
-        case 'copyBibtex':
-          copyBibtex();
-          break;
-      }
-    });
-  }
-  
   // Run Detection Function
   function runDetection() {
     console.log('Running Text Memorization Detection...');
@@ -3285,17 +3243,17 @@ I hope this brings back some fond memories for you!">
   
   // Copy BibTeX Function
   function copyBibtex() {
-    const bibtexElement = document.getElementById('bibtex-content');
+    var bibtexElement = document.getElementById('bibtex-content');
     if (!bibtexElement) return;
     
-    const bibtex = bibtexElement.textContent.trim();
+    var bibtex = bibtexElement.textContent.trim();
     
     navigator.clipboard.writeText(bibtex).then(function() {
       bibtexElement.classList.add('copied');
       
-      const hintEl = document.querySelector('.bibtex-copy-hint');
+      var hintEl = document.querySelector('.bibtex-copy-hint');
       if (hintEl) {
-        const originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
+        var originalHint = hintEl.dataset.originalText || 'Click the BibTeX code above to copy';
         hintEl.textContent = '✓ Copied to clipboard!';
         hintEl.style.color = '#38ef7d';
         hintEl.style.fontWeight = '600';
@@ -3309,7 +3267,7 @@ I hope this brings back some fond memories for you!">
       }
     }).catch(function(err) {
       console.error('Failed to copy: ', err);
-      const hintEl = document.querySelector('.bibtex-copy-hint');
+      var hintEl = document.querySelector('.bibtex-copy-hint');
       if (hintEl) {
         hintEl.textContent = '✗ Copy failed. Please select and copy manually.';
         hintEl.style.color = '#e74c3c';
@@ -3323,11 +3281,57 @@ I hope this brings back some fond memories for you!">
     });
   }
   
-  // Initialize event delegation
+  // Initialize all event handlers
+  function initializeAll() {
+    // Case study selector
+    var caseStudySelect = document.getElementById('case-study-select');
+    if (caseStudySelect) {
+      caseStudySelect.addEventListener('change', function(e) {
+        showCaseStudy(e.target.value);
+      });
+    }
+    
+    // Bind click events directly to all accordion headers
+    var promptPreviewHeaders = document.querySelectorAll('.case-study-prompt-preview-header');
+    for (var i = 0; i < promptPreviewHeaders.length; i++) {
+      promptPreviewHeaders[i].addEventListener('click', function(e) {
+        toggleAccordion(e.currentTarget);
+      });
+    }
+    
+    var runsHeaders = document.querySelectorAll('.case-study-runs-header');
+    for (var i = 0; i < runsHeaders.length; i++) {
+      runsHeaders[i].addEventListener('click', function(e) {
+        toggleAccordion(e.currentTarget);
+      });
+    }
+    
+    var runHeaders = document.querySelectorAll('.case-study-run-header');
+    for (var i = 0; i < runHeaders.length; i++) {
+      runHeaders[i].addEventListener('click', function(e) {
+        toggleAccordion(e.currentTarget);
+      });
+    }
+    
+    var strategyHeaders = document.querySelectorAll('.case-study-strategy-header');
+    for (var i = 0; i < strategyHeaders.length; i++) {
+      strategyHeaders[i].addEventListener('click', function(e) {
+        toggleAccordion(e.currentTarget);
+      });
+    }
+    
+    // Bibtex copy
+    var bibtexContent = document.getElementById('bibtex-content');
+    if (bibtexContent) {
+      bibtexContent.addEventListener('click', copyBibtex);
+    }
+  }
+  
+  // Run initialization when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEventDelegation);
+    document.addEventListener('DOMContentLoaded', initializeAll);
   } else {
-    initEventDelegation();
+    initializeAll();
   }
   
   // Adjust Number Input
