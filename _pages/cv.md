@@ -12,6 +12,8 @@ redirect_from:
 * Visiting Research Student, The Hong Kong University of Science and Technology(Guangzhou), Jun. 2025 - Feb. 2026
 * M.S. in Computer Science, City University of Hong Kong, Sept. 2024 - Feb. 2026
 * B.S. in Information Security, University of Science and Technology of China, Sept. 2019 - Jun. 2023
+* Senior High, The Attached Middle School To Jiangxi Normal University, Sept. 2016 - Jun. 2019
+* Junior High, Nanchang Foreign Language School, Sept. 2013 - Jun. 2016
 
 
 
