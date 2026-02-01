@@ -3,49 +3,6 @@ layout: single
 author_profile: true
 ---
 
-<style>
-  /* 主页面宽度自适应 */
-  #main {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-  
-  .page {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  
-  .page__inner-wrap {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  
-  .page__content {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  
-  /* 响应式调整 */
-  @media screen and (min-width: 925px) {
-    .page {
-      width: 100% !important;
-      max-width: 100% !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  }
-  
-  /* 确保内容在小屏幕上也有适当的内边距 */
-  @media screen and (max-width: 924px) {
-    .page {
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  }
-</style>
-
 
 <!-- <div class="welcome-section" style="margin-bottom: 2em; padding: 1.5em; border-radius: 8px; background-color: #f8f9fa; border-left: 4px solid #4e73df;">
   <h2 style="margin-top: 0; color: #2e4765; border-bottom: 1px solid #eee; padding-bottom: 0.5em;">
