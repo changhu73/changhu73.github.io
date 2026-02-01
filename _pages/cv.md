@@ -17,7 +17,7 @@ redirect_from:
 
 ### Work/Intern Experience
 
-* Pine AI, Research Intern (remote), Sept. 2025 - 
+* Pine AI, Research Intern, Sept. 2025 - 
   *  Work: Post-training for speech models: SFT/RL for ASR model. Fine-tuned a lightweight LLM specifically for real-time interaction control, replacing rigid turn-taking rules with dynamic predictions for natural barge-ins and active listening.
 
 <!-- * The Guangdong Institute of Intelligence Science and Technology, Research Intern, Jun 2025 - Sept. 2025
