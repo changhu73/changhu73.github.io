@@ -307,37 +307,12 @@
     }
   }
 
-  // ========== Markdown Rendering ==========
-  function loadMarkdownPreview() {
-    var previewContainer = document.getElementById('user-guide-preview');
-    if (!previewContainer) return;
-
-    var markdownUrl = previewContainer.getAttribute('data-markdown-url');
-    if (!markdownUrl) return;
-    
-    fetch(markdownUrl)
-      .then(function(response) {
-        if (!response.ok) throw new Error('Failed to load markdown file');
-        return response.text();
-      })
-      .then(function(markdown) {
-        if (typeof marked !== 'undefined') {
-          previewContainer.innerHTML = marked.parse(markdown);
-        }
-      })
-      .catch(function(error) {
-        previewContainer.innerHTML = '<div style="text-align: center; padding: 2em; color: #e74c3c;"><p>Failed to load user guide. <a href="' + markdownUrl + '" target="_blank" style="color: #2c3e50; text-decoration: underline;">Click here to view the guide</a></p></div>';
-        console.error('Error loading markdown:', error);
-      });
-  }
-
   // ========== Main Initialization ==========
   function initializeAll() {
     initCaseStudyTabs();
     initAccordions();
     initCopyBibtex();
     initializeDiffRendering();
-    loadMarkdownPreview();
   }
 
   if (document.readyState === 'loading') {
