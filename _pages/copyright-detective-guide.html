@@ -1,0 +1,312 @@
+---
+layout: single
+title: "Copyright Detective - User Guide"
+permalink: /projects/copyright-detective/guide/
+author_profile: false
+---
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    padding-top: 0 !important;
+  }
+
+  .masthead {
+    display: none !important;
+  }
+
+  #main {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page__inner-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .page__content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .page__title {
+    display: none !important;
+  }
+
+  .guide-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2em 3em;
+    background: #fff;
+  }
+
+  .guide-header {
+    border-bottom: 2px solid #e1e4e8;
+    padding-bottom: 1.5em;
+    margin-bottom: 2em;
+  }
+
+  .guide-header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #24292e;
+    margin: 0 0 0.5em 0;
+    line-height: 1.25;
+  }
+
+  .guide-header .back-link {
+    display: inline-block;
+    color: #0366d6;
+    text-decoration: none;
+    font-size: 0.95em;
+    margin-bottom: 1em;
+  }
+
+  .guide-header .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .guide-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #24292e;
+  }
+
+  .guide-content h1,
+  .guide-content h2,
+  .guide-content h3,
+  .guide-content h4,
+  .guide-content h5,
+  .guide-content h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #24292e;
+  }
+
+  .guide-content h1 {
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+  }
+
+  .guide-content h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin-top: 32px;
+  }
+
+  .guide-content h3 {
+    font-size: 1.25em;
+    margin-top: 24px;
+  }
+
+  .guide-content h4 {
+    font-size: 1em;
+  }
+
+  .guide-content h5 {
+    font-size: 0.875em;
+  }
+
+  .guide-content h6 {
+    font-size: 0.85em;
+    color: #6a737d;
+  }
+
+  .guide-content p {
+    margin-bottom: 16px;
+  }
+
+  .guide-content ul,
+  .guide-content ol {
+    margin-bottom: 16px;
+    padding-left: 2em;
+  }
+
+  .guide-content li {
+    margin-bottom: 0.5em;
+  }
+
+  .guide-content li + li {
+    margin-top: 0.25em;
+  }
+
+  .guide-content code {
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.4em;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    color: #e83e8c;
+  }
+
+  .guide-content pre {
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #e1e4e8;
+  }
+
+  .guide-content pre code {
+    background-color: transparent;
+    border: 0;
+    display: inline;
+    line-height: inherit;
+    margin: 0;
+    max-width: auto;
+    overflow: visible;
+    padding: 0;
+    word-wrap: normal;
+    font-size: 100%;
+    color: #24292e;
+  }
+
+  .guide-content blockquote {
+    border-left: 0.25em solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
+    margin: 0 0 16px 0;
+  }
+
+  .guide-content a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+
+  .guide-content a:hover {
+    text-decoration: underline;
+  }
+
+  .guide-content table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+  }
+
+  .guide-content table th,
+  .guide-content table td {
+    border: 1px solid #dfe2e5;
+    padding: 6px 13px;
+  }
+
+  .guide-content table th {
+    font-weight: 600;
+    background-color: #f6f8fa;
+  }
+
+  .guide-content table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+  }
+
+  .guide-content table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  .guide-content hr {
+    background-color: #e1e4e8;
+    border: 0;
+    height: 0.25em;
+    margin: 24px 0;
+    padding: 0;
+  }
+
+  .guide-content strong {
+    font-weight: 600;
+  }
+
+  .guide-content em {
+    font-style: italic;
+  }
+
+  .guide-content > ul:first-child,
+  .guide-content > ol:first-child {
+    background-color: #f6f8fa;
+    border-left: 4px solid #0366d6;
+    padding: 1em 1.5em;
+    margin-bottom: 2em;
+    border-radius: 4px;
+  }
+
+  .guide-content > ul:first-child li,
+  .guide-content > ol:first-child li {
+    margin-bottom: 0.5em;
+  }
+
+  @media (max-width: 768px) {
+    .guide-container {
+      padding: 1.5em;
+    }
+
+    .guide-header h1 {
+      font-size: 2em;
+    }
+  }
+</style>
+
+<div class="guide-container">
+  <div class="guide-header">
+    <a href="{{ '/projects/copyright-detective/' | relative_url }}" class="back-link">← Back to Copyright Detective</a>
+    <h1>Copyright Detective - User Guide</h1>
+  </div>
+  <div id="guide-content" class="guide-content">
+    <div style="text-align: center; padding: 2em; color: #666;">
+      <p>Loading guide...</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+<script>
+  (function() {
+    'use strict';
+    
+    var guideContent = document.getElementById('guide-content');
+    if (!guideContent) return;
+
+    var markdownUrl = '{{ "/files/project/copyright detective/how_to_use.md" | relative_url }}';
+    
+    fetch(markdownUrl)
+      .then(function(response) {
+        if (!response.ok) throw new Error('Failed to load markdown file');
+        return response.text();
+      })
+      .then(function(markdown) {
+        if (typeof marked !== 'undefined') {
+          guideContent.innerHTML = marked.parse(markdown);
+        } else {
+          guideContent.innerHTML = '<div style="text-align: center; padding: 2em; color: #e74c3c;"><p>Markdown renderer not loaded.</p></div>';
+        }
+      })
+      .catch(function(error) {
+        guideContent.innerHTML = '<div style="text-align: center; padding: 2em; color: #e74c3c;"><p>Failed to load user guide.</p></div>';
+        console.error('Error loading markdown:', error);
+      });
+  })();
+</script>
+
