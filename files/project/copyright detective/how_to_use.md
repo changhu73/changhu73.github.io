@@ -618,7 +618,7 @@ Export your key:
 export YOUR_API_KEY="your_api_key"
 ```
 
-Run the deployment script on your server: [unlearning_deployment.py](https://changhu73.github.io/projects/copyright-detective/unlearning_deployment.py).
+Run the deployment script on your server: [unlearning_deployment.py](https://changhu73.github.io/files/project/copyright%20detective/unlearning_deployment.py).
 
 Once the service is running and the tunnel is up, you can use **Representational Analysis (Unlearning Detection)** directly from the app UI.
 

@@ -1837,6 +1837,168 @@ author_profile: false
       height: auto;
     }
   }
+
+  /* Markdown Preview Styles - GitHub style */
+  .markdown-preview-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    text-align: left;
+  }
+
+  .markdown-preview-container h1,
+  .markdown-preview-container h2,
+  .markdown-preview-container h3,
+  .markdown-preview-container h4,
+  .markdown-preview-container h5,
+  .markdown-preview-container h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .markdown-preview-container h1 {
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+  }
+
+  .markdown-preview-container h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+  }
+
+  .markdown-preview-container h3 {
+    font-size: 1.25em;
+  }
+
+  .markdown-preview-container h4 {
+    font-size: 1em;
+  }
+
+  .markdown-preview-container h5 {
+    font-size: 0.875em;
+  }
+
+  .markdown-preview-container h6 {
+    font-size: 0.85em;
+    color: #6a737d;
+  }
+
+  .markdown-preview-container p {
+    margin-bottom: 16px;
+  }
+
+  .markdown-preview-container ul,
+  .markdown-preview-container ol {
+    margin-bottom: 16px;
+    padding-left: 2em;
+  }
+
+  .markdown-preview-container li {
+    margin-bottom: 0.25em;
+  }
+
+  .markdown-preview-container li + li {
+    margin-top: 0.25em;
+  }
+
+  .markdown-preview-container code {
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.4em;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  }
+
+  .markdown-preview-container pre {
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .markdown-preview-container pre code {
+    background-color: transparent;
+    border: 0;
+    display: inline;
+    line-height: inherit;
+    margin: 0;
+    max-width: auto;
+    overflow: visible;
+    padding: 0;
+    word-wrap: normal;
+    font-size: 100%;
+  }
+
+  .markdown-preview-container blockquote {
+    border-left: 0.25em solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
+    margin: 0 0 16px 0;
+  }
+
+  .markdown-preview-container a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+
+  .markdown-preview-container a:hover {
+    text-decoration: underline;
+  }
+
+  .markdown-preview-container table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+  }
+
+  .markdown-preview-container table th,
+  .markdown-preview-container table td {
+    border: 1px solid #dfe2e5;
+    padding: 6px 13px;
+  }
+
+  .markdown-preview-container table th {
+    font-weight: 600;
+    background-color: #f6f8fa;
+  }
+
+  .markdown-preview-container table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+  }
+
+  .markdown-preview-container table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  .markdown-preview-container hr {
+    background-color: #e1e4e8;
+    border: 0;
+    height: 0.25em;
+    margin: 24px 0;
+    padding: 0;
+  }
+
+  .markdown-preview-container strong {
+    font-weight: 600;
+  }
+
+  .markdown-preview-container em {
+    font-style: italic;
+  }
 </style>
 
 <div class="main-container">
@@ -1973,6 +2135,21 @@ author_profile: false
         <img src="{{ '/images/projects/copyright detective/representations.png' | relative_url }}" alt="Unlearning Detection Analysis" />
         <h3>Unlearning Detection</h3>
         <p>Unlearning induces a depth-stratified geometric divergence, where the final transformer blocks exhibit drastic representation drift along primary variance axes. This suggests that the model's internal processing of target copyrighted texts has been fundamentally altered, though this indicates representation change rather than guaranteed erasure.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Guide Section -->
+  <div class="case-studies-section">
+    <h2>📖 User Guide</h2>
+    <div class="demo-container" style="margin: 2em 0; text-align: left;">
+      <div id="user-guide-preview" 
+           class="markdown-preview-container" 
+           data-markdown-url="{{ '/files/project/copyright detective/how_to_use.md' | relative_url }}"
+           style="width: 100%; min-height: 800px; max-height: 1000px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 2em; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: left;">
+        <div style="text-align: center; padding: 2em; color: #666;">
+          <p>Loading user guide...</p>
+        </div>
       </div>
     </div>
   </div>
@@ -3256,5 +3433,7 @@ I hope this brings back some fond memories for you!">
 
 </div>
 
+<!-- Marked.js for markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
 <script src="{{ '/assets/js/copyright-detective.js' | relative_url }}"></script>
 
