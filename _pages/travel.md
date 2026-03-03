@@ -27,13 +27,6 @@ author_profile: true
     padding-bottom: 0.5rem;
   }
 
-  .trip-section h2 .trip-date {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #777;
-    margin-left: 10px;
-  }
-
   .slider-title {
     font-size: 1.2rem;
     font-weight: 500;
@@ -146,7 +139,7 @@ author_profile: true
 
 <div class="travel-log-container">
   <div class="trip-section">
-    <h2>Guizhou(貴州) <span class="trip-date">2025.4</span></h2>
+    <h2>Guizhou(貴州)</h2>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
       <div class="slider-track">
@@ -232,7 +225,7 @@ author_profile: true
   </div>
 
   <div class="trip-section">
-    <h2>Taiwan(臺灣) <span class="trip-date">2025.1</span></h2>
+    <h2>Taiwan(臺灣)</h2>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
       <div class="slider-track">

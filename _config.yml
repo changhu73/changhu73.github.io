@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Guangwei Zhang"
+title                    : "Guangwei Zhang (张广为)"
 title_separator          : "-"
-name                     : &name "Guangwei Zhang"
+name                     : &name "Guangwei Zhang (张广为)"
 description              : &description "personal description"
 url                      : https://changhu73.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,10 +22,10 @@ repository               : "changhu73.github.io"
 author:
   # Biographic information
   avatar           : "photo.jpg"
-  name             : "Guangwei Zhang"
+  name             : "Guangwei Zhang (张广为)"
   pronouns         : # example: "she/her"  
   bio              : "B.S.@USTC | M.S. CityU | incoming Ph.D."
-  location         : "Beijing/Singapore"
+  location         : "Beijing/Shanghai"
   employer         : "Pine AI"
   uri              : # URL
   email            : "gzhang63-c@my.cityu.edu.hk" 
@@ -71,7 +71,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : # Username
+  youtube          : "GuangweiZhang"
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
