@@ -362,6 +362,18 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/taiwan/taiwan13.jpg" alt="Shrine 3"></div>
       </div>
     </div>
+    <div class="slider-container">
+      <h3 class="slider-title">士林官邸</h3>
+      <div class="slider-track">
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan30.jpg" alt="Shilin Residence 1"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan31.jpg" alt="Shilin Residence 2"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan32.jpg" alt="Shilin Residence 3"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan33.jpg" alt="Shilin Residence 4"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan34.jpg" alt="Shilin Residence 5"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan35.jpg" alt="Shilin Residence 6"></div>
+        <div class="photo-card"><img src="/images/travel/taiwan/taiwan36.jpg" alt="Shilin Residence 7"></div>
+      </div>
+    </div>
   </div>
 </div>
 
