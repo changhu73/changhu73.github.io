@@ -34,6 +34,8 @@ author_profile: true
     align-items: center;
     justify-content: center;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
   }
 
   .destination-card h3 {
@@ -195,12 +197,12 @@ author_profile: true
 
 <div class="travel-log-container">
   <div class="destination-grid">
-    <div class="destination-card active" data-target="guizhou">
+    <a class="destination-card active" data-target="guizhou" href="#guizhou">
       <h3>Guizhou(貴州)</h3>
-    </div>
-    <div class="destination-card" data-target="taiwan">
+    </a>
+    <a class="destination-card" data-target="taiwan" href="#taiwan">
       <h3>Taiwan(臺灣)</h3>
-    </div>
+    </a>
   </div>
 
   <div class="trip-section active" id="guizhou">
