@@ -15,8 +15,64 @@ author_profile: true
     margin-top: 2rem;
   }
 
+  .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .destination-card {
+    background: radial-gradient(circle at top left, #fdfbfb, #f1f4ff);
+    border-radius: 16px;
+    padding: 1.3rem 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    border: 1px solid rgba(21, 101, 192, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .destination-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .destination-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    background: radial-gradient(circle at top left, #ffffff, #e3f2fd);
+    border-color: rgba(21, 101, 192, 0.25);
+  }
+
+  .destination-card.active {
+    border-color: #1565c0;
+    box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.25);
+    background: radial-gradient(circle at top left, #ffffff, #e8f0ff);
+  }
+
+  @media (max-width: 600px) {
+    .destination-card {
+      padding: 1rem 0.9rem;
+    }
+
+    .destination-card h3 {
+      font-size: 0.96rem;
+    }
+  }
+
   .trip-section {
     margin-bottom: 3rem;
+    display: none;
+  }
+
+  .trip-section.active {
+    display: block;
   }
 
   .trip-section h2 {
@@ -138,7 +194,16 @@ author_profile: true
 </style>
 
 <div class="travel-log-container">
-  <div class="trip-section">
+  <div class="destination-grid">
+    <div class="destination-card active" data-target="guizhou">
+      <h3>Guizhou(貴州)</h3>
+    </div>
+    <div class="destination-card" data-target="taiwan">
+      <h3>Taiwan(臺灣)</h3>
+    </div>
+  </div>
+
+  <div class="trip-section active" id="guizhou">
     <h2>Guizhou(貴州)</h2>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
@@ -224,7 +289,7 @@ author_profile: true
     </div>
   </div>
 
-  <div class="trip-section">
+  <div class="trip-section" id="taiwan">
     <h2>Taiwan(臺灣)</h2>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
@@ -385,5 +450,42 @@ author_profile: true
     document.addEventListener('fullscreenchange', onFullScreenChange);
     document.addEventListener('webkitfullscreenchange', onFullScreenChange);
     document.addEventListener('msfullscreenchange', onFullScreenChange);
+
+    // --- Destination switcher Logic ---
+    const destinationCards = document.querySelectorAll('.destination-card');
+    const tripSections = document.querySelectorAll('.trip-section');
+
+    const showSection = (id) => {
+      tripSections.forEach(section => {
+        if (section.id === id) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      });
+
+      destinationCards.forEach(card => {
+        if (card.dataset.target === id) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      const container = document.querySelector('.travel-log-container');
+      if (container) {
+        const top = container.offsetTop;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    };
+
+    destinationCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const target = card.dataset.target;
+        if (target) {
+          showSection(target);
+        }
+      });
+    });
   });
 </script>
