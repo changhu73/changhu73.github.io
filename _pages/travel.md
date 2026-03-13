@@ -15,65 +15,64 @@ author_profile: true
     margin-top: 2rem;
   }
 
-  .destination-grid {
+  .trip-overview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    gap: 20px;
     margin-bottom: 2.5rem;
   }
 
-  .destination-card {
-    background: radial-gradient(circle at top left, #fdfbfb, #f1f4ff);
-    border-radius: 16px;
-    padding: 1.3rem 1.2rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  .trip-card {
+    position: relative;
+    background: radial-gradient(circle at top left, #fffaf5 0, #ffffff 40%, #f5f7ff 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    padding: 20px 18px;
     cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-    border: 1px solid rgba(21, 101, 192, 0.08);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .destination-card h3 {
-    margin: 0;
-    font-size: 1.05rem;
+  .trip-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    background: radial-gradient(circle at top left, #ffe9d2 0, #ffffff 40%, #e3e8ff 100%);
+    border-color: rgba(255, 162, 100, 0.7);
+  }
+
+  .trip-card-title {
+    font-size: 1.5rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    margin: 0;
+    letter-spacing: 0.03em;
   }
 
-  .destination-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
-    background: radial-gradient(circle at top left, #ffffff, #e3f2fd);
-    border-color: rgba(21, 101, 192, 0.25);
-  }
-
-  .destination-card.active {
-    border-color: #1565c0;
-    box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.25);
-    background: radial-gradient(circle at top left, #ffffff, #e8f0ff);
-  }
-
-  @media (max-width: 600px) {
-    .destination-card {
-      padding: 1rem 0.9rem;
-    }
-
-    .destination-card h3 {
-      font-size: 0.96rem;
-    }
+  .trip-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 0 0, rgba(255,255,255,0.6), transparent 55%);
+    pointer-events: none;
+    opacity: 0.9;
+    mix-blend-mode: screen;
   }
 
   .trip-section {
     margin-bottom: 3rem;
-    display: none;
   }
 
-  .trip-section.active {
+  .trip-section-detail {
+    display: none;
+    margin-top: 1.5rem;
+  }
+
+  .trip-section-detail.active {
     display: block;
   }
 
@@ -83,6 +82,41 @@ author_profile: true
     margin-bottom: 0.5rem;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 0.5rem;
+  }
+
+  .back-to-overview {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    color: #555;
+    background: #f5f5f5;
+    border-radius: 999px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .back-to-overview:hover {
+    background: #eaeaea;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  .back-to-overview::before {
+    content: '↩';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #666;
+    font-size: 0.85rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18);
   }
 
   .slider-title {
@@ -196,16 +230,17 @@ author_profile: true
 </style>
 
 <div class="travel-log-container">
-  <div class="destination-grid">
-    <a class="destination-card active" data-target="guizhou" href="#guizhou">
-      <h3>Guizhou(貴州)</h3>
-    </a>
-    <a class="destination-card" data-target="taiwan" href="#taiwan">
-      <h3>Taiwan(臺灣)</h3>
-    </a>
+  <div class="trip-overview-grid">
+    <div class="trip-card" data-target="guizhou-section">
+      <h2 class="trip-card-title">Guizhou(貴州)</h2>
+    </div>
+    <div class="trip-card" data-target="taiwan-section">
+      <h2 class="trip-card-title">Taiwan(臺灣)</h2>
+    </div>
   </div>
 
-  <div class="trip-section active" id="guizhou">
+  <div id="guizhou-section" class="trip-section trip-section-detail">
+    <button type="button" class="back-to-overview" data-back>Back to overview</button>
     <h2>Guizhou(貴州)</h2>
     <div class="slider-container">
       <h3 class="slider-title">黔西三江古道</h3>
@@ -291,7 +326,8 @@ author_profile: true
     </div>
   </div>
 
-  <div class="trip-section" id="taiwan">
+  <div id="taiwan-section" class="trip-section trip-section-detail">
+    <button type="button" class="back-to-overview" data-back>Back to overview</button>
     <h2>Taiwan(臺灣)</h2>
     <div class="slider-container">
       <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
@@ -364,18 +400,6 @@ author_profile: true
         <div class="photo-card"><img src="/images/travel/taiwan/taiwan13.jpg" alt="Shrine 3"></div>
       </div>
     </div>
-    <div class="slider-container">
-      <h3 class="slider-title">Chiang Kai-shek Shilin Residence (士林官邸)</h3>
-      <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan30.jpg" alt="Shilin Residence 1"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan31.jpg" alt="Shilin Residence 2"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan32.jpg" alt="Shilin Residence 3"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan33.jpg" alt="Shilin Residence 4"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan34.jpg" alt="Shilin Residence 5"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan35.jpg" alt="Shilin Residence 6"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan36.jpg" alt="Shilin Residence 7"></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -388,6 +412,40 @@ author_profile: true
 <script>
   // The script remains unchanged as all modifications were handled with CSS.
   document.addEventListener('DOMContentLoaded', function() {
+    // --- Trip overview → detail toggle logic ---
+    const overviewGrid = document.querySelector('.trip-overview-grid');
+    const tripCards = document.querySelectorAll('.trip-card');
+    const detailSections = document.querySelectorAll('.trip-section-detail');
+
+    const showOverview = () => {
+      if (overviewGrid) {
+        overviewGrid.style.display = 'grid';
+        const top = overviewGrid.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: top - 80, behavior: 'smooth' });
+      }
+      detailSections.forEach(sec => sec.classList.remove('active'));
+    };
+
+    tripCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-target');
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target || !overviewGrid) return;
+
+        overviewGrid.style.display = 'none';
+        detailSections.forEach(sec => sec.classList.remove('active'));
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const backButtons = document.querySelectorAll('.back-to-overview[data-back]');
+    backButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showOverview();
+      });
+    });
+
     // --- Slider Drag and Wheel Scroll Logic ---
     const sliders = document.querySelectorAll('.slider-container');
     sliders.forEach(function(slider) {
@@ -417,93 +475,52 @@ author_profile: true
     const closeBtn = document.querySelector('#imageModal .close');
     const photoCards = document.querySelectorAll('.photo-card');
 
-    if (modal && modalImg && photoCards.length) {
-      const openFullScreen = (imgSrc) => {
-        modalImg.src = imgSrc;
-        modal.style.display = 'flex';
-        
-        const elem = modal;
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { /* Safari */
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE11 */
-          elem.msRequestFullscreen();
-        }
-      };
-
-      const closeFullScreen = () => {
-        if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) { /* Safari */
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) { /* IE11 */
-            document.msExitFullscreen();
-          }
-        } else {
-          modal.style.display = 'none';
-        }
-      };
-
-      photoCards.forEach(card => {
-        card.addEventListener('dblclick', function() {
-          const img = this.querySelector('img');
-          if (img) openFullScreen(img.src);
-        });
-      });
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', closeFullScreen);
-      }
-
-      const onFullScreenChange = () => {
-        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-        if (!isFullscreen) {
-          modal.style.display = 'none';
-        }
-      };
-
-      document.addEventListener('fullscreenchange', onFullScreenChange);
-      document.addEventListener('webkitfullscreenchange', onFullScreenChange);
-      document.addEventListener('msfullscreenchange', onFullScreenChange);
-    }
-
-    // --- Destination switcher Logic ---
-    const destinationCards = document.querySelectorAll('.destination-card');
-    const tripSections = document.querySelectorAll('.trip-section');
-
-    const showSection = (id) => {
-      tripSections.forEach(section => {
-        if (section.id === id) {
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-        }
-      });
-
-      destinationCards.forEach(card => {
-        if (card.dataset.target === id) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
-      });
-
-      const container = document.querySelector('.travel-log-container');
-      if (container) {
-        const top = container.offsetTop;
-        window.scrollTo({ top, behavior: 'smooth' });
+    const openFullScreen = (imgSrc) => {
+      modalImg.src = imgSrc;
+      modal.style.display = 'flex';
+      
+      const elem = modal;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
       }
     };
 
-    destinationCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const target = card.dataset.target;
-        if (target) {
-          showSection(target);
+    const closeFullScreen = () => {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+          document.msExitFullscreen();
         }
+      } else {
+        modal.style.display = 'none';
+      }
+    };
+
+    photoCards.forEach(card => {
+      card.addEventListener('dblclick', function() {
+        const img = this.querySelector('img');
+        if (img) openFullScreen(img.src);
       });
     });
+
+    closeBtn.addEventListener('click', closeFullScreen);
+
+    const onFullScreenChange = () => {
+      const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      if (!isFullscreen) {
+        modal.style.display = 'none';
+      }
+    };
+
+    document.addEventListener('fullscreenchange', onFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', onFullScreenChange);
+    document.addEventListener('msfullscreenchange', onFullScreenChange);
   });
 </script>
