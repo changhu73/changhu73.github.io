@@ -415,53 +415,57 @@ author_profile: true
     const closeBtn = document.querySelector('#imageModal .close');
     const photoCards = document.querySelectorAll('.photo-card');
 
-    const openFullScreen = (imgSrc) => {
-      modalImg.src = imgSrc;
-      modal.style.display = 'flex';
-      
-      const elem = modal;
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) { /* Safari */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { /* IE11 */
-        elem.msRequestFullscreen();
-      }
-    };
-
-    const closeFullScreen = () => {
-      if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-          document.msExitFullscreen();
+    if (modal && modalImg && photoCards.length) {
+      const openFullScreen = (imgSrc) => {
+        modalImg.src = imgSrc;
+        modal.style.display = 'flex';
+        
+        const elem = modal;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+          elem.msRequestFullscreen();
         }
-      } else {
-        modal.style.display = 'none';
-      }
-    };
+      };
 
-    photoCards.forEach(card => {
-      card.addEventListener('dblclick', function() {
-        const img = this.querySelector('img');
-        if (img) openFullScreen(img.src);
+      const closeFullScreen = () => {
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+          }
+        } else {
+          modal.style.display = 'none';
+        }
+      };
+
+      photoCards.forEach(card => {
+        card.addEventListener('dblclick', function() {
+          const img = this.querySelector('img');
+          if (img) openFullScreen(img.src);
+        });
       });
-    });
 
-    closeBtn.addEventListener('click', closeFullScreen);
-
-    const onFullScreenChange = () => {
-      const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-      if (!isFullscreen) {
-        modal.style.display = 'none';
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeFullScreen);
       }
-    };
 
-    document.addEventListener('fullscreenchange', onFullScreenChange);
-    document.addEventListener('webkitfullscreenchange', onFullScreenChange);
-    document.addEventListener('msfullscreenchange', onFullScreenChange);
+      const onFullScreenChange = () => {
+        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+        if (!isFullscreen) {
+          modal.style.display = 'none';
+        }
+      };
+
+      document.addEventListener('fullscreenchange', onFullScreenChange);
+      document.addEventListener('webkitfullscreenchange', onFullScreenChange);
+      document.addEventListener('msfullscreenchange', onFullScreenChange);
+    }
 
     // --- Destination switcher Logic ---
     const destinationCards = document.querySelectorAll('.destination-card');
