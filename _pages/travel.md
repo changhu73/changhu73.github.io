@@ -363,7 +363,7 @@ author_profile: true
       </div>
     </div>
     <div class="slider-container">
-      <h3 class="slider-title">士林官邸</h3>
+      <h3 class="slider-title">Chiang Kai-shek Shilin Residence (士林官邸)</h3>
       <div class="slider-track">
         <div class="photo-card"><img src="/images/travel/taiwan/taiwan30.jpg" alt="Shilin Residence 1"></div>
         <div class="photo-card"><img src="/images/travel/taiwan/taiwan31.jpg" alt="Shilin Residence 2"></div>
