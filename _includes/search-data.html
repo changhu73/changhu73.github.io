@@ -1,0 +1,47 @@
+{% include base_path %}
+
+<script type="application/json" id="search-data">
+[
+  {% assign first = true %}
+  {% for page in site.pages %}
+    {% unless page.url contains '/404' or page.url contains '/feed' or page.url contains '.xml' %}
+      {% unless first %},{% endunless %}
+      {% assign first = false %}
+      {
+        "title": {{ page.title | jsonify }},
+        "url": {{ page.url | jsonify }},
+        "content": {{ page.content | strip_html | strip_newlines | jsonify }}
+      }
+    {% endunless %}
+  {% endfor %}
+  {% for item in site.service %}
+    ,{
+      "title": {{ item.title | jsonify }},
+      "url": {{ item.url | jsonify }},
+      "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+  {% for item in site.publications %}
+    ,{
+      "title": {{ item.title | jsonify }},
+      "url": {{ item.url | jsonify }},
+      "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+  {% for item in site.travel %}
+    ,{
+      "title": {{ item.title | jsonify }},
+      "url": {{ item.url | jsonify }},
+      "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+  {% for item in site.cv %}
+    ,{
+      "title": {{ item.title | jsonify }},
+      "url": {{ item.url | jsonify }},
+      "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+]
+</script>
+

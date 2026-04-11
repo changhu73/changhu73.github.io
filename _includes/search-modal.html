@@ -1,0 +1,165 @@
+{% include base_path %}
+{% include search-data.html %}
+
+<!-- Search Modal -->
+<div id="search-modal" class="search-modal" style="display: none;">
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <h2>Search</h2>
+      <button class="search-modal-close" aria-label="Close search">&times;</button>
+    </div>
+    <div class="search-modal-body">
+      <input type="text" id="search-input" class="search-input" placeholder="Type to search..." autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.search-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.search-modal-content {
+  position: relative;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  margin: 5vh auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.search-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-modal-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+
+.search-modal-close {
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.search-modal-close:hover {
+  color: #2c3e50;
+}
+
+.search-modal-body {
+  padding: 1.5em 2em;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8em 1em;
+  font-size: 1em;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.search-results {
+  min-height: 100px;
+}
+
+.search-result-item {
+  padding: 1em;
+  margin-bottom: 0.8em;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-result-item:hover {
+  background-color: #f5f5f5;
+  border-color: #4a90e2;
+  transform: translateX(4px);
+}
+
+.search-result-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5em;
+}
+
+.search-result-url {
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+.search-result-excerpt {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.5;
+}
+
+.search-result-highlight {
+  background-color: #fff3cd;
+  font-weight: 600;
+  padding: 0 2px;
+}
+
+.search-no-results {
+  text-align: center;
+  padding: 2em;
+  color: #999;
+}
+
+.search-loading {
+  text-align: center;
+  padding: 2em;
+  color: #666;
+}
+</style>
+
