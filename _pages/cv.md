@@ -15,6 +15,7 @@ redirect_from:
   *  Email: [gzhang63-c@my.cityu.edu.hk](mailto:gzhang63-c@my.cityu.edu.hk)
 * B.S. in Information Security, University of Science and Technology of China, Sept. 2019 - Jun. 2023
   *  Email: [ch0703@mail.ustc.edu.cn](mailto:ch0703@mail.ustc.edu.cn)
+  *  Email: [ch0703@ustc.edu](mailto:ch0703@ustc.edu)
 * Senior High, The Attached Middle School To Jiangxi Normal University, Sept. 2016 - Jun. 2019
 * Junior High, Nanchang Foreign Language School, Sept. 2013 - Jun. 2016
 
