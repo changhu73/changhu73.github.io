@@ -18,6 +18,13 @@ author_profile: true
     gap: 1.5em;
   }
   
+  /* 覆盖主题 .archive a 的下划线 */
+  a.project-card,
+  a.project-card:hover,
+  a.project-card:focus {
+    text-decoration: none !important;
+  }
+  
   .project-card {
     background: #ffffff;
     border-radius: 12px;
@@ -28,7 +35,7 @@ author_profile: true
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     display: flex;
     align-items: center;
     gap: 1.2em;
@@ -67,12 +74,33 @@ author_profile: true
     flex: 1;
   }
   
-  .project-title {
+  .project-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45em 0.65em;
     margin: 0 0 0.3em 0;
+  }
+  
+  .project-title {
+    margin: 0;
     font-size: 1.3em;
     font-weight: 600;
     color: #2c3e50;
     transition: color 0.3s;
+  }
+  
+  .project-badge {
+    font-size: 0.62em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #b84700;
+    background: rgba(230, 126, 34, 0.14);
+    border: 1px solid rgba(211, 84, 0, 0.35);
+    padding: 0.22em 0.55em;
+    border-radius: 6px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
   
   .project-card:hover .project-title {
@@ -121,8 +149,24 @@ author_profile: true
     <a href="{{ '/projects/copyright-detective/' | relative_url }}" class="project-card">
       <span class="project-icon"><i class="fas fa-user-secret" style="color: #191970;"></i></span>
       <div class="project-content">
-        <h2 class="project-title">Copyright Detective</h2>
+        <div class="project-title-row">
+          <h2 class="project-title">Copyright Detective</h2>
+          <span class="project-badge" title="Accepted to ACL 2026 Demo Track">ACL 2026 Demo Track</span>
+        </div>
         <p class="project-subtitle">A Forensic System to Evidence LLMs Flickering Copyright Risks</p>
+      </div>
+      <span class="project-arrow">→</span>
+    </a>
+    
+    <!-- Project 2: KDD 2026 Tutorial -->
+    <a href="{{ '/projects/kdd-2026-tutorial/' | relative_url }}" class="project-card">
+      <span class="project-icon"><i class="fas fa-graduation-cap" style="color: #2c5282;"></i></span>
+      <div class="project-content">
+        <div class="project-title-row">
+          <h2 class="project-title">Evidencing LLM Misuse</h2>
+          <span class="project-badge" title="KDD 2026 Tutorial">KDD 2026 Tutorial</span>
+        </div>
+        <p class="project-subtitle">A Hands-on Forensic Tutorial on Copyright Infringement and Plagiarism Detection</p>
       </div>
       <span class="project-arrow">→</span>
     </a>
