@@ -90,7 +90,7 @@ author_profile: true
     </a>
     <a class="trip-card-link" href="/travel/ulanqab/">
       <div class="trip-card">
-        <h2 class="trip-card-title">Ulanqab(烏蘭察布)</h2>
+        <h2 class="trip-card-title">Ulanqab(內蒙古-烏蘭察布)</h2>
       </div>
     </a>
   </div>

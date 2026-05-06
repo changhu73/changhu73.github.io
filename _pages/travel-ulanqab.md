@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Ulanqab(烏蘭察布)"
+title: "Ulanqab(內蒙古-烏蘭察布)"
 permalink: /travel/ulanqab/
 author_profile: true
 ---
@@ -179,20 +179,23 @@ author_profile: true
   <a class="back-to-overview" href="/travel/">Back to overview</a>
 
   <div class="trip-section">
-    <h2>Ulanqab(烏蘭察布)</h2>
+    <h2>Ulanqab(內蒙古-烏蘭察布)</h2>
     <div class="slider-container">
-      <h3 class="slider-title">烏蘭察布</h3>
+      <h3 class="slider-title">Wulanhadake Volcano 哈達火山／集那線</h3>
       <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan1.jpg" alt="烏蘭察布 1"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan2.jpg" alt="烏蘭察布 2"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan3.jpg" alt="烏蘭察布 3"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan4.jpg" alt="烏蘭察布 4"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan5.jpg" alt="烏蘭察布 5"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan6.jpg" alt="烏蘭察布 6"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan7.jpg" alt="烏蘭察布 7"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan8.jpg" alt="烏蘭察布 8"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan9.jpg" alt="烏蘭察布 9"></div>
-        <div class="photo-card"><img src="/images/travel/wulanchabu/b1762141d66e5a31f53bc99772a59716.jpg" alt="烏蘭察布 10"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan1.jpg" alt="哈達火山／集那線 1"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan2.jpg" alt="哈達火山／集那線 2"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan3.jpg" alt="哈達火山／集那線 3"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan4.jpg" alt="哈達火山／集那線 4"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan5.jpg" alt="哈達火山／集那線 5"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan6.jpg" alt="哈達火山／集那線 6"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan7.jpg" alt="哈達火山／集那線 7"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan8.jpg" alt="哈達火山／集那線 8"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan9.jpg" alt="哈達火山／集那線 9"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan10.jpg" alt="哈達火山／集那線 10"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan11.jpg" alt="哈達火山／集那線 11"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan12.jpg" alt="哈達火山／集那線 12"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan13.jpg" alt="哈達火山／集那線 13"></div>
       </div>
     </div>
   </div>
