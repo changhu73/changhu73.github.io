@@ -43,9 +43,9 @@
 }
 
 /* Back button: match Copyright Detective + beat theme .page__content a underline */
-#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button,
-#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button:hover,
-#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button:focus {
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-pe-top .back-button,
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-pe-top .back-button:hover,
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-pe-top .back-button:focus {
   text-decoration: none !important;
   border-bottom: none !important;
 }
@@ -78,6 +78,7 @@
 
 /* --- Shell --- */
 .kdd-docs.kdd-pe {
+  --pe-top-h: 56px;
   --pe-text: #334155;
   --pe-heading: #0f172a;
   --pe-muted: #64748b;
@@ -103,53 +104,53 @@
   color: var(--pe-text);
   background: var(--pe-bg);
   min-height: calc(100vh - 2rem);
+  /* reserve height for fixed top bar */
+  padding-top: var(--pe-top-h);
 }
 
 .kdd-docs.kdd-pe * {
   box-sizing: border-box;
 }
 
-/* --- Back button (same interaction model as Copyright Detective) --- */
-.kdd-docs.kdd-pe > .back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
+/* --- Back button (Copyright Detective style; sits in top bar, right of brand) --- */
+.kdd-docs.kdd-pe .kdd-pe-top .back-button {
+  position: relative;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   color: #2c3e50;
   text-decoration: none;
   border-radius: 50%;
   font-weight: 600;
-  font-size: 0.95em;
+  font-size: 0.9em;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   border: 1px solid rgba(230, 126, 34, 0.2);
   backdrop-filter: blur(10px);
   overflow: hidden;
   white-space: nowrap;
 }
 
-.kdd-docs.kdd-pe > .back-button::before {
+.kdd-docs.kdd-pe .kdd-pe-top .back-button::before {
   content: '←';
-  font-size: 1.4em;
+  font-size: 1.35em;
   font-weight: 700;
   color: #e67e22;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
 }
 
-.kdd-docs.kdd-pe > .back-button .button-text {
+.kdd-docs.kdd-pe .kdd-pe-top .back-button .button-text {
   opacity: 0;
   width: 0;
   overflow: hidden;
@@ -157,77 +158,78 @@
   margin-left: 0;
 }
 
-.kdd-docs.kdd-pe > .back-button:hover {
+.kdd-docs.kdd-pe .kdd-pe-top .back-button:hover {
   width: auto;
-  padding: 0.75em 1.4em;
+  padding: 0.65em 1.25em;
   border-radius: 50px;
-  gap: 0.6em;
+  gap: 0.55em;
   background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
   color: white;
-  transform: translateX(-5px) scale(1.05);
+  transform: translateX(4px) scale(1.05);
   box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
   border-color: transparent;
 }
 
-.kdd-docs.kdd-pe > .back-button:hover::before {
+.kdd-docs.kdd-pe .kdd-pe-top .back-button:hover::before {
   color: white;
-  transform: translateX(-3px);
+  transform: translateX(-2px);
   width: auto;
   height: auto;
-  font-size: 1.2em;
+  font-size: 1.15em;
 }
 
-.kdd-docs.kdd-pe > .back-button:hover .button-text {
+.kdd-docs.kdd-pe .kdd-pe-top .back-button:hover .button-text {
   opacity: 1;
   width: auto;
   margin-left: 0;
 }
 
-.kdd-docs.kdd-pe > .back-button:active {
-  transform: translateX(-3px) scale(1.02);
+.kdd-docs.kdd-pe .kdd-pe-top .back-button:active {
+  transform: translateX(2px) scale(1.02);
 }
 
 @media (max-width: 768px) {
-  .kdd-docs.kdd-pe > .back-button {
-    top: 15px;
-    left: 15px;
-    width: 44px;
-    height: 44px;
+  .kdd-docs.kdd-pe .kdd-pe-top .back-button {
+    width: 38px;
+    height: 38px;
   }
 
-  .kdd-docs.kdd-pe > .back-button::before {
-    font-size: 1.3em;
-    width: 44px;
-    height: 44px;
+  .kdd-docs.kdd-pe .kdd-pe-top .back-button::before {
+    font-size: 1.25em;
+    width: 38px;
+    height: 38px;
   }
 
-  .kdd-docs.kdd-pe > .back-button:hover {
-    padding: 0.6em 1.2em;
-    font-size: 0.85em;
-    gap: 0.5em;
+  .kdd-docs.kdd-pe .kdd-pe-top .back-button:hover {
+    padding: 0.55em 1.05em;
+    font-size: 0.82em;
+    gap: 0.45em;
   }
 
-  .kdd-docs.kdd-pe > .back-button:hover::before {
-    font-size: 1.1em;
+  .kdd-docs.kdd-pe .kdd-pe-top .back-button:hover::before {
+    font-size: 1.05em;
     width: auto;
     height: auto;
   }
 }
 
-/* --- Top header --- */
+/* --- Top header (fixed: brand + meta stay at top while scrolling) --- */
 .kdd-pe-top {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 40;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
-  height: 56px;
+  flex-wrap: nowrap;
+  min-height: var(--pe-top-h);
+  height: var(--pe-top-h);
   padding: 0 1.25rem;
   border-bottom: 1px solid var(--pe-border);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
 }
 
@@ -313,7 +315,7 @@
   grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
   max-width: 1440px;
   margin: 0 auto;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - var(--pe-top-h));
 }
 
 /* --- Left nav --- */
@@ -322,9 +324,9 @@
   background: var(--pe-sidebar-bg);
   padding: 1rem 0 2rem;
   position: sticky;
-  top: 56px;
+  top: var(--pe-top-h);
   align-self: start;
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - var(--pe-top-h));
   overflow-y: auto;
 }
 
@@ -428,7 +430,7 @@
 }
 
 .kdd-docs-section {
-  scroll-margin-top: calc(56px + 1rem);
+  scroll-margin-top: calc(var(--pe-top-h) + 1rem);
   margin-bottom: 2.75rem;
 }
 
