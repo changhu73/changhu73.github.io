@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<!-- Stylesheet in layout so local preview always loads (no reliance on head/page.url matching) -->
+<link rel="stylesheet" href="{{ base_path }}/assets/css/kdd-tutorial.css">
+
+<div id="main" class="kdd-docs-main-container" role="main">
+  <article class="page kdd-docs-page" itemscope itemtype="https://schema.org/Article">
+    <div class="page__inner-wrap">
+      <section class="page__content kdd-docs-page__content" itemprop="articleBody">
+        {{ content }}
+      </section>
+    </div>
+  </article>
+</div>
