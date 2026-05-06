@@ -7,170 +7,118 @@ author_profile: false
 
 <!-- Styles: assets/css/kdd-tutorial.css (linked from _layouts/kdd-docs.html) -->
 
-<div class="kdd-docs">
-  <header class="kdd-docs-topbar">
-    <div class="kdd-docs-topbar__left">
-      <a class="kdd-docs-back" href="{{ '/projects/' | relative_url }}">← Projects</a>
-      <span style="font-size:0.8125rem;color:#a3a3a3;">KDD 2026 · Lecture-style Tutorial</span>
+<div class="kdd-docs kdd-pe">
+  <header class="kdd-pe-top">
+    <div class="kdd-pe-top__brand">
+      <a class="kdd-pe-top__brand-link" href="#title">
+        <img
+          class="kdd-pe-top__logo"
+          src="{{ '/images/projects/kdd_2026_tutorial/image.png' | relative_url }}"
+          alt=""
+          width="32"
+          height="32"
+          loading="eager"
+        />
+        <span class="kdd-pe-top__title">Evidencing LLM Misuse</span>
+      </a>
+      <span class="kdd-pe-top__meta">Hands-on Tutorial · KDD 2026</span>
     </div>
-    <div class="kdd-docs-topbar__actions">
-      <a class="kdd-docs-action" href="https://github.com/changhu73/changhu73.github.io/edit/main/_pages/kdd-2026-tutorial.html" target="_blank" rel="noopener noreferrer">
-        Edit this page
-      </a>
-      <a class="kdd-docs-action" href="mailto:gzhang63-c@my.cityu.edu.hk?subject=KDD%202026%20Tutorial%20Feedback">
-        Feedback
-      </a>
-      <a class="kdd-docs-action" href="https://github.com/changhu73" target="_blank" rel="noopener noreferrer">
-        GitHub
+    <div class="kdd-pe-top__tools">
+      <a class="kdd-pe-top__ghost" href="{{ '/projects/' | relative_url }}">Projects</a>
+      <div class="kdd-pe-search" aria-hidden="true">
+        <span class="kdd-pe-search__ph">Search…</span>
+        <span class="kdd-pe-search__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </div>
+      <a class="kdd-pe-top__icon" href="https://github.com/changhu73/changhu73.github.io" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+        <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       </a>
     </div>
   </header>
 
-  <div class="kdd-docs-layout">
-    <aside class="kdd-docs-sidebar" aria-label="Tutorial navigation">
-      <div class="kdd-docs-sidebar__label">On this site</div>
-      <nav class="kdd-docs-nav" aria-label="Section navigation">
-        <a href="#about">About</a>
-        <a href="#date-and-location">Date &amp; location</a>
-        <a href="#speakers">Speakers</a>
-        <span class="kdd-docs-nav__muted kdd-docs-nav__section">Coming later</span>
-        <span class="kdd-docs-nav__muted">Outline</span>
-        <span class="kdd-docs-nav__muted">Schedule</span>
-        <span class="kdd-docs-nav__muted">Materials &amp; resources</span>
-      </nav>
+  <div class="kdd-pe-frame">
+    <aside class="kdd-pe-navcol" aria-label="Tutorial contents">
+      <div class="kdd-pe-navblock">
+        <div class="kdd-pe-navblock__title">
+          <span class="kdd-pe-navblock__chevron" aria-hidden="true">›</span>
+          Tutorial
+        </div>
+        <nav class="kdd-pe-side-nav">
+          <a class="kdd-pe-side-nav__link" href="#title">Overview</a>
+          <a class="kdd-pe-side-nav__link" href="#date-and-location">Date &amp; Location</a>
+          <a class="kdd-pe-side-nav__link" href="#speakers">Speakers</a>
+        </nav>
+      </div>
     </aside>
 
-    <main class="kdd-docs-main">
-      <div class="kdd-docs-hero">
-        <img
-          class="kdd-docs-hero__logo"
-          src="{{ '/images/projects/kdd_2026_tutorial/image.png' | relative_url }}"
-          alt="KDD 2026"
-          width="144"
-          height="144"
-          loading="eager"
-        />
-        <div class="kdd-docs-hero__text">
-          <span class="kdd-docs-hero__badge">Accepted · Lecture-style tutorial</span>
-          <h1>Evidencing LLM Misuse</h1>
-          <p class="kdd-docs-hero__meta">
-            A Hands-on Forensic Tutorial on Copyright Infringement and Plagiarism Detection — built around <a class="kdd-docs-inline-link" href="{{ '/projects/copyright-detective/' | relative_url }}">Copyright Detective</a>.
-          </p>
-        </div>
-      </div>
+    <div class="kdd-pe-column">
+      <main class="kdd-pe-main">
+        <nav class="kdd-pe-crumb" aria-label="Breadcrumb">
+          <a href="{{ '/projects/' | relative_url }}">Projects</a>
+          <span class="kdd-pe-crumb__sep">/</span>
+          <span class="kdd-pe-crumb__here">KDD 2026 Tutorial</span>
+        </nav>
 
-      <section id="about" class="kdd-docs-section">
-        <h2>About this tutorial</h2>
-        <p class="kdd-docs-lead">
-          This <strong>lecture-style</strong> KDD tutorial connects research on auditing LLM outputs with a hands-on <strong>forensic</strong> mindset: treating copyright infringement and plagiarism risks as an <strong>evidence discovery</strong> process—moving beyond single-score verdicts toward reproducible artifacts and structured reasoning.
-        </p>
-        <p class="kdd-docs-lead">
-          The session is organized around interactive workflows inspired by <a class="kdd-docs-inline-link" href="{{ '/projects/copyright-detective/' | relative_url }}">Copyright Detective</a> (content recall / similarity-style probes, iterative prompting, and reporting patterns suitable for review by practitioners and stakeholders).
-        </p>
-        <div class="kdd-docs-empty" role="status">
-          Detailed outline, session schedule, slide deck, exercises, and companion links will be published here closer to the conference (organizer deadline for tutorial materials / website: July 1, 2026).
-        </div>
-      </section>
-
-      <section id="date-and-location" class="kdd-docs-section">
-        <h2>Date &amp; location</h2>
-        <dl class="kdd-docs-dl">
-          <dt>Conference</dt>
-          <dd><a class="kdd-docs-inline-link" href="https://kdd2026.kdd.org/" target="_blank" rel="noopener noreferrer">ACM SIGKDD / KDD 2026</a></dd>
-          <dt>Conference dates</dt>
-          <dd>August 9–13, 2026</dd>
-          <dt>Venue</dt>
-          <dd>
-            International Convention Center Jeju (ICC Jeju), Seogwipo-si, Jeju-do, South Korea
-          </dd>
-          <dt>Tutorial slot</dt>
-          <dd>To be announced (within the main conference technical program)</dd>
-          <dt>Format</dt>
-          <dd>Lecture-style tutorial · <strong>3 hours</strong> (half day) · <strong>in person</strong> (all presenters expected on-site per KDD tutorial policy)</dd>
-          <dt>Time zone</dt>
-          <dd>Conference deadlines are stated in <strong>Pacific Time</strong> by KDD; local session times will follow the official program.</dd>
-        </dl>
-
-        <h3>Organizer milestones (tutorial track)</h3>
-        <p class="kdd-docs-lead" style="margin-bottom:0.5rem;">
-          Key dates from the KDD 2026 <em>Call for Lecture-Style Tutorials</em> (deadlines 11:59 PM Pacific Time unless noted otherwise by organizers):
-        </p>
-        <div class="kdd-docs-table-wrap">
-          <table class="kdd-docs-table">
-            <thead>
-              <tr>
-                <th scope="col">Milestone</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Abstract submission</th>
-                <td>March 8, 2026</td>
-              </tr>
-              <tr>
-                <th scope="row">Full proposal submission</th>
-                <td>March 15, 2026</td>
-              </tr>
-              <tr>
-                <th scope="row">Notification</th>
-                <td>May 6, 2026</td>
-              </tr>
-              <tr>
-                <th scope="row">Camera-ready proceedings</th>
-                <td>May 31, 2026</td>
-              </tr>
-              <tr>
-                <th scope="row">Tutorial materials &amp; website</th>
-                <td>July 1, 2026</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="kdd-docs-note">
-          Room assignment and the exact calendar slot for this tutorial will appear in the official KDD 2026 program. Accepted tutorials are expected to deliver high-quality materials (including this website) by the July 1 deadline.
-        </p>
-      </section>
-
-      <section id="speakers" class="kdd-docs-section">
-        <h2>Speakers</h2>
-        <p class="kdd-docs-lead" style="margin-top:0;">
-          Presenters listed below follow the tutorial proposal (in-person presenters vs. contributors). Additional names and bios will be synced to the camera-ready materials as they are finalized.
-        </p>
-        <div class="kdd-docs-speakers">
-          <div class="kdd-docs-speaker">
-            <p class="kdd-docs-speaker__name">{{ site.author.name }}</p>
-            <p class="kdd-docs-speaker__role">Corresponding tutor · in-person presenter</p>
-            <p class="kdd-docs-speaker__role" style="margin-bottom:0.5rem;">M.S. in Computer Science, City University of Hong Kong · Visiting Research Student, HKUST (Guangzhou)</p>
-            <p class="kdd-docs-speaker__contact">
-              <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-              {% if site.author.googlescholar %}
-                · <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-              {% endif %}
-              {% if site.author.orcid %}
-                · <a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a>
-              {% endif %}
+        <section id="title" class="kdd-docs-section kdd-docs-section--hero">
+          <div class="kdd-pe-lead">
+            <span class="kdd-docs-hero__badge">Accepted · Hands-on Tutorial</span>
+            <h1 class="kdd-pe-h1">Evidencing LLM Misuse</h1>
+            <p class="kdd-pe-lead__sub">
+              A Hands-on Forensic Tutorial on Copyright Infringement and Plagiarism Detection
             </p>
           </div>
-        </div>
-        <div class="kdd-docs-placeholder" role="status">
-          Additional in-person presenters and contributors named in the proposal will be listed here (bios ≤ 200 words per organizer guidelines).
-        </div>
-      </section>
+        </section>
 
-      <footer class="kdd-docs-footer-meta">
-        Last updated for acceptance notification (May 6, 2026). Tutorial content sections are placeholders until materials are ready.
-      </footer>
-    </main>
+        <section id="date-and-location" class="kdd-docs-section">
+          <h2>Date &amp; Location</h2>
+          <dl class="kdd-docs-dl">
+            <dt>Conference</dt>
+            <dd><a class="kdd-docs-inline-link" href="https://kdd2026.kdd.org/" target="_blank" rel="noopener noreferrer">ACM SIGKDD / KDD 2026</a></dd>
+            <dt>Conference dates</dt>
+            <dd>August 9–13, 2026</dd>
+            <dt>Venue</dt>
+            <dd>International Convention Center Jeju (ICC Jeju), Seogwipo-si, Jeju-do, South Korea</dd>
+            <dt>Tutorial slot</dt>
+            <dd>To be announced (within the main conference technical program)</dd>
+            <dt>Format</dt>
+            <dd>Hands-on tutorial · <strong>3 hours</strong> (half day) · <strong>in person</strong> (all presenters expected on-site per KDD tutorial policy)</dd>
+            <dt>Time zone</dt>
+            <dd>Conference deadlines are stated in <strong>Pacific Time</strong> by KDD; local session times will follow the official program.</dd>
+          </dl>
+        </section>
 
-    <aside class="kdd-docs-toc" aria-label="On this page">
-      <div class="kdd-docs-toc__label">On this page</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#date-and-location">Date &amp; location</a></li>
-        <li><a href="#speakers">Speakers</a></li>
-      </ul>
+        <section id="speakers" class="kdd-docs-section">
+          <h2>Speakers</h2>
+          <div class="kdd-docs-speakers">
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">Denghui Zhang</p>
+              <p class="kdd-docs-speaker__affil">Assistant Professor · Stevens Institute of Technology</p>
+              <p class="kdd-docs-speaker__role">Corresponding tutor</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:dzhang42@stevens.edu">dzhang42@stevens.edu</a>
+              </p>
+            </div>
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">Guangwei Zhang</p>
+              <p class="kdd-docs-speaker__affil">Algorithm Engineer · Pine AI</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:kwongwai@19pine.ai">kwongwai@19pine.ai</a>
+              </p>
+            </div>
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">Dongwon Lee</p>
+              <p class="kdd-docs-speaker__affil">Professor · The Pennsylvania State University</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:dul13@psu.edu">dul13@psu.edu</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="kdd-pe-rail" aria-label="Page actions">
+      <a class="kdd-pe-rail__link" href="mailto:kwongwai@19pine.ai?subject=KDD%202026%20Tutorial%20feedback">Question? Give us feedback →</a>
+      <a class="kdd-pe-rail__link" href="https://github.com/changhu73/changhu73.github.io/edit/main/_pages/kdd-2026-tutorial.html" target="_blank" rel="noopener noreferrer">Edit this page</a>
     </aside>
   </div>
 </div>
