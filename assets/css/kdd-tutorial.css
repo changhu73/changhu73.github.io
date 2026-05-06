@@ -50,6 +50,32 @@
   border-bottom: none !important;
 }
 
+/*
+ * Minimal Mistakes: `.page__content p, dl { font-size: 0.95em }` and `dd { font-size: $type-size-6 }`
+ * compound to tiny (<13px) text; hero H1 uses rem vs html and looks oversized by comparison.
+ */
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe h1.kdd-pe-h1 {
+  font-size: var(--pe-fs-h1);
+  line-height: 1.28;
+}
+
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe p {
+  font-size: var(--pe-fs-body);
+}
+
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe p.kdd-pe-lead__sub {
+  font-size: var(--pe-fs-lead);
+}
+
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe p.kdd-docs-speaker__name {
+  font-size: 1.0625rem;
+}
+
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-docs-dl dt,
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-docs-dl dd {
+  font-size: var(--pe-fs-body);
+}
+
 /* --- Shell --- */
 .kdd-docs.kdd-pe {
   --pe-text: #334155;
@@ -61,15 +87,15 @@
   --pe-accent: #2563eb;
   --pe-accent-soft: #eff6ff;
   --pe-accent-border: #bfdbfe;
-  /* Doc-site-like scale (Prompt-style): moderate title, comfortable body */
-  --pe-fs-h1: clamp(1.6875rem, 1.45rem + 0.75vw, 1.9375rem);
-  --pe-fs-h2: 1.25rem;
+  /* Doc-site-like scale: hero title modest vs body (theme was shrinking p/dl/dd) */
+  --pe-fs-h1: clamp(1.375rem, 1.2rem + 0.5vw, 1.5625rem);
+  --pe-fs-h2: 1.1875rem;
   --pe-fs-lead: 1.125rem;
   --pe-fs-body: 1.0625rem;
-  --pe-fs-small: 0.9375rem;
-  --pe-fs-mini: 0.8125rem;
+  --pe-fs-small: 0.875rem;
+  --pe-fs-mini: 0.75rem;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--pe-text);
   background: var(--pe-bg);
@@ -229,7 +255,8 @@
 }
 
 .kdd-pe-top__title {
-  font-size: var(--pe-fs-body);
+  /* Narrower than page H1 — same phrase appears in sticky bar */
+  font-size: var(--pe-fs-small);
   font-weight: 600;
   letter-spacing: -0.02em;
   white-space: nowrap;
@@ -260,39 +287,6 @@
   align-items: center;
   gap: 0.65rem;
   flex-shrink: 0;
-}
-
-.kdd-pe-search {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid var(--pe-border);
-  background: #f9fafb;
-  font-size: var(--pe-fs-small);
-  color: #9ca3af;
-}
-
-@media (min-width: 900px) {
-  .kdd-pe-search {
-    display: inline-flex;
-  }
-}
-
-.kdd-pe-search__ph {
-  min-width: 5rem;
-}
-
-.kdd-pe-search__kbd kbd {
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
-  padding: 0.1rem 0.35rem;
-  margin-left: 0.15rem;
-  border-radius: 4px;
-  border: 1px solid var(--pe-border);
-  background: #fff;
-  color: var(--pe-muted);
 }
 
 .kdd-pe-top__icon {
@@ -474,11 +468,13 @@
   margin: 0;
   font-weight: 600;
   color: var(--pe-heading);
+  font-size: var(--pe-fs-body);
 }
 
 .kdd-docs-dl dd {
   margin: 0;
   color: var(--pe-text);
+  font-size: var(--pe-fs-body);
 }
 
 .kdd-docs-speakers {
@@ -496,7 +492,7 @@
 
 .kdd-docs-speaker__name {
   margin: 0 0 0.15rem;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--pe-heading);
 }
