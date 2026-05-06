@@ -8,6 +8,11 @@ author_profile: true
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+  /* Hide duplicate layout title (same text repeated below as trip-section h2) */
+  .archive > h1.page__title {
+    display: none;
+  }
+
   .travel-log-container {
     font-family: 'Poppins', sans-serif;
     color: #333;

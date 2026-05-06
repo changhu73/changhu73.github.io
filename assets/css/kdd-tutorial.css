@@ -79,6 +79,9 @@
 /* --- Shell --- */
 .kdd-docs.kdd-pe {
   --pe-top-h: 56px;
+  /* Full-width shell: outer grid + main column reading width */
+  --pe-frame-max: min(100%, 1920px);
+  --pe-main-max: min(72rem, 100%);
   --pe-text: #334155;
   --pe-heading: #0f172a;
   --pe-muted: #64748b;
@@ -312,8 +315,9 @@
 /* --- Three-column frame --- */
 .kdd-pe-frame {
   display: grid;
-  grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
-  max-width: 1440px;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  width: 100%;
+  max-width: var(--pe-frame-max);
   margin: 0 auto;
   min-height: calc(100vh - var(--pe-top-h));
 }
@@ -377,8 +381,9 @@
 }
 
 .kdd-pe-main {
-  padding: 1.75rem 2.25rem 4rem;
-  max-width: 48rem;
+  padding: 1.75rem clamp(1.25rem, 3vw, 2.75rem) 4rem;
+  width: 100%;
+  max-width: var(--pe-main-max);
 }
 
 .kdd-pe-lead {
@@ -402,7 +407,7 @@
   font-weight: 400;
   color: var(--pe-muted);
   line-height: 1.55;
-  max-width: 42rem;
+  max-width: min(52rem, 100%);
 }
 
 /* --- Shared content tokens --- */

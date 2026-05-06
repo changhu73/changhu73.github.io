@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Taiwan(臺灣)"
-permalink: /travel/taiwan/
+title: "Ulanqab(烏蘭察布)"
+permalink: /travel/ulanqab/
 author_profile: true
 ---
 
@@ -179,74 +179,20 @@ author_profile: true
   <a class="back-to-overview" href="/travel/">Back to overview</a>
 
   <div class="trip-section">
-    <h2>Taiwan(臺灣)</h2>
-
+    <h2>Ulanqab(烏蘭察布)</h2>
     <div class="slider-container">
-      <h3 class="slider-title">National Palace Museum (國立故宮博物院)</h3>
+      <h3 class="slider-title">烏蘭察布</h3>
       <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan1.jpg" alt="Museum"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan4.jpg" alt=""></div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan2.jpg" alt="Jadeite Cabbage">
-          <div class="caption"><p>Jadeite Cabbage (翠玉白菜)</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan3.jpg" alt="Museum">
-          <div class="caption"><p>明 崇禎四年銘 青銅鎏金佛塔</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan5.jpg" alt="">
-          <div class="caption"><p>象牙透雕套球（鬼工球）/ 雕象牙九層塔</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan6.jpg" alt="">
-          <div class="caption"><p>清代宮廷家具</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan7.jpg" alt="">
-          <div class="caption"><p>八仙雕像</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan8.jpg" alt="">
-          <div class="caption"><p>珊瑚魁星點斗盆景</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan9.jpg" alt="">
-          <div class="caption"><p>定窯 白瓷嬰兒枕</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan10.jpg" alt="">
-          <div class="caption"><p>綠地魚龍圖花式瓶</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan100.jpg" alt="">
-          <div class="caption"><p>「古稀天子之寶」玉璽/「八徵耄念之寶」玉璽</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan101.jpg" alt="">
-          <div class="caption"><p>銅弩機/青銅方壺/環首小刀/...</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan102.jpg" alt="">
-          <div class="caption"><p>硯台</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan103.jpg" alt="">
-          <div class="caption"><p>嵌綠松石金屬絲犧尊</p></div>
-        </div>
-        <div class="photo-card">
-          <img src="/images/travel/taiwan/taiwan104.jpg" alt="">
-          <div class="caption"><p>鎏金銅塔</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="slider-container">
-      <h3 class="slider-title">National Revolutionary Martyrs' Shrine (國民革命忠烈祠)</h3>
-      <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan11.jpg" alt="Shrine 1"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan12.jpg" alt="Shrine 2"></div>
-        <div class="photo-card"><img src="/images/travel/taiwan/taiwan13.jpg" alt="Shrine 3"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan1.jpg" alt="烏蘭察布 1"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan2.jpg" alt="烏蘭察布 2"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan3.jpg" alt="烏蘭察布 3"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan4.jpg" alt="烏蘭察布 4"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan5.jpg" alt="烏蘭察布 5"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan6.jpg" alt="烏蘭察布 6"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan7.jpg" alt="烏蘭察布 7"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan8.jpg" alt="烏蘭察布 8"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/wulan9.jpg" alt="烏蘭察布 9"></div>
+        <div class="photo-card"><img src="/images/travel/wulanchabu/b1762141d66e5a31f53bc99772a59716.jpg" alt="烏蘭察布 10"></div>
       </div>
     </div>
   </div>
@@ -261,7 +207,7 @@ author_profile: true
 {% raw %}
 <script>
 (function () {
-  function initTaiwanTravel() {
+  function initUlanqabTravel() {
     var root = document.querySelector('.travel-log-container');
     if (!root) return;
 
@@ -356,11 +302,10 @@ author_profile: true
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTaiwanTravel);
+    document.addEventListener('DOMContentLoaded', initUlanqabTravel);
   } else {
-    initTaiwanTravel();
+    initUlanqabTravel();
   }
 })();
 </script>
 {% endraw %}
-
