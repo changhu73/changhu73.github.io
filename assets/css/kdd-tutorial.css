@@ -38,31 +38,39 @@
 }
 
 #main.kdd-docs-main-container .page__content .kdd-pe-side-nav a,
-#main.kdd-docs-main-container .page__content .kdd-pe-top a,
-#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .back-button {
+#main.kdd-docs-main-container .page__content .kdd-pe-top a {
   text-decoration: none !important;
+}
+
+/* Back button: match Copyright Detective + beat theme .page__content a underline */
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button,
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button:hover,
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe > a.back-button:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 /* --- Shell --- */
 .kdd-docs.kdd-pe {
-  --pe-text: #111827;
-  --pe-muted: #6b7280;
+  --pe-text: #334155;
+  --pe-heading: #0f172a;
+  --pe-muted: #64748b;
   --pe-border: #e5e7eb;
   --pe-bg: #ffffff;
   --pe-sidebar-bg: #fafafa;
   --pe-accent: #2563eb;
   --pe-accent-soft: #eff6ff;
   --pe-accent-border: #bfdbfe;
-  /* Type scale: moderate docs hierarchy */
-  --pe-fs-h1: clamp(1.625rem, 1.35rem + 1vw, 1.875rem);
-  --pe-fs-h2: 1.3125rem;
+  /* Doc-site-like scale (Prompt-style): moderate title, comfortable body */
+  --pe-fs-h1: clamp(1.6875rem, 1.45rem + 0.75vw, 1.9375rem);
+  --pe-fs-h2: 1.25rem;
   --pe-fs-lead: 1.125rem;
   --pe-fs-body: 1.0625rem;
   --pe-fs-small: 0.9375rem;
   --pe-fs-mini: 0.8125rem;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--pe-text);
   background: var(--pe-bg);
   min-height: calc(100vh - 2rem);
@@ -73,7 +81,7 @@
 }
 
 /* --- Back button (same interaction model as Copyright Detective) --- */
-.kdd-docs.kdd-pe .back-button {
+.kdd-docs.kdd-pe > .back-button {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -86,7 +94,7 @@
   padding: 0;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   color: #2c3e50;
-  text-decoration: none !important;
+  text-decoration: none;
   border-radius: 50%;
   font-weight: 600;
   font-size: 0.95em;
@@ -99,7 +107,7 @@
   white-space: nowrap;
 }
 
-.kdd-docs.kdd-pe .back-button::before {
+.kdd-docs.kdd-pe > .back-button::before {
   content: '←';
   font-size: 1.4em;
   font-weight: 700;
@@ -112,7 +120,7 @@
   height: 48px;
 }
 
-.kdd-docs.kdd-pe .back-button .button-text {
+.kdd-docs.kdd-pe > .back-button .button-text {
   opacity: 0;
   width: 0;
   overflow: hidden;
@@ -120,7 +128,7 @@
   margin-left: 0;
 }
 
-.kdd-docs.kdd-pe .back-button:hover {
+.kdd-docs.kdd-pe > .back-button:hover {
   width: auto;
   padding: 0.75em 1.4em;
   border-radius: 50px;
@@ -132,7 +140,7 @@
   border-color: transparent;
 }
 
-.kdd-docs.kdd-pe .back-button:hover::before {
+.kdd-docs.kdd-pe > .back-button:hover::before {
   color: white;
   transform: translateX(-3px);
   width: auto;
@@ -140,37 +148,37 @@
   font-size: 1.2em;
 }
 
-.kdd-docs.kdd-pe .back-button:hover .button-text {
+.kdd-docs.kdd-pe > .back-button:hover .button-text {
   opacity: 1;
   width: auto;
   margin-left: 0;
 }
 
-.kdd-docs.kdd-pe .back-button:active {
+.kdd-docs.kdd-pe > .back-button:active {
   transform: translateX(-3px) scale(1.02);
 }
 
 @media (max-width: 768px) {
-  .kdd-docs.kdd-pe .back-button {
+  .kdd-docs.kdd-pe > .back-button {
     top: 15px;
     left: 15px;
     width: 44px;
     height: 44px;
   }
 
-  .kdd-docs.kdd-pe .back-button::before {
+  .kdd-docs.kdd-pe > .back-button::before {
     font-size: 1.3em;
     width: 44px;
     height: 44px;
   }
 
-  .kdd-docs.kdd-pe .back-button:hover {
+  .kdd-docs.kdd-pe > .back-button:hover {
     padding: 0.6em 1.2em;
     font-size: 0.85em;
     gap: 0.5em;
   }
 
-  .kdd-docs.kdd-pe .back-button:hover::before {
+  .kdd-docs.kdd-pe > .back-button:hover::before {
     font-size: 1.1em;
     width: auto;
     height: auto;
@@ -386,7 +394,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.28;
-  color: var(--pe-text);
+  color: var(--pe-heading);
 }
 
 .kdd-pe-lead__sub {
@@ -436,7 +444,7 @@
   font-size: var(--pe-fs-h2);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: var(--pe-text);
+  color: var(--pe-heading);
   padding-bottom: 0;
   border-bottom: none;
 }
@@ -449,7 +457,7 @@
 .kdd-docs-lead {
   font-size: var(--pe-fs-body);
   color: var(--pe-text);
-  line-height: 1.65;
+  line-height: 1.7;
   margin: 0 0 1rem;
 }
 
@@ -459,13 +467,13 @@
   gap: 0.6rem 1.75rem;
   font-size: var(--pe-fs-body);
   margin: 0;
-  line-height: 1.55;
+  line-height: 1.65;
 }
 
 .kdd-docs-dl dt {
   margin: 0;
   font-weight: 600;
-  color: #374151;
+  color: var(--pe-heading);
 }
 
 .kdd-docs-dl dd {
@@ -490,6 +498,7 @@
   margin: 0 0 0.15rem;
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--pe-heading);
 }
 
 .kdd-docs-speaker__role {
@@ -550,9 +559,5 @@
 
   .kdd-pe-main {
     padding: 1.5rem 1.25rem 3rem;
-  }
-
-  .kdd-pe-h1 {
-    font-size: 1.625rem;
   }
 }
