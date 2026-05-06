@@ -322,11 +322,11 @@
   min-height: calc(100vh - var(--pe-top-h));
 }
 
-/* --- Left nav --- */
+/* --- Left nav (flush under fixed header when sticky — no top padding gap) --- */
 .kdd-pe-navcol {
   border-right: 1px solid var(--pe-border);
   background: var(--pe-sidebar-bg);
-  padding: 1rem 0 2rem;
+  padding: 0 0 2rem;
   position: sticky;
   top: var(--pe-top-h);
   align-self: start;
@@ -334,11 +334,15 @@
   overflow-y: auto;
 }
 
+.kdd-pe-navblock {
+  margin: 0;
+}
+
 .kdd-pe-navblock__title {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.35rem 1rem 0.5rem;
+  padding: 0.5rem 1rem 0.35rem;
   font-size: var(--pe-fs-nav);
   font-weight: 600;
   color: var(--pe-text);
@@ -355,7 +359,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0.25rem;
+  margin: 0;
 }
 
 .kdd-pe-side-nav__link {
@@ -381,7 +386,8 @@
 }
 
 .kdd-pe-main {
-  padding: 1.75rem clamp(1.25rem, 3vw, 2.75rem) 4rem;
+  /* Top aligns with sidebar nav (both sit just below fixed header) */
+  padding: 1.125rem clamp(1.25rem, 3vw, 2.75rem) 4rem;
   width: 100%;
   max-width: var(--pe-main-max);
 }
@@ -545,6 +551,7 @@
     max-height: none;
     border-right: none;
     border-bottom: 1px solid var(--pe-border);
+    padding: 0.65rem 0 0.75rem;
   }
 
   .kdd-pe-side-nav {
