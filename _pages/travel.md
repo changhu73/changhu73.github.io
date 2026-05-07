@@ -123,5 +123,10 @@ author_profile: true
         <h2 class="trip-card-title">Ulanqab(內蒙古-烏蘭察布)</h2>
       </div>
     </a>
+    <a class="trip-card-link" href="/travel/datong/" title="Datong(大同)">
+      <div class="trip-card">
+        <h2 class="trip-card-title">Datong(大同)</h2>
+      </div>
+    </a>
   </div>
 </div>

@@ -155,7 +155,10 @@
       {% endif %}
       {% if author.zhihu %}
       <li><a href="https://www.zhihu.com/people/{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" aria-hidden="true"></i>Zhihu</a></li>
-      {% endif %}      
+      {% endif %}
+      {% if author.travel %}
+        <li><a href="{{ '/travel/' | relative_url }}"><i class="fas fa-fw fa-plane icon-pad-right" aria-hidden="true"></i>Travel</a></li>
+      {% endif %}
     </ul>
   </div>
 </div>

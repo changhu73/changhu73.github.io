@@ -16,8 +16,5 @@ main:
     url: /projects/
 
   - title: "Service"
-    url: /service/    
+    url: /service/
 
-  - title: "Travel"
-    url: /travel/
-    

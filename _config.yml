@@ -74,6 +74,9 @@ author:
   youtube          : "GuangweiZhang"
   zhihu            : # Username
 
+  # Travel log (link appears at bottom of sidebar social icons; not in top nav)
+  travel           : true
+
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
   books:
