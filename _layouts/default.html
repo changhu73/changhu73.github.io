@@ -13,6 +13,12 @@ layout: compress
 
   <body>
 
+    {% if page.splash_overlay %}
+      {% if page.url == '/' or page.path == 'index.md' %}
+        {% include home-splash.html %}
+      {% endif %}
+    {% endif %}
+
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 

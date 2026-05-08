@@ -1,6 +1,7 @@
 ---
 layout: single
 author_profile: true
+splash_overlay: true
 ---
 
 
@@ -54,32 +55,19 @@ author_profile: true
 
 
 
-<div class="home-page">
+<div class="welcome-section" style="margin-bottom: 1em; padding-bottom: 0.6em; border-bottom: 1px solid #ddd;">
 
-<section class="home-hero" aria-label="Welcome">
-  <div class="home-hero-inner">
-    <span class="home-hero-kicker">Research interests</span>
-    <h1 class="home-hero-title">Welcome</h1>
-    <p class="home-hero-text">
-      My research interests center on <strong>financial statement auditing</strong> and <strong>intellectual property and copyright detection auditing</strong>. I welcome collaboration and scholarly exchange with peers working in these areas.
-    </p>
-    <div class="home-pills">
-      <span class="home-pill"><span class="home-pill-dot" aria-hidden="true"></span>Financial statement auditing</span>
-      <span class="home-pill"><span class="home-pill-dot" aria-hidden="true"></span>IP &amp; copyright detection auditing</span>
-    </div>
-  </div>
-</section>
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p and p.name != "travel.md" and p.name != "projects.html" %}
-    <section id="{{ item.title | slugify }}" class="page-summary home-section">
-
-      <h2>
+    <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 1.5em;">
+      
+      <h2 style="border-bottom: 1px solid #000; padding-bottom: 0.3em; margin-top: 1.2em; font-weight: 600;">
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
       </h2>
 
-      <div class="page-content">
+      <div class="page-content" style="margin-top: 0.5em;">
         {{ p.content }}
       </div>
 
@@ -87,8 +75,9 @@ author_profile: true
   {% endif %}
 {% endfor %}
 
-<div class="home-map-wrap">
-  <div class="home-map-inner">
+
+<div style="display: flex; justify-content: center; margin: 1em 0;">
+  <div style="max-width: 600px; width: 100%; transform: scale(0.7); transform-origin: center;">
     <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=TtQYZYFrk87LEWmUBSwoKSS3gQYl6vR5iALr2DB9cO4&cl=ffffff&w=a"></script>
   </div>
 </div>
