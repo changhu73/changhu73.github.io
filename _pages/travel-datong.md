@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Datong(山西-大同)"
+title: "Datong(大同)"
 permalink: /travel/datong/
 author_profile: true
 ---
@@ -179,21 +179,21 @@ author_profile: true
   <a class="back-to-overview" href="/travel/">Back to overview</a>
 
   <div class="trip-section">
-    <h2>Datong(山西-大同)</h2>
+    <h2>Datong(大同)</h2>
     <div class="slider-container">
       <h3 class="slider-title">雲岡石窟 / 懸空寺</h3>
       <div class="slider-track">
-        <div class="photo-card"><img src="/images/travel/datong/datong1.jpg" alt="山西-大同 1"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong2.jpg" alt="山西-大同 2"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong3.jpg" alt="山西-大同 3"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong4.jpg" alt="山西-大同 4"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong5.jpg" alt="山西-大同 5"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong6.jpg" alt="山西-大同 6"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong7.jpg" alt="山西-大同 7"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong8.jpg" alt="山西-大同 8"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong9.jpg" alt="山西-大同 9"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong10.jpg" alt="山西-大同 10"></div>
-        <div class="photo-card"><img src="/images/travel/datong/datong11.jpg" alt="山西-大同 11"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong1.jpg" alt="大同 1"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong2.jpg" alt="大同 2"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong3.jpg" alt="大同 3"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong4.jpg" alt="大同 4"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong5.jpg" alt="大同 5"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong6.jpg" alt="大同 6"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong7.jpg" alt="大同 7"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong8.jpg" alt="大同 8"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong9.jpg" alt="大同 9"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong10.jpg" alt="大同 10"></div>
+        <div class="photo-card"><img src="/images/travel/datong/datong11.jpg" alt="大同 11"></div>
       </div>
     </div>
   </div>
