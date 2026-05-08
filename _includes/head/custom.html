@@ -62,6 +62,207 @@
     right: 2.5rem;
   }
 }
+
+/* Homepage (index): hero, cards, map — scoped under .home-page */
+.home-page {
+  --home-accent: #0ea5e9;
+  --home-accent-soft: rgba(14, 165, 233, 0.12);
+}
+
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 2rem 1.75rem 1.85rem;
+  margin-bottom: 2rem;
+  color: #f1f5f9;
+  background: linear-gradient(135deg, #0c1222 0%, #152238 42%, #0a3d5c 100%);
+  box-shadow:
+    0 4px 6px -1px rgba(15, 23, 42, 0.2),
+    0 25px 50px -12px rgba(15, 23, 42, 0.45);
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 60% at 100% -10%, rgba(56, 189, 248, 0.35), transparent 55%),
+    radial-gradient(ellipse 70% 50% at -5% 110%, rgba(167, 139, 250, 0.22), transparent 50%);
+  pointer-events: none;
+}
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.55),
+    rgba(167, 139, 250, 0.35) 40%,
+    rgba(14, 165, 233, 0.25) 80%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.home-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 0.65rem;
+}
+
+.home-hero-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.45rem, 4vw, 2.05rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  background: linear-gradient(105deg, #ffffff 0%, #bae6fd 45%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-hero-text {
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: #cbd5e1;
+  margin: 0 0 1.35rem;
+  max-width: 52rem;
+}
+
+.home-hero-text strong {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.home-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.home-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.home-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+.home-section {
+  margin-bottom: 1.6rem;
+  padding: 1.35rem 1.45rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.04),
+    0 12px 28px -8px rgba(15, 23, 42, 0.1);
+  transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+}
+
+.home-section:hover {
+  border-color: rgba(14, 165, 233, 0.22);
+  box-shadow:
+    0 4px 6px rgba(15, 23, 42, 0.05),
+    0 22px 40px -12px rgba(15, 23, 42, 0.14);
+  transform: translateY(-3px);
+}
+
+.home-section h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0.65rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+  font-weight: 700 !important;
+  font-size: 1.35rem !important;
+}
+
+.home-section h2 a {
+  color: #0f172a !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.home-section h2 a:hover {
+  color: #0369a1 !important;
+}
+
+.home-section .page-content {
+  margin-top: 0.35rem !important;
+}
+
+.home-map-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0.5rem;
+  padding: 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--home-accent-soft) 0%, transparent 100%);
+  border: 1px solid rgba(14, 165, 233, 0.15);
+}
+
+.home-map-inner {
+  max-width: 600px;
+  width: 100%;
+  transform: scale(0.72);
+  transform-origin: center;
+  filter: drop-shadow(0 8px 24px rgba(15, 23, 42, 0.12));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-section {
+    transition: none;
+  }
+  .home-section:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    padding: 1.5rem 1.2rem;
+    border-radius: 14px;
+  }
+  .home-section {
+    padding: 1.1rem 1.15rem;
+  }
+}
 </style>
 
 <!-- end custom head snippets -->
