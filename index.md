@@ -56,6 +56,9 @@ author_profile: true
 
 <div class="welcome-section" style="margin-bottom: 1em; padding-bottom: 0.6em; border-bottom: 1px solid #ddd;">
 
+<p style="font-size: 1.05em; line-height: 1.65; color: #333; margin-bottom: 1.5em;">
+  <strong>Welcome.</strong> My research interests center on <strong>financial statement auditing</strong> and on <strong>intellectual property and copyright detection auditing</strong>. I welcome collaboration and scholarly exchange with peers working in these areas.
+</p>
 
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
