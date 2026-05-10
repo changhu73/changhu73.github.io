@@ -24,7 +24,7 @@ redirect_from:
 ### Work/Intern Experience
 
 * Pine AI, Research Intern, Sept. 2025 -
-  *  Startup company specializing in Voice Agent technology. Developed AI phone agents that autonomously make phone calls to handle tasks such as complaints, bill negotiations, service cancellations, refunds, and compensation for users.
+  *  Startup company specializing in voice technology. Developed voice systems that autonomously make phone calls to handle tasks such as complaints, bill negotiations, service cancellations, refunds, and compensation for users.
   *  Email: [kwongwai@19pine.ai](mailto:kwongwai@19pine.ai)
 
 * Stevens Institute of Technology, Research Intern (remote), Aug. 2024 - 
