@@ -28,7 +28,7 @@ redirect_from:
   *  Email: [kwongwai@19pine.ai](mailto:kwongwai@19pine.ai)
 
 * Stevens Institute of Technology, Research Intern (remote), Aug. 2024 - 
-  *  Research Interests: LLM Trustworthy, Business Analysis
+  *  Research Interests: Intellectual Property, Business Analysis
   *  Supervisor: <a href="https://zhangdenghui.site/">Dr. Denghui Zhang</a>
 
 * The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025
