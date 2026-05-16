@@ -8,7 +8,8 @@ redirect_from:
 ---
 
 ### Education
-<!-- * Ph.D in Data Science, Stevens Institute of Technology, Aug. 2026 -  -->
+* Ph.D. in Computer Science, Ira A. Fulton Schools of Engineering, Arizona State University, pending
+  *  Advisor: <a href="https://faculty.engineering.asu.edu/yanjiefu/">Dr. Yanjie Fu</a>
 * Visiting Research Student, The Hong Kong University of Science and Technology(Guangzhou), Jun. 2025 - Feb. 2026
   *  Email: [gzhang755@connect.hkust-gz.edu.cn](mailto:gzhang755@connect.hkust-gz.edu.cn)
 * M.S. in Computer Science, City University of Hong Kong, Sept. 2024 - Feb. 2026
