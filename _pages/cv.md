@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 ### Education
-* Ph.D. in Computer Science, Ira A. Fulton Schools of Engineering, Arizona State University, pending
+* Ph.D. in Computer Science, Ira A. Fulton Schools of Engineering, Arizona State University
   *  Email: [gzhan118@asu.edu](mailto:gzhan118@asu.edu)
   *  Advisor: <a href="https://faculty.engineering.asu.edu/yanjiefu/">Dr. Yanjie Fu</a>
 * Visiting Research Student, The Hong Kong University of Science and Technology(Guangzhou), Jun. 2025 - Feb. 2026
