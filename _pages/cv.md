@@ -21,15 +21,15 @@ redirect_from:
 
 
 
-### Work/Intern Experience
+### Experience
 
-* Pine AI, Research Intern, Sept. 2025 -
+* Pine AI, Engineer, Sept. 2025 -
   *  Startup company specializing in voice technology. Developed voice systems that autonomously make phone calls to handle tasks such as complaints, bill negotiations, service cancellations, refunds, and compensation for users.
   *  Email: [kwongwai@19pine.ai](mailto:kwongwai@19pine.ai)
 
-* Stevens Institute of Technology, Research Intern (remote), Aug. 2024 - 
+* Stevens Institute of Technology, Academic Research Collaboration (remote), Aug. 2024 - 
   *  Research Interests: Intellectual Property, Business Analysis
-  *  Supervisor: <a href="https://zhangdenghui.site/">Dr. Denghui Zhang</a>
+  *  Mentored by <a href="https://zhangdenghui.site/">Dr. Denghui Zhang</a>
 
 * The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025
   *  Research Interests: Software Development
