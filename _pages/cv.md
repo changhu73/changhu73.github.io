@@ -31,7 +31,7 @@ redirect_from:
 
 * Stevens Institute of Technology, Academic Research Collaboration (remote), Aug. 2024 - 
   *  Research Interests: Intellectual Property, Business Analysis
-  *  Mentored by <a href="https://zhangdenghui.site/">Dr. Denghui Zhang</a>
+  *  Advisor: <a href="https://zhangdenghui.site/">Dr. Denghui Zhang</a>
 
 * The University of Hong Kong, Research Assistant, Nov. 2023 - May 2025
   *  Research Interests: Software Development
