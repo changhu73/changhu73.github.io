@@ -10,9 +10,9 @@
 
 #main.kdd-docs-main-container {
   max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  margin-top: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  animation: none;
 }
 
 #main.kdd-docs-main-container .kdd-docs-page.page {
@@ -106,9 +106,9 @@
   line-height: 1.7;
   color: var(--pe-text);
   background: var(--pe-bg);
-  min-height: calc(100vh - 2rem);
-  /* reserve height for fixed top bar */
-  padding-top: var(--pe-top-h);
+  min-height: calc(100vh - var(--pe-top-h));
+  margin: 0;
+  padding: 0;
 }
 
 .kdd-docs.kdd-pe * {
@@ -320,6 +320,8 @@
   max-width: var(--pe-frame-max);
   margin: 0 auto;
   min-height: calc(100vh - var(--pe-top-h));
+  /* single offset below fixed header (no extra gap above hero) */
+  padding-top: var(--pe-top-h);
 }
 
 /* --- Left nav (flush under fixed header when sticky — no top padding gap) --- */
@@ -386,8 +388,7 @@
 }
 
 .kdd-pe-main {
-  /* Top aligns with sidebar nav (both sit just below fixed header) */
-  padding: 1.125rem clamp(1.25rem, 3vw, 2.75rem) 4rem;
+  padding: 0 clamp(1.25rem, 3vw, 2.75rem) 4rem;
   width: 100%;
   max-width: var(--pe-main-max);
 }
@@ -399,7 +400,7 @@
 }
 
 .kdd-pe-h1 {
-  margin: 0.75rem 0 0.5rem;
+  margin: 0.4rem 0 0.5rem;
   font-size: var(--pe-fs-h1);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -441,12 +442,14 @@
 }
 
 .kdd-docs-section {
-  scroll-margin-top: calc(var(--pe-top-h) + 1rem);
+  scroll-margin-top: var(--pe-top-h);
   margin-bottom: 2.75rem;
 }
 
 .kdd-docs-section--hero {
-  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: var(--pe-top-h);
 }
 
 .kdd-docs-section h2 {
@@ -571,6 +574,10 @@
   }
 
   .kdd-pe-main {
-    padding: 1.5rem 1.25rem 3rem;
+    padding: 0 1.25rem 3rem;
+  }
+
+  .kdd-pe-frame {
+    padding-top: var(--pe-top-h);
   }
 }
