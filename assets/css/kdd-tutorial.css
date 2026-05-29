@@ -549,15 +549,14 @@
 }
 
 .kdd-materials-submodules {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
 .kdd-materials-submodule {
-  padding: 1rem 1.1rem 1.1rem;
+  padding: 1.15rem 1.2rem 1.2rem;
   border: 1px solid var(--pe-border);
   border-radius: 10px;
   background: #fafbfc;
@@ -614,8 +613,8 @@
   margin: 0;
 }
 
-.kdd-resource-links--stack {
-  grid-template-columns: 1fr;
+.kdd-resource-links--row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .kdd-resource-card {
@@ -796,11 +795,11 @@
     padding-top: var(--pe-top-h);
   }
 
-  .kdd-materials-submodules {
-    grid-template-columns: 1fr;
-  }
-
   .kdd-materials-proposal {
     max-width: none;
+  }
+
+  .kdd-resource-links--row {
+    grid-template-columns: 1fr;
   }
 }
