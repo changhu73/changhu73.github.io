@@ -542,7 +542,35 @@
   text-decoration: underline !important;
 }
 
-/* --- Slides & code resource links --- */
+/* --- Related materials resource links --- */
+.kdd-materials-track {
+  scroll-margin-top: var(--pe-top-h);
+  margin-top: 1.75rem;
+}
+
+.kdd-materials-track:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.kdd-materials-track h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--pe-heading);
+}
+
+.kdd-materials-track__desc {
+  margin: 0 0 0.85rem;
+  font-size: var(--pe-fs-small);
+  color: var(--pe-muted);
+  line-height: 1.55;
+}
+
+.kdd-pe-side-nav__link--sub {
+  padding-left: 1.35rem;
+  font-size: 0.9em;
+}
+
 .kdd-resource-links {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -594,9 +622,19 @@
   color: var(--pe-accent);
 }
 
+.kdd-resource-card__icon--proposal {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
 .kdd-resource-card__icon--code {
   background: #f1f5f9;
   color: #0f172a;
+}
+
+.kdd-resource-card__icon--demo {
+  background: rgba(230, 126, 34, 0.12);
+  color: #e67e22;
 }
 
 .kdd-resource-card__body {

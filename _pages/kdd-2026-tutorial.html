@@ -3,9 +3,17 @@ layout: kdd-docs
 title: "KDD 2026 Tutorial · Evidencing LLM Misuse"
 permalink: /projects/kdd-2026-tutorial/
 author_profile: false
-# Update these when materials are ready (slides: upload PDF to files/project/kdd-2026-tutorial/)
-tutorial_slides_url: "/files/project/kdd-2026-tutorial/slides.pdf"
-tutorial_code_url: "https://github.com/changhu73/Copyright-Detective"
+# Update these when materials are ready (upload PDFs to files/project/kdd-2026-tutorial/)
+# Part I — LLM Copyright
+tutorial_copyright_proposal_url: "/files/project/kdd-2026-tutorial/kdd_copyright_tutorial_2026.pdf"
+tutorial_copyright_slides_url: "/files/project/kdd-2026-tutorial/slides.pdf"
+tutorial_copyright_code_url: "https://github.com/changhu73/Copyright-Detective"
+tutorial_copyright_demo_url: "https://copyright-detective.streamlit.app"
+# Part II — LLM Plagiarism
+tutorial_plagiarism_proposal_url: ""
+tutorial_plagiarism_slides_url: ""
+tutorial_plagiarism_code_url: ""
+tutorial_plagiarism_demo_url: ""
 ---
 
 <!-- Styles: assets/css/kdd-tutorial.css (linked from _layouts/kdd-docs.html) -->
@@ -46,7 +54,9 @@ tutorial_code_url: "https://github.com/changhu73/Copyright-Detective"
         <nav class="kdd-pe-side-nav">
           <a class="kdd-pe-side-nav__link" href="#title">Overview</a>
           <a class="kdd-pe-side-nav__link" href="#date-and-location">Date &amp; Location</a>
-          <a class="kdd-pe-side-nav__link" href="#materials">Slides &amp; Code</a>
+          <a class="kdd-pe-side-nav__link" href="#materials">Related Materials</a>
+          <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-copyright">LLM Copyright</a>
+          <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-plagiarism">LLM Plagiarism</a>
           <a class="kdd-pe-side-nav__link" href="#speakers">Speakers</a>
           <a class="kdd-pe-side-nav__link" href="#references">References</a>
         </nav>
@@ -84,64 +94,29 @@ tutorial_code_url: "https://github.com/changhu73/Copyright-Detective"
         </section>
 
         <section id="materials" class="kdd-docs-section">
-          <h2>Slides &amp; Code</h2>
-          <p class="kdd-docs-lead">Tutorial materials for hands-on sessions.</p>
-          <div class="kdd-resource-links">
-            {% if page.tutorial_slides_url and page.tutorial_slides_url != "" %}
-            <a
-              class="kdd-resource-card"
-              href="{{ page.tutorial_slides_url | relative_url }}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="kdd-resource-card__icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-              </span>
-              <span class="kdd-resource-card__body">
-                <span class="kdd-resource-card__title">Slides</span>
-                <span class="kdd-resource-card__desc">Download tutorial slides (PDF)</span>
-              </span>
-              <span class="kdd-resource-card__arrow" aria-hidden="true">→</span>
-            </a>
-            {% else %}
-            <div class="kdd-resource-card kdd-resource-card--disabled">
-              <span class="kdd-resource-card__icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-              </span>
-              <span class="kdd-resource-card__body">
-                <span class="kdd-resource-card__title">Slides</span>
-                <span class="kdd-resource-card__desc">Coming soon</span>
-              </span>
-            </div>
-            {% endif %}
+          <h2>Related Materials</h2>
+          <p class="kdd-docs-lead">This hands-on tutorial is organized into two parts: <strong>LLM Copyright</strong> and <strong>LLM Plagiarism</strong>. Materials are listed separately below.</p>
 
-            {% if page.tutorial_code_url and page.tutorial_code_url != "" %}
-            <a
-              class="kdd-resource-card"
-              href="{{ page.tutorial_code_url }}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="kdd-resource-card__icon kdd-resource-card__icon--code" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-3.795-.735-.405-1.035-1.005-1.31-1.005-1.31-.81-.825.06-.81.06-.81.9.06 1.365 1.2 1.365 1.2.81 1.395 2.115.99 2.625.765.09-.6.315-.99.57-1.215-2.4-.27-4.92-1.2-4.92-5.355 0-1.185.42-2.145 1.125-2.895-.105-.27-.45-1.365.105-2.85 0 0 .93-.3 3.045 1.11.885-.24 1.83-.36 2.775-.36.945 0 1.89.12 2.775.36 2.115-1.425 3.045-1.11 3.045-1.11.555 1.485.21 2.58.105 2.85.705.75 1.125 1.71 1.125 2.895 0 4.17-2.52 5.085-4.935 5.355.39.33.735.96.735 1.945 0 1.41-.015 2.55-.015 2.895 0 .315.225.69.825.57A8.215 8.215 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </span>
-              <span class="kdd-resource-card__body">
-                <span class="kdd-resource-card__title">Code</span>
-                <span class="kdd-resource-card__desc">Copyright Detective · GitHub repository</span>
-              </span>
-              <span class="kdd-resource-card__arrow" aria-hidden="true">→</span>
-            </a>
-            {% else %}
-            <div class="kdd-resource-card kdd-resource-card--disabled">
-              <span class="kdd-resource-card__icon kdd-resource-card__icon--code" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-3.795-.735-.405-1.035-1.005-1.31-1.005-1.31-.81-.825.06-.81.06-.81.9.06 1.365 1.2 1.365 1.2.81 1.395 2.115.99 2.625.765.09-.6.315-.99.57-1.215-2.4-.27-4.92-1.2-4.92-5.355 0-1.185.42-2.145 1.125-2.895-.105-.27-.45-1.365.105-2.85 0 0 .93-.3 3.045 1.11.885-.24 1.83-.36 2.775-.36.945 0 1.89.12 2.775.36 2.115-1.425 3.045-1.11 3.045-1.11.555 1.485.21 2.58.105 2.85.705.75 1.125 1.71 1.125 2.895 0 4.17-2.52 5.085-4.935 5.355.39.33.735.96.735 1.945 0 1.41-.015 2.55-.015 2.895 0 .315.225.69.825.57A8.215 8.215 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </span>
-              <span class="kdd-resource-card__body">
-                <span class="kdd-resource-card__title">Code</span>
-                <span class="kdd-resource-card__desc">Coming soon</span>
-              </span>
+          <div id="llm-copyright" class="kdd-materials-track">
+            <h3>LLM Copyright</h3>
+            <p class="kdd-materials-track__desc">Forensic detection of copyright leakage and memorization in LLM outputs.</p>
+            <div class="kdd-resource-links">
+              {% include kdd-resource-card.html url=page.tutorial_copyright_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
+              {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+              {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+              {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
             </div>
-            {% endif %}
+          </div>
+
+          <div id="llm-plagiarism" class="kdd-materials-track">
+            <h3>LLM Plagiarism</h3>
+            <p class="kdd-materials-track__desc">Detection and analysis of plagiarism risks in LLM-generated text.</p>
+            <div class="kdd-resource-links">
+              {% include kdd-resource-card.html url=page.tutorial_plagiarism_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
+              {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+              {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+              {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+            </div>
           </div>
         </section>
 
