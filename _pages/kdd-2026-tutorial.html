@@ -9,7 +9,7 @@ tutorial_proposal_url: "/files/project/kdd-2026-tutorial/kdd_copyright_tutorial_
 tutorial_copyright_slides_url: "/files/project/kdd-2026-tutorial/slides.pdf"
 tutorial_copyright_code_url: "https://github.com/changhu73/Copyright-Detective"
 tutorial_copyright_demo_url: "https://copyright-detective.streamlit.app"
-tutorial_copyright_video_url: "https://www.youtube.com/watch?v=z9Lh4kNDHiM"
+tutorial_copyright_video_embed_url: "https://www.youtube.com/embed/z9Lh4kNDHiM"
 # Part II — LLM Plagiarism
 tutorial_plagiarism_slides_url: ""
 tutorial_plagiarism_code_url: ""
@@ -105,8 +105,21 @@ tutorial_plagiarism_demo_url: ""
                 {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
                 {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
                 {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
-                {% include kdd-resource-card.html url=page.tutorial_copyright_video_url title="Video" desc="Copyright Detective · Demonstration video" icon="video" icon_class="kdd-resource-card__icon--video" %}
               </div>
+              {% if page.tutorial_copyright_video_embed_url and page.tutorial_copyright_video_embed_url != "" %}
+              <div class="kdd-copyright-video">
+                <h4 class="kdd-copyright-video__title">🎥 Demonstration Video</h4>
+                <div class="kdd-copyright-video__container">
+                  <iframe
+                    src="{{ page.tutorial_copyright_video_embed_url }}"
+                    title="Copyright Detective Demonstration Video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              {% endif %}
             </div>
 
             <div id="llm-plagiarism" class="kdd-materials-submodule">
