@@ -53,9 +53,13 @@ tutorial_plagiarism_demo_url: ""
         <nav class="kdd-pe-side-nav">
           <a class="kdd-pe-side-nav__link" href="#title">Overview</a>
           <a class="kdd-pe-side-nav__link" href="#date-and-location">Date &amp; Location</a>
-          <a class="kdd-pe-side-nav__link" href="#materials">Related Materials</a>
-          <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-copyright">LLM Copyright</a>
-          <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-plagiarism">LLM Plagiarism</a>
+          <div class="kdd-pe-side-nav__group">
+            <a class="kdd-pe-side-nav__link" href="#materials">Related Materials</a>
+            <div class="kdd-pe-side-nav__children">
+              <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-copyright">LLM Copyright</a>
+              <a class="kdd-pe-side-nav__link kdd-pe-side-nav__link--sub" href="#llm-plagiarism">LLM Plagiarism</a>
+            </div>
+          </div>
           <a class="kdd-pe-side-nav__link" href="#speakers">Speakers</a>
           <a class="kdd-pe-side-nav__link" href="#references">References</a>
         </nav>
@@ -95,28 +99,26 @@ tutorial_plagiarism_demo_url: ""
         <section id="materials" class="kdd-docs-section">
           <h2>Related Materials</h2>
 
-          <div class="kdd-materials-layout">
-            <div class="kdd-materials-proposal">
-              {% include kdd-resource-card.html url=page.tutorial_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
+          <div class="kdd-materials-proposal">
+            {% include kdd-resource-card.html url=page.tutorial_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
+          </div>
+
+          <div class="kdd-materials-submodules">
+            <div id="llm-copyright" class="kdd-materials-submodule">
+              <h3 class="kdd-materials-submodule__title">LLM Copyright</h3>
+              <div class="kdd-resource-links kdd-resource-links--stack">
+                {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+              </div>
             </div>
 
-            <div class="kdd-materials-tracks">
-              <div id="llm-copyright" class="kdd-materials-track">
-                <h3 class="kdd-materials-track__title">LLM Copyright</h3>
-                <div class="kdd-resource-links kdd-resource-links--stack">
-                  {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
-                  {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
-                  {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
-                </div>
-              </div>
-
-              <div id="llm-plagiarism" class="kdd-materials-track">
-                <h3 class="kdd-materials-track__title">LLM Plagiarism</h3>
-                <div class="kdd-resource-links kdd-resource-links--stack">
-                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
-                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
-                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
-                </div>
+            <div id="llm-plagiarism" class="kdd-materials-submodule">
+              <h3 class="kdd-materials-submodule__title">LLM Plagiarism</h3>
+              <div class="kdd-resource-links kdd-resource-links--stack">
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
               </div>
             </div>
           </div>
