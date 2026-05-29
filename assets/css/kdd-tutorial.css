@@ -542,28 +542,40 @@
   text-decoration: underline !important;
 }
 
-/* --- Related materials resource links --- */
+/* --- Related materials --- */
+.kdd-materials-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.kdd-materials-proposal {
+  max-width: 32rem;
+}
+
+.kdd-materials-tracks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
 .kdd-materials-track {
   scroll-margin-top: var(--pe-top-h);
-  margin-top: 1.75rem;
+  padding: 1.1rem 1.15rem 1.15rem;
+  border: 1px solid var(--pe-border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
 }
 
-.kdd-materials-track:first-of-type {
-  margin-top: 0.5rem;
-}
-
-.kdd-materials-track h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.125rem;
+.kdd-materials-track__title {
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.65rem;
+  font-size: 1rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--pe-heading);
-}
-
-.kdd-materials-track__desc {
-  margin: 0 0 0.85rem;
-  font-size: var(--pe-fs-small);
-  color: var(--pe-muted);
-  line-height: 1.55;
+  border-bottom: 1px solid var(--pe-border);
 }
 
 .kdd-pe-side-nav__link--sub {
@@ -574,21 +586,25 @@
 .kdd-resource-links {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0.85rem;
-  margin-top: 0.25rem;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.kdd-resource-links--stack {
+  grid-template-columns: 1fr;
 }
 
 .kdd-resource-card {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 1rem 1.1rem;
+  padding: 0.9rem 1rem;
   border: 1px solid var(--pe-border);
   border-radius: 10px;
   background: #fff;
   color: var(--pe-text) !important;
   text-decoration: none !important;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -669,6 +685,54 @@
   margin: 0;
 }
 
+/* --- References --- */
+.kdd-docs-references {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  counter-reset: kdd-ref;
+}
+
+.kdd-docs-reference {
+  position: relative;
+  margin: 0;
+  padding: 1rem 1.1rem 1rem 2.75rem;
+  border: 1px solid var(--pe-border);
+  border-radius: 10px;
+  background: #fafbfc;
+  line-height: 1.65;
+}
+
+.kdd-docs-reference::before {
+  content: "[" counter(kdd-ref) "]";
+  counter-increment: kdd-ref;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-weight: 600;
+  font-size: var(--pe-fs-small);
+  color: var(--pe-muted);
+}
+
+.kdd-docs-reference__text {
+  margin: 0 0 0.45rem;
+  font-size: var(--pe-fs-body);
+  color: var(--pe-text);
+}
+
+.kdd-docs-reference__link {
+  display: inline-block;
+  font-size: var(--pe-fs-small);
+  word-break: break-all;
+}
+
+#main.kdd-docs-main-container .page__content .kdd-docs.kdd-pe .kdd-docs-reference p {
+  margin: 0 0 0.45rem;
+}
+
 /* --- Responsive --- */
 @media (max-width: 1100px) {
   .kdd-pe-frame {
@@ -706,5 +770,13 @@
 
   .kdd-pe-frame {
     padding-top: var(--pe-top-h);
+  }
+
+  .kdd-materials-tracks {
+    grid-template-columns: 1fr;
+  }
+
+  .kdd-materials-proposal {
+    max-width: none;
   }
 }

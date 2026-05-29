@@ -4,13 +4,12 @@ title: "KDD 2026 Tutorial · Evidencing LLM Misuse"
 permalink: /projects/kdd-2026-tutorial/
 author_profile: false
 # Update these when materials are ready (upload PDFs to files/project/kdd-2026-tutorial/)
+tutorial_proposal_url: "/files/project/kdd-2026-tutorial/kdd_copyright_tutorial_2026.pdf"
 # Part I — LLM Copyright
-tutorial_copyright_proposal_url: "/files/project/kdd-2026-tutorial/kdd_copyright_tutorial_2026.pdf"
 tutorial_copyright_slides_url: "/files/project/kdd-2026-tutorial/slides.pdf"
 tutorial_copyright_code_url: "https://github.com/changhu73/Copyright-Detective"
 tutorial_copyright_demo_url: "https://copyright-detective.streamlit.app"
 # Part II — LLM Plagiarism
-tutorial_plagiarism_proposal_url: ""
 tutorial_plagiarism_slides_url: ""
 tutorial_plagiarism_code_url: ""
 tutorial_plagiarism_demo_url: ""
@@ -95,27 +94,30 @@ tutorial_plagiarism_demo_url: ""
 
         <section id="materials" class="kdd-docs-section">
           <h2>Related Materials</h2>
-          <p class="kdd-docs-lead">This hands-on tutorial is organized into two parts: <strong>LLM Copyright</strong> and <strong>LLM Plagiarism</strong>. Materials are listed separately below.</p>
 
-          <div id="llm-copyright" class="kdd-materials-track">
-            <h3>LLM Copyright</h3>
-            <p class="kdd-materials-track__desc">Forensic detection of copyright leakage and memorization in LLM outputs.</p>
-            <div class="kdd-resource-links">
-              {% include kdd-resource-card.html url=page.tutorial_copyright_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
-              {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
-              {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
-              {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+          <div class="kdd-materials-layout">
+            <div class="kdd-materials-proposal">
+              {% include kdd-resource-card.html url=page.tutorial_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
             </div>
-          </div>
 
-          <div id="llm-plagiarism" class="kdd-materials-track">
-            <h3>LLM Plagiarism</h3>
-            <p class="kdd-materials-track__desc">Detection and analysis of plagiarism risks in LLM-generated text.</p>
-            <div class="kdd-resource-links">
-              {% include kdd-resource-card.html url=page.tutorial_plagiarism_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
-              {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
-              {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
-              {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+            <div class="kdd-materials-tracks">
+              <div id="llm-copyright" class="kdd-materials-track">
+                <h3 class="kdd-materials-track__title">LLM Copyright</h3>
+                <div class="kdd-resource-links kdd-resource-links--stack">
+                  {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                  {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                  {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+                </div>
+              </div>
+
+              <div id="llm-plagiarism" class="kdd-materials-track">
+                <h3 class="kdd-materials-track__title">LLM Plagiarism</h3>
+                <div class="kdd-resource-links kdd-resource-links--stack">
+                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                  {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -156,10 +158,16 @@ tutorial_plagiarism_demo_url: ""
 
         <section id="references" class="kdd-docs-section">
           <h2>References</h2>
-          <p class="kdd-docs-reference">
-            [1] Zhang, G., Zhu, J., Qian, C., Gong, N., Mihalcea, R., Xu, Z., He, J., Ma, J., Huang, Y., Xiao, C., Li, B., Abbasi, A., Lee, D., Ji, H., &amp; Zhang, D. (2026). Copyright Detective: A Forensic System to Evidence LLMs Flickering Copyright Leakage Risks. arXiv preprint arXiv:2602.05252 [cs.CL].
-            <a class="kdd-docs-inline-link" href="https://arxiv.org/abs/2602.05252" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.05252</a>
-          </p>
+          <ol class="kdd-docs-references">
+            <li class="kdd-docs-reference">
+              <p class="kdd-docs-reference__text">Zhang, G., Zhu, J., Qian, C., Gong, N., Mihalcea, R., Xu, Z., He, J., Ma, J., Huang, Y., Xiao, C., Li, B., Abbasi, A., Lee, D., Ji, H., &amp; Zhang, D. (2026). Copyright Detective: A Forensic System to Evidence LLMs Flickering Copyright Leakage Risks. arXiv preprint arXiv:2602.05252 [cs.CL].</p>
+              <a class="kdd-docs-reference__link kdd-docs-inline-link" href="https://arxiv.org/abs/2602.05252" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.05252</a>
+            </li>
+            <li class="kdd-docs-reference">
+              <p class="kdd-docs-reference__text">Lee, J., Le, T., Chen, J., &amp; Lee, D. (2023). Do Language Models Plagiarize? In <i>Proceedings of the ACM Web Conference 2023</i> (WWW '23), pp. 3637–3647.</p>
+              <a class="kdd-docs-reference__link kdd-docs-inline-link" href="https://doi.org/10.1145/3543507.3583199" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3543507.3583199</a>
+            </li>
+          </ol>
         </section>
       </main>
     </div>
