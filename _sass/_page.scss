@@ -282,6 +282,10 @@
    Comments
    ========================================================================== */
 
+.page-summary--comments {
+  display: flow-root;
+}
+
 .page__comments {
   @include full();
 }

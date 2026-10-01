@@ -16,7 +16,7 @@
   {% when "staticman" %}
     {% comment %}Staticman comments provider has been removed as it is not used{% endcomment %}
   {% when "giscus" %}
-    <h2 class="page__comments-title">{{ page.comments_title | default: comments_label }}</h2>
+    {% unless include.hide_heading %}<h2 class="page__comments-title">{{ page.comments_title | default: comments_label }}</h2>{% endunless %}
     {% assign giscus = site.comments.giscus %}
     {% if giscus.repo and giscus.repo_id and giscus.category and giscus.category_id %}
       <p class="page__comments-intro">Sign in with GitHub to leave a message, reply, or react. Moderators can manage and delete messages in <a class="giscus-discussion-link" href="https://github.com/{{ giscus.repo | escape }}/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>.</p>
@@ -26,6 +26,7 @@
         data-category="{{ giscus.category | escape }}"
         data-category-id="{{ giscus.category_id | escape }}"
         data-mapping="{{ giscus.mapping | default: 'pathname' | escape }}"
+        data-term="{{ giscus.term | escape }}"
         data-strict="{{ giscus.strict | default: 1 }}"
         data-reactions-enabled="{{ giscus.reactions_enabled | default: 1 }}"
         data-emit-metadata="1"

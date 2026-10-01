@@ -2,9 +2,7 @@
 layout: single
 author_profile: true
 splash_overlay: true
-comments: true
-comments_provider: giscus
-comments_title: Guestbook
+comments: false
 ---
 
 
@@ -64,14 +62,18 @@ comments_title: Guestbook
 {% for item in site.data.navigation.main %}
   {% assign p = site.pages | where: "url", item.url | first %}
   {% if p and p.name != "travel.md" and p.name != "projects.html" %}
-    <section id="{{ item.title | slugify }}" class="page-summary" style="margin-bottom: 1.5em;">
+    <section id="{{ item.title | slugify }}" class="page-summary{% if item.url == '/comments/' %} page-summary--comments{% endif %}" style="margin-bottom: 1.5em;">
       
       <h2 style="border-bottom: 1px solid #000; padding-bottom: 0.3em; margin-top: 1.2em; font-weight: 600;">
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
       </h2>
 
       <div class="page-content" style="margin-top: 0.5em;">
-        {{ p.content }}
+        {% if item.url == '/comments/' %}
+          {% include comments.html provider="giscus" hide_heading=true %}
+        {% else %}
+          {{ p.content }}
+        {% endif %}
       </div>
 
     </section>
