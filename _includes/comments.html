@@ -19,7 +19,8 @@
     {% unless include.hide_heading %}<h2 class="page__comments-title">{{ page.comments_title | default: comments_label }}</h2>{% endunless %}
     {% assign giscus = site.comments.giscus %}
     {% if giscus.repo and giscus.repo_id and giscus.category and giscus.category_id %}
-      <p class="page__comments-intro">Sign in with GitHub to leave a message, reply, or react. Moderators can manage and delete messages in <a class="giscus-discussion-link" href="https://github.com/{{ giscus.repo | escape }}/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>.</p>
+      {% capture discussion_url %}https://github.com/{{ giscus.repo }}/discussions{% if giscus.mapping == 'number' and giscus.term %}/{{ giscus.term }}{% endif %}{% endcapture %}
+      <p class="page__comments-intro">Sign in with GitHub to leave a message, reply, or react. To edit or delete a comment you posted, <a class="giscus-discussion-link" href="{{ discussion_url | strip | escape }}" target="_blank" rel="noopener noreferrer">open this discussion on GitHub</a> and use the comment's three-dot menu. Moderators can manage all comments there.</p>
       <script src="https://giscus.app/client.js"
         data-repo="{{ giscus.repo | escape }}"
         data-repo-id="{{ giscus.repo_id | escape }}"
