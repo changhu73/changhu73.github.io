@@ -1,0 +1,99 @@
+/* Site-wide cursor + ribbon trail (vuilabs-style). Toggle: site.cursor_trail */
+
+html.cursor-trail-on,
+html.cursor-trail-on * {
+  cursor: none !important;
+}
+
+html.cursor-trail-on input,
+html.cursor-trail-on textarea,
+html.cursor-trail-on select,
+html.cursor-trail-on [contenteditable="true"] {
+  cursor: text !important;
+}
+
+#cursor-trail-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#cursor-trail-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cursor-trail__core,
+.cursor-trail__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.cursor-trail__core {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: radial-gradient(circle at 32% 28%, #f4f4f4 0%, #c8c8c8 48%, #9a9a9a 100%);
+  box-shadow: 0 0 8px rgba(160, 160, 160, 0.35);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+
+.cursor-trail__ring {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1.5px solid rgba(170, 170, 170, 0.7);
+  background: rgba(200, 200, 200, 0.12);
+  box-shadow: 0 0 12px rgba(180, 180, 180, 0.18);
+  transition:
+    width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s ease,
+    background 0.22s ease,
+    opacity 0.2s ease;
+}
+
+html.cursor-trail--hover .cursor-trail__core {
+  transform: scale(0.35);
+  opacity: 0.55;
+}
+
+html.cursor-trail--hover .cursor-trail__ring {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-color: rgba(150, 150, 150, 0.75);
+  background: rgba(190, 190, 190, 0.14);
+}
+
+html.cursor-trail--hidden .cursor-trail__core,
+html.cursor-trail--hidden .cursor-trail__ring,
+html.cursor-trail--hidden #cursor-trail-canvas {
+  opacity: 0;
+}
+
+html.cursor-trail--click .cursor-trail__ring {
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-color: rgba(140, 140, 140, 0.85);
+  background: rgba(180, 180, 180, 0.2);
+}
+
+html.cursor-trail-on a,
+html.cursor-trail-on button,
+html.cursor-trail-on .project-card,
+html.cursor-trail-on .btn,
+html.cursor-trail-on [role="button"] {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}

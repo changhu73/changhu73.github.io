@@ -1,0 +1,11 @@
+{
+	"name": "Minimal Mistakes",
+	"icons": [
+		{
+			"src": "\/images\/favicon.ico?v=M44lzPylqQ",
+			"sizes": "192x192",
+			"type": "image\/x-icon",
+			"density": 4
+		}
+	]
+}

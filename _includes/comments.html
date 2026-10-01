@@ -1,0 +1,65 @@
+{% assign base_path = site.baseurl | default: '' %}
+{% assign comments_provider = include.provider | default: site.comments.provider %}
+
+<div class="page__comments">
+  {% capture comments_label %}{{ site.data.ui-text[site.locale].comments_label | default: "Comments" }}{% endcapture %}
+  {% case comments_provider %}
+  {% when "disqus" %}
+    <h4 class="page__comments-title">{{ comments_label }}</h4>
+    <section id="disqus_thread"></section>
+  {% when "facebook" %}
+    <h4 class="page__comments-title">{{ comments_label }}</h4>
+    <section class="fb-comments" data-href="{{ base_path }}{{ page.url }}" data-mobile="true" data-num-posts="{{ site.comments.facebook.num_posts | default: 5 }}" data-width="100%" data-colorscheme="{{ site.comments.facebook.colorscheme | default: 'light' }}"></section>
+  {% when "google-plus" %}
+    <h4 class="page__comments-title">{{ comments_label }}</h4>
+    <section class="g-comments" data-href="{{ base_path }}{{ page.url }}" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD">Loading Google+ Comments ...</section>
+  {% when "staticman" %}
+    {% comment %}Staticman comments provider has been removed as it is not used{% endcomment %}
+  {% when "giscus" %}
+    <h2 class="page__comments-title">{{ page.comments_title | default: comments_label }}</h2>
+    {% assign giscus = site.comments.giscus %}
+    {% if giscus.repo and giscus.repo_id and giscus.category and giscus.category_id %}
+      <p class="page__comments-intro">Sign in with GitHub to leave a message, reply, or react. Moderators can manage and delete messages in <a class="giscus-discussion-link" href="https://github.com/{{ giscus.repo | escape }}/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>.</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="{{ giscus.repo | escape }}"
+        data-repo-id="{{ giscus.repo_id | escape }}"
+        data-category="{{ giscus.category | escape }}"
+        data-category-id="{{ giscus.category_id | escape }}"
+        data-mapping="{{ giscus.mapping | default: 'pathname' | escape }}"
+        data-strict="{{ giscus.strict | default: 1 }}"
+        data-reactions-enabled="{{ giscus.reactions_enabled | default: 1 }}"
+        data-emit-metadata="1"
+        data-input-position="{{ giscus.input_position | default: 'top' | escape }}"
+        data-theme="{{ giscus.theme | default: 'light' | escape }}"
+        data-lang="{{ giscus.lang | default: 'en' | escape }}"
+        data-loading="{{ giscus.loading | default: 'lazy' | escape }}"
+        crossorigin="anonymous"
+        async>
+      </script>
+      <script>
+        (function () {
+          var link = document.querySelector('.page__comments .giscus-discussion-link');
+          var discussionPath = '/' + {{ giscus.repo | jsonify }} + '/discussions/';
+          window.addEventListener('message', function (event) {
+            if (event.origin !== 'https://giscus.app' || !event.data || !event.data.giscus || !event.data.giscus.discussion) return;
+            var discussionUrl;
+            try {
+              discussionUrl = new URL(event.data.giscus.discussion.url);
+            } catch (error) {
+              return;
+            }
+            if (discussionUrl.origin === 'https://github.com' && discussionUrl.pathname.indexOf(discussionPath) === 0) {
+              link.href = discussionUrl.href;
+            }
+          });
+        })();
+      </script>
+    {% else %}
+      <p class="page__comments-intro">The guestbook is being set up. Please check back soon.</p>
+    {% endif %}
+  {% when "custom" %}
+    <h4 class="page__comments-title">{{ comments_label }}</h4>
+    <section id="comments"></section>
+    {% comment %}Custom comments provider scripts have been removed as they are not used{% endcomment %}
+  {% endcase %}
+</div>

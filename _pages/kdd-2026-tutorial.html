@@ -1,0 +1,186 @@
+---
+layout: kdd-docs
+title: "KDD 2026 Tutorial · Evidencing LLM Misuse"
+permalink: /projects/kdd-2026-tutorial/
+author_profile: false
+# Update these when materials are ready (upload PDFs to files/project/kdd-2026-tutorial/)
+tutorial_proposal_url: "/files/project/kdd-2026-tutorial/kdd_copyright_tutorial_2026.pdf"
+# Part I — LLM Copyright
+tutorial_copyright_slides_url: "/files/project/kdd-2026-tutorial/slides.pdf"
+tutorial_copyright_code_url: "https://github.com/changhu73/Copyright-Detective"
+tutorial_copyright_demo_url: "https://copyright-detective.streamlit.app"
+tutorial_copyright_video_embed_url: "https://www.youtube.com/embed/z9Lh4kNDHiM"
+# Part II — LLM Plagiarism
+tutorial_plagiarism_slides_url: ""
+tutorial_plagiarism_code_url: ""
+tutorial_plagiarism_demo_url: ""
+---
+
+<!-- Styles: assets/css/kdd-tutorial.css (linked from _layouts/kdd-docs.html) -->
+
+<div class="kdd-docs kdd-pe">
+  <header class="kdd-pe-top">
+    <div class="kdd-pe-top__brand">
+      <a class="kdd-pe-top__brand-link" href="#title">
+        <img
+          class="kdd-pe-top__logo"
+          src="{{ '/images/projects/kdd_2026_tutorial/image.png' | relative_url }}"
+          alt=""
+          width="32"
+          height="32"
+          loading="eager"
+        />
+        <span class="kdd-pe-top__title">Evidencing LLM Misuse</span>
+      </a>
+      <span class="kdd-pe-top__meta">Hands-on Tutorial · KDD 2026</span>
+    </div>
+    <div class="kdd-pe-top__tools">
+      <a class="kdd-pe-top__icon" href="https://github.com/changhu73" target="_blank" rel="noopener noreferrer" aria-label="changhu73 on GitHub">
+        <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a href="{{ '/projects/' | relative_url }}" class="back-button kdd-pe-top__back" aria-label="Back to Projects">
+        <span class="button-text">Back to Projects</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="kdd-pe-frame">
+    <aside class="kdd-pe-navcol" aria-label="Tutorial contents">
+      <div class="kdd-pe-navblock">
+        <div class="kdd-pe-navblock__title">
+          <span class="kdd-pe-navblock__chevron" aria-hidden="true">›</span>
+          Tutorial
+        </div>
+        <nav class="kdd-pe-side-nav">
+          <a class="kdd-pe-side-nav__link" href="#title">Overview</a>
+          <a class="kdd-pe-side-nav__link" href="#date-and-location">Date &amp; Location</a>
+          <a class="kdd-pe-side-nav__link" href="#materials">Related Materials</a>
+          <a class="kdd-pe-side-nav__link" href="#speakers">Speakers</a>
+          <a class="kdd-pe-side-nav__link" href="#references">References</a>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="kdd-pe-column">
+      <main class="kdd-pe-main">
+        <section id="title" class="kdd-docs-section kdd-docs-section--hero">
+          <div class="kdd-pe-lead">
+            <span class="kdd-docs-hero__badge">Hands-on Tutorial</span>
+            <h1 class="kdd-pe-h1">Evidencing LLM Misuse</h1>
+            <p class="kdd-pe-lead__sub">
+              A Hands-on Forensic Tutorial on Copyright Infringement and Plagiarism Detection
+            </p>
+          </div>
+        </section>
+
+        <section id="date-and-location" class="kdd-docs-section">
+          <h2>Date &amp; Location</h2>
+          <dl class="kdd-docs-dl">
+            <dt>Conference</dt>
+            <dd><a class="kdd-docs-inline-link" href="https://kdd2026.kdd.org/" target="_blank" rel="noopener noreferrer">ACM SIGKDD / KDD 2026</a></dd>
+            <dt>Conference dates</dt>
+            <dd>August 9–13, 2026</dd>
+            <dt>Venue</dt>
+            <dd>International Convention Center Jeju (ICC Jeju), Seogwipo-si, Jeju-do, South Korea</dd>
+            <dt>Tutorial session</dt>
+            <dd>Wednesday, August 12, 2026 · 1:30 PM – 4:30 PM</dd>
+            <dt>Format</dt>
+            <dd>Hands-on tutorial · <strong>3 hours</strong> · <strong>in person</strong></dd>
+            <dt>Time zone</dt>
+            <dd>Local time at ICC Jeju (Korea Standard Time, UTC+9)</dd>
+          </dl>
+        </section>
+
+        <section id="materials" class="kdd-docs-section">
+          <h2>Related Materials</h2>
+
+          <div class="kdd-materials-proposal">
+            {% include kdd-resource-card.html url=page.tutorial_proposal_url title="Proposal" desc="Download tutorial proposal (PDF)" icon_class="kdd-resource-card__icon--proposal" %}
+          </div>
+
+          <div class="kdd-materials-submodules">
+            <div id="llm-copyright" class="kdd-materials-submodule">
+              <h3 class="kdd-materials-submodule__title">LLM Copyright</h3>
+              <div class="kdd-resource-links kdd-resource-links--row">
+                {% include kdd-resource-card.html url=page.tutorial_copyright_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                {% include kdd-resource-card.html url=page.tutorial_copyright_code_url title="Code" desc="Copyright Detective · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                {% include kdd-resource-card.html url=page.tutorial_copyright_demo_url title="Demo" desc="Copyright Detective · Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+              </div>
+              {% if page.tutorial_copyright_video_embed_url and page.tutorial_copyright_video_embed_url != "" %}
+              <div class="kdd-copyright-video">
+                <h4 class="kdd-copyright-video__title">🎥 Demonstration Video</h4>
+                <div class="kdd-copyright-video__container">
+                  <iframe
+                    src="{{ page.tutorial_copyright_video_embed_url }}"
+                    title="Copyright Detective Demonstration Video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+
+            <div id="llm-plagiarism" class="kdd-materials-submodule">
+              <h3 class="kdd-materials-submodule__title">LLM Plagiarism</h3>
+              <div class="kdd-resource-links kdd-resource-links--row">
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_slides_url title="Slides" desc="Download tutorial slides (PDF)" %}
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_code_url title="Code" desc="Plagiarism detection toolkit · GitHub repository" icon="code" icon_class="kdd-resource-card__icon--code" %}
+                {% include kdd-resource-card.html url=page.tutorial_plagiarism_demo_url title="Demo" desc="Interactive web demo" icon="demo" icon_class="kdd-resource-card__icon--demo" %}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="speakers" class="kdd-docs-section">
+          <h2>Speakers</h2>
+          <div class="kdd-docs-speakers">
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">
+                <a class="kdd-docs-inline-link" href="https://zhangdenghui.site/" target="_blank" rel="noopener noreferrer">Denghui Zhang</a>
+              </p>
+              <p class="kdd-docs-speaker__affil">Assistant Professor · Stevens Institute of Technology</p>
+              <p class="kdd-docs-speaker__role">Corresponding tutor</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:dzhang42@stevens.edu">dzhang42@stevens.edu</a>
+              </p>
+            </div>
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">
+                <a class="kdd-docs-inline-link" href="https://changhu73.github.io/" target="_blank" rel="noopener noreferrer">Guangwei Zhang</a>
+              </p>
+              <p class="kdd-docs-speaker__affil">Algorithm Engineer · Pine AI</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:kwongwai@19pine.ai">kwongwai@19pine.ai</a>
+              </p>
+            </div>
+            <div class="kdd-docs-speaker">
+              <p class="kdd-docs-speaker__name">
+                <a class="kdd-docs-inline-link" href="https://pike.psu.edu/dongwon/" target="_blank" rel="noopener noreferrer">Dongwon Lee</a>
+              </p>
+              <p class="kdd-docs-speaker__affil">Professor · The Pennsylvania State University</p>
+              <p class="kdd-docs-speaker__contact">
+                <a href="mailto:dul13@psu.edu">dul13@psu.edu</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="references" class="kdd-docs-section">
+          <h2>References</h2>
+          <ol class="kdd-docs-references">
+            <li class="kdd-docs-reference">
+              <p class="kdd-docs-reference__text">Zhang, G., Zhu, J., Qian, C., Gong, N., Mihalcea, R., Xu, Z., He, J., Ma, J., Huang, Y., Xiao, C., Li, B., Abbasi, A., Lee, D., Ji, H., &amp; Zhang, D. (2026). Copyright Detective: A Forensic System to Evidence LLMs Flickering Copyright Leakage Risks. arXiv preprint arXiv:2602.05252 [cs.CL].</p>
+              <a class="kdd-docs-reference__link kdd-docs-inline-link" href="https://arxiv.org/abs/2602.05252" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.05252</a>
+            </li>
+            <li class="kdd-docs-reference">
+              <p class="kdd-docs-reference__text">Lee, J., Le, T., Chen, J., &amp; Lee, D. (2023). Do Language Models Plagiarize? In <i>Proceedings of the ACM Web Conference 2023</i> (WWW '23), pp. 3637–3647.</p>
+              <a class="kdd-docs-reference__link kdd-docs-inline-link" href="https://doi.org/10.1145/3543507.3583199" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3543507.3583199</a>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
