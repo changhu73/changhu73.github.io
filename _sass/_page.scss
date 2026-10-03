@@ -410,3 +410,44 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+/* Homepage visitor map */
+.visitor-map {
+  clear: both;
+  margin: 1.5em 0 0;
+
+  h2 {
+    border-bottom-color: #000;
+    font-weight: 600;
+  }
+}
+
+.visitor-map__widget {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 2 / 1;
+  margin: 1.2em auto 0.8em;
+}
+
+.visitor-map__canvas {
+  position: absolute;
+  width: 420px;
+  height: 210px;
+  transform: scale(var(--visitor-map-scale, 1));
+  transform-origin: top left;
+
+  > span {
+    position: relative;
+    margin-right: 0 !important; // The provider adds a second map-width margin.
+    vertical-align: top;
+    cursor: pointer;
+  }
+}
+
+.visitor-map .visitor-map__note {
+  color: $gray;
+  font-size: $type-size-6;
+  line-height: 1.6;
+  text-align: center;
+}

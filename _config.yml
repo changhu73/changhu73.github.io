@@ -116,6 +116,12 @@ comments:
     theme                 : light
     lang                  : en
     loading               : lazy
+# Homepage visitor map. This ID belongs to this site; old ClustrMaps data is not imported.
+visitor_map:
+  site_id                : "4va9nzqaro"
+  theme                  : natural
+  pin                    : default-red
+
 atom_feed:
   hide                   : false     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml

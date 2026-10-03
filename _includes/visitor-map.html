@@ -1,0 +1,31 @@
+{% if site.visitor_map.site_id %}
+<section id="visitor-map" class="visitor-map" aria-labelledby="visitor-map-title">
+  <h2 id="visitor-map-title">Visitor Map</h2>
+  <div id="visitor-map-widget" class="visitor-map__widget" role="img" aria-label="World map of approximate visitor locations">
+    <div class="visitor-map__canvas">
+      <script id="_wauhomepage">
+        var _wau = _wau || [];
+        _wau.push(["map", {{ site.visitor_map.site_id | jsonify }}, "homepage", "420", "210", {{ site.visitor_map.theme | jsonify }}, {{ site.visitor_map.pin | jsonify }}]);
+        (function () {
+          var widget = document.getElementById("visitor-map-widget");
+          function fitMap() {
+            widget.style.setProperty("--visitor-map-scale", Math.min(1, widget.clientWidth / 420));
+          }
+          fitMap();
+          if (window.ResizeObserver) {
+            new ResizeObserver(fitMap).observe(widget);
+          } else {
+            window.addEventListener("resize", fitMap);
+          }
+        }());
+      </script>
+      <script async src="https://waust.at/m.js" onerror="document.getElementById('visitor-map-unavailable').hidden = false;"></script>
+    </div>
+  </div>
+  <p id="visitor-map-unavailable" class="visitor-map__note" hidden>The map is temporarily unavailable. You can still open the visitor statistics below.</p>
+  <noscript><p class="visitor-map__note">Enable JavaScript to view the live visitor map.</p></noscript>
+  <p class="visitor-map__note">Approximate locations of current and recent visitors.<br>
+    <a href="https://whos.amung.us/stats/{{ site.visitor_map.site_id | uri_escape }}/" target="_blank" rel="noopener noreferrer">View visitor statistics</a>
+  </p>
+</section>
+{% endif %}
